@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-let lightGrey = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
-let skyBlue = Color(red: 0.4627, green: 0.8392, blue: 1.0)
-let darkBlue = Color(red: 0.0, green: 0.0, blue: 139.0)
+let lightGrey = Color(red: 0.827, green: 0.870, blue: 0.894, opacity: 0.5)
+let lightBlue = Color(red: 0.619, green: 0.803, blue: 0.913)
+let skyBlue = Color(red: 0.313, green: 0.623, blue: 0.807)
+let blue = Color(red: 0.176, green: 0.533, blue: 0.741)
+let darkBlue = Color(red: 0, green: 0.407, blue: 0.647)
 
 struct LoginView: View
 {
@@ -48,7 +50,7 @@ struct LoginView: View
                 .padding()
                 //shape of the button
                 .frame(width: 220, height: 50)
-                .background(Color.blue)
+                .background(blue)
                 .cornerRadius(15.0)
                 .padding(.bottom, 20)
             }
