@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41B9DB5427C5EBC6001DCC10 /* SwipingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9DB5327C5EBC6001DCC10 /* SwipingView.swift */; };
 		B92CA7A627BF43F000338F6D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927662627BE45CB0079195A /* LoginView.swift */; };
 		B92CA7A727BF441F00338F6D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927663027BE45CB0079195A /* MainView.swift */; };
 		B92CA7A827BF442200338F6D /* CIS_FrienderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927662F27BE45CB0079195A /* CIS_FrienderApp.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		41B9DB5327C5EBC6001DCC10 /* SwipingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingView.swift; sourceTree = "<group>"; };
 		B927662627BE45CB0079195A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B927662727BE45CB0079195A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B927662827BE45CB0079195A /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				B927663027BE45CB0079195A /* MainView.swift */,
 				B927663127BE45CB0079195A /* ContentView.swift */,
 				B92CA7AC27BF448900338F6D /* WelcomeView.swift */,
+				41B9DB5327C5EBC6001DCC10 /* SwipingView.swift */,
 			);
 			name = "CIS-Friender";
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41B9DB5427C5EBC6001DCC10 /* SwipingView.swift in Sources */,
 				B92CA7AB27BF443600338F6D /* CreateAccountView.swift in Sources */,
 				B92CA7AA27BF442800338F6D /* UserProfileView.swift in Sources */,
 				B92CA7A827BF442200338F6D /* CIS_FrienderApp.swift in Sources */,
