@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41811F7827C89C2500BDBA91 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41811F7727C89C2500BDBA91 /* SearchView.swift */; };
+		41B9DB5427C5EBC6001DCC10 /* SwipingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9DB5327C5EBC6001DCC10 /* SwipingView.swift */; };
+		51F625A327CAFFFD002DCF0B /* CISUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F625A227CAFFFD002DCF0B /* CISUser.swift */; };
 		B92CA7A627BF43F000338F6D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927662627BE45CB0079195A /* LoginView.swift */; };
 		B92CA7A727BF441F00338F6D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927663027BE45CB0079195A /* MainView.swift */; };
 		B92CA7A827BF442200338F6D /* CIS_FrienderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927662F27BE45CB0079195A /* CIS_FrienderApp.swift */; };
-		B92CA7A927BF442400338F6D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927663127BE45CB0079195A /* ContentView.swift */; };
 		B92CA7AA27BF442800338F6D /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927662827BE45CB0079195A /* UserProfileView.swift */; };
 		B92CA7AB27BF443600338F6D /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927662B27BE45CB0079195A /* CreateAccountView.swift */; };
 		B92CA7AD27BF448900338F6D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92CA7AC27BF448900338F6D /* WelcomeView.swift */; };
@@ -44,6 +46,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		41811F7727C89C2500BDBA91 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		41B9DB5327C5EBC6001DCC10 /* SwipingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingView.swift; sourceTree = "<group>"; };
+		51F625A227CAFFFD002DCF0B /* CISUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CISUser.swift; sourceTree = "<group>"; };
 		B927662627BE45CB0079195A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B927662727BE45CB0079195A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B927662827BE45CB0079195A /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
@@ -52,7 +57,6 @@
 		B927662C27BE45CB0079195A /* CIS Friender.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "CIS Friender.xcodeproj"; sourceTree = "<group>"; };
 		B927662F27BE45CB0079195A /* CIS_FrienderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIS_FrienderApp.swift; sourceTree = "<group>"; };
 		B927663027BE45CB0079195A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		B927663127BE45CB0079195A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B92CA7AC27BF448900338F6D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		B9D0482027B76C41002DB924 /* CIS Friender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CIS Friender.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D0483827B77B4F002DB924 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -107,8 +111,10 @@
 				B927662C27BE45CB0079195A /* CIS Friender.xcodeproj */,
 				B927662F27BE45CB0079195A /* CIS_FrienderApp.swift */,
 				B927663027BE45CB0079195A /* MainView.swift */,
-				B927663127BE45CB0079195A /* ContentView.swift */,
 				B92CA7AC27BF448900338F6D /* WelcomeView.swift */,
+				41B9DB5327C5EBC6001DCC10 /* SwipingView.swift */,
+				41811F7727C89C2500BDBA91 /* SearchView.swift */,
+				51F625A227CAFFFD002DCF0B /* CISUser.swift */,
 			);
 			name = "CIS-Friender";
 			sourceTree = "<group>";
@@ -248,12 +254,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41B9DB5427C5EBC6001DCC10 /* SwipingView.swift in Sources */,
+				41811F7827C89C2500BDBA91 /* SearchView.swift in Sources */,
 				B92CA7AB27BF443600338F6D /* CreateAccountView.swift in Sources */,
 				B92CA7AA27BF442800338F6D /* UserProfileView.swift in Sources */,
 				B92CA7A827BF442200338F6D /* CIS_FrienderApp.swift in Sources */,
 				B92CA7A627BF43F000338F6D /* LoginView.swift in Sources */,
-				B92CA7A927BF442400338F6D /* ContentView.swift in Sources */,
 				B92CA7A727BF441F00338F6D /* MainView.swift in Sources */,
+				51F625A327CAFFFD002DCF0B /* CISUser.swift in Sources */,
 				B92CA7AD27BF448900338F6D /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
