@@ -15,6 +15,7 @@
 		B92CA7AA27BF442800338F6D /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927662827BE45CB0079195A /* UserProfileView.swift */; };
 		B92CA7AB27BF443600338F6D /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927662B27BE45CB0079195A /* CreateAccountView.swift */; };
 		B92CA7AD27BF448900338F6D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92CA7AC27BF448900338F6D /* WelcomeView.swift */; };
+		B942A76427CA115B001B7F8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B927662727BE45CB0079195A /* Assets.xcassets */; };
 		B9D0483927B77B4F002DB924 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9D0483827B77B4F002DB924 /* GoogleService-Info.plist */; };
 		B9D0483C27B79538002DB924 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B9D0483B27B79538002DB924 /* FirebaseAnalytics */; };
 		B9D0483E27B79538002DB924 /* FirebaseAnalyticsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = B9D0483D27B79538002DB924 /* FirebaseAnalyticsSwift-Beta */; };
@@ -240,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B942A76427CA115B001B7F8F /* Assets.xcassets in Resources */,
 				B9D0483927B77B4F002DB924 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
