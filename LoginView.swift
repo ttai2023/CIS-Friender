@@ -75,7 +75,7 @@ struct WelcomeText : View
 {
     var body : some View
     {
-        return Text("Welcome!")
+        return Text("Welcome to Friender!")
             .font(.largeTitle)
             .fontWeight(.semibold)
             .padding(.bottom, 20)
