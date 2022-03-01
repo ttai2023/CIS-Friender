@@ -44,6 +44,7 @@
 		B9D0486A27B79538002DB924 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B9D0486927B79538002DB924 /* FirebaseStorage */; };
 		B9D0486C27B79538002DB924 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = B9D0486B27B79538002DB924 /* FirebaseStorageCombine-Community */; };
 		B9D0486E27B79538002DB924 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = B9D0486D27B79538002DB924 /* FirebaseStorageSwift-Beta */; };
+		E217976127CCE2F700072C2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B927662727BE45CB0079195A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +55,7 @@
 		B927662727BE45CB0079195A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B927662827BE45CB0079195A /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		B927662A27BE45CB0079195A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B927662B27BE45CB0079195A /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
+		B927662B27BE45CB0079195A /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CreateAccountView.swift; sourceTree = "<group>"; usesTabs = 0; };
 		B927662C27BE45CB0079195A /* CIS Friender.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "CIS Friender.xcodeproj"; sourceTree = "<group>"; };
 		B927662F27BE45CB0079195A /* CIS_FrienderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIS_FrienderApp.swift; sourceTree = "<group>"; };
 		B927663027BE45CB0079195A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -244,7 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B942A76427CA115B001B7F8F /* Assets.xcassets in Resources */,
+				E217976127CCE2F700072C2C /* Assets.xcassets in Resources */,
 				B9D0483927B77B4F002DB924 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
