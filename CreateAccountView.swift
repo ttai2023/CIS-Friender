@@ -54,13 +54,6 @@ struct CreateAccountView: View
                 Text("ISTP").tag(5)
                 
             }
-        
-        
-        
-              
-        
-            
-            
         }
         
     }
