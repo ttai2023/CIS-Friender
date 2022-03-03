@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
-
+import Firebase
 
 struct CreateAccountView: View
 {
-    @State var newUsername: String = ""
+    @State var newEmail: String = ""
     @State var newPassword: String = ""
     
     var body: some View
@@ -24,13 +24,12 @@ struct CreateAccountView: View
                 .resizable() //so image can be resized
                 .aspectRatio(contentMode: .fill) //prevents original photo to be distorted
                 .frame(width: 150, height: 150)
-             
-            TextField("Username: " , text: $newUsername)
+            TextField("Email: " , text: $newEmail)
                 .padding()
                 .background(lightGrey)
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
-            TextField("password: " , text: $newUsername)
+            TextField("password: " , text: $newPassword)
                 .padding()
                 .background(lightGrey)
                 .cornerRadius(5.0)
@@ -44,7 +43,6 @@ struct CreateAccountView: View
                 Text("Taurus").tag(5)
                 Text("Libra").tag(6)
                 
-                
             }
             Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Picker")) {
                 Text("Pick your MBTI").tag(1)
@@ -54,19 +52,10 @@ struct CreateAccountView: View
                 Text("ISTP").tag(5)
                 
             }
-        
-        
-        
-              
-        
-            
-            
         }
-        
+        .padding()
     }
-    
 }
-
 
 
 struct CreateAccountView_Previews: PreviewProvider

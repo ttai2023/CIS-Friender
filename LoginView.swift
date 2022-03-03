@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 let lightGrey = Color(red: 0.827, green: 0.870, blue: 0.894, opacity: 0.5)
 let lightBlue = Color(red: 0.619, green: 0.803, blue: 0.913)
@@ -15,8 +16,12 @@ let darkBlue = Color(red: 0, green: 0.407, blue: 0.647)
 
 struct LoginView: View
 {
-    @State var username: String = ""
+    @State var email: String = ""
     @State var password: String = ""
+    
+    init(){
+        FirebaseApp.configure()
+    }
     var body: some View
     {
         //stack stuff on top of each other vertically
@@ -30,7 +35,7 @@ struct LoginView: View
                 .clipped() //area outside of frame will be cut
                 .cornerRadius(100)
                 .padding(.bottom, 10)
-            TextField("Username: " , text: $username)
+            TextField("Email: " , text: $email)
                 .padding()
                 .background(lightGrey)
                 .cornerRadius(5.0)
@@ -68,8 +73,11 @@ struct LoginView: View
         }
         //adds padding around the whole stack
         .padding()
+        
     }
 }
+
+
 
 struct WelcomeText : View
 {
