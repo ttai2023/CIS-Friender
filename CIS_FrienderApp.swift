@@ -10,6 +10,8 @@ import Firebase
 
 @main
 struct CIS_FrienderApp: App {
+    @StateObject private var userManager = UserManager()
+    
     var body: some Scene {
         WindowGroup {
             LoginView()

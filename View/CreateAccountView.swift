@@ -134,14 +134,6 @@ struct CreateAccountView: View
    
     }
 }
-
-//func transitionToMain(){
-//    NavigationLink(LocalizedStringKey) {
-//                    MainView()
-//                }
-//}
-
-
 struct CreateAccountView_Previews: PreviewProvider
 {
     static var previews: some View {
