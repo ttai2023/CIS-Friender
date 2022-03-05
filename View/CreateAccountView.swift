@@ -11,9 +11,9 @@ import Firebase
 
 struct CreateAccountView: View
 {
-    @State private var newUsername: String = ""
-    @State private var newEmail: String = ""
-    @State private var newPassword: String = ""
+    @State public var newUsername: String = ""
+    @State public var newEmail: String = ""
+    @State public var newPassword: String = ""
     @State private var invalidInput = false
     @State private var errorMessage = ""
     

@@ -7,23 +7,44 @@
 
 import Foundation
 import SwiftUI
+import FirebaseAuth
+import Firebase
+import FirebaseDatabase
+
 
 //this is what julian demonstrated
 //٩(๑❛ᴗ❛๑)۶
 
 class UserManager: ObservableObject {
-    @Published var isSignedIn = false
-//    @Published var currentUser: CISUser?
     
-    func signIn(username: String? = nil, password: String? = nil) {
+    @Published var isSignedIn = false
+    @Published var currentUser: CISUser?
+    @State private var username: String = ""
+    
+func checkIfUserIsSignnedIn()
+    {
+        if FIRAuth.auth()?.currentUser?.uid == nil
+        {
+        username = "No name"
+        }else{
+            let uid = FIRAuth.auth()?.currentUser?.uid
+            FIRDatabase.database().reference().child("User").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
+                let value = snapshot.value as? NSDictionary
+                username = value?["Name"]as? String ?? ""
+    
+            })
+        }
+    }
+    func signIn(useremail: String? = nil, password: String? = nil) {
         // firerbase authenticate w username and password
-        // over here
         
         // load current user
         // currentUser = firebase.currentUser
         
         // over here,
-        // isSignedIn = true
+      
+        isSignedIn = true
+        
     }
     
     func signUp(username: String? = nil, email: String? = nil, password : string? = nil ){
