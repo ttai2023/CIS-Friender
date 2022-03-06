@@ -9,17 +9,22 @@ import SwiftUI
 import FirebaseDatabase
 
 
-struct UserProfileView: View {
-    let ref = Database.database().reference()
+struct UserProfileViews: View {
+    // create a database reference to locate the data
+    @EnvironmentObject private var userManager: UserManager
+    
+    let ref = Database.database().reference(withPath: "Users")
+    
+    
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("User Profile" )
     }
 }
 
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfileView()
+        UserProfileViews()
     }
 }

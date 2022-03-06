@@ -11,9 +11,9 @@ import Firebase
 
 struct CreateAccountView: View
 {
-    @State private var newUsername: String = ""
-    @State private var newEmail: String = ""
-    @State private var newPassword: String = ""
+    @State public var newUsername: String = ""
+    @State public var newEmail: String = ""
+    @State public var newPassword: String = ""
     @State private var invalidInput = false
     @State private var errorMessage = ""
     
@@ -96,7 +96,6 @@ struct CreateAccountView: View
             //password aint secure
             return "Please make sure your password is at least 8 characters that contains a special character and a number ಠ_ಠ"
         }
-        
         return nil
     }
     
@@ -130,21 +129,12 @@ struct CreateAccountView: View
                 
                 }
             }
-            
             //Transition to the home screen
-//            transitionToMain()
+           
         }
    
     }
 }
-
-//func transitionToMain(){
-//    NavigationLink(LocalizedStringKey) {
-//                    MainView()
-//                }
-//}
-
-
 struct CreateAccountView_Previews: PreviewProvider
 {
     static var previews: some View {
