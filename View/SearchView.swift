@@ -22,7 +22,7 @@ struct SearchView: View
         {
             List {
                 ForEach(searchResults, id: \.self) { name in
-                    NavigationLink(destination: Text(name)) {
+                    NavigationLink(destination: UserProfileView(variable1: 1, name: name)) {
                         //navigate to UserProfile View
                         Text(name)
                     }

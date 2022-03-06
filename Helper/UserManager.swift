@@ -31,7 +31,7 @@ func checkIfUserIsSignnedIn()
             FIRDatabase.database().reference().child("User").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
                 let value = snapshot.value as? NSDictionary
                 username = value?["Name"]as? String ?? ""
-    
+
             })
         }
     }
@@ -47,7 +47,7 @@ func checkIfUserIsSignnedIn()
         
     }
     
-    func signUp(username: String? = nil, email: String? = nil, password : string? = nil ){
+    func signUp(username: String? = nil, email: String? = nil, password : String? = nil ){
         //implement firestore stuff here
     }
     
