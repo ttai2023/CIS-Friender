@@ -54,37 +54,37 @@ struct SearchView_Previews: PreviewProvider
     }
 }
 
-class UserProfileViewModel: ObservedObject {
-    let db = Firestore.firestore()
-    @State private var errorMessage = ""
-    //maybe create an array of CISUser objects to return
-//    var username:String
-//    var email:String
-//    var bio:String
-    
-    Label("Error", systemImage: "cross.fill")
-    if errorMessage.isEmpty {
-        Label(errorMessage, systemImage: "cross.fill")
-    }
-    
-    func getUsers() {
-        db.collection("users").getDocuments() { [self] (documentSnapshot, err) in
-            if err != nil {
-                    self.errorMessage = "Cannot get users"
-                } else {
-                    for document in documentSnapshot!.documents {
-                        //convert documentSnapshot to CISUser object
-//                        documentSnapshot.toObject
-                    }
-                }
-        }
-    }
-}
-
-struct UserProfileView: View {
-    @StateObject private var viewModel = UserProfileViewModel()
-    
-    var body: some View {
-        
-    }
-}
+//class UserProfileViewModel: ObservableObject {
+//    let db = Firestore.firestore()
+//    @State private var errorMessage = ""
+//    //maybe create an array of CISUser objects to return
+////    var username:String
+////    var email:String
+////    var bio:String
+//
+//    Label("Error", systemImage: "cross.fill")
+//    if errorMessage.isEmpty {
+//        Label(errorMessage, systemImage: "cross.fill")
+//    }
+//
+//    func getUsers() {
+//        db.collection("users").getDocuments() { [self] (documentSnapshot, err) in
+//            if err != nil {
+//                    self.errorMessage = "Cannot get users"
+//                } else {
+//                    for document in documentSnapshot!.documents {
+//                        //convert documentSnapshot to CISUser object
+////                        documentSnapshot.toObject
+//                    }
+//                }
+//        }
+//    }
+//}
+//
+//struct UserProfileView: View {
+//    @StateObject private var viewModel = UserProfileViewModel()
+//
+//    var body: some View {
+//
+//    }
+//}

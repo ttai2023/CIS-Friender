@@ -120,12 +120,13 @@ struct CreateAccountView: View
                     //user created sucessfully
                     let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data: ["Username": newUsername, "Email":newEmail, "uid":results.CISuser.uid]) { (error) in
-                        if error != nil{
-                            //Show error message
-                            errorMessage = "Error saving data. Please contact admin."
-                        }
-                    }
+                    //doesn't work, read article
+//                    db.collection("users").addDocument(data: ["Username": newUsername, "Email":newEmail, "uid":results.CISUser.uid]) { (error) in
+//                        if error != nil{
+//                            //Show error message
+//                            errorMessage = "Error saving data. Please contact admin."
+//                        }
+//                    }
                 
                 }
             }
