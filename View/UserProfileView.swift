@@ -8,12 +8,17 @@
 import SwiftUI
 import FirebaseDatabase
 
-
 struct UserProfileView: View {
-    let ref = Database.database().reference()
+    // create a database reference to locate the data
+    @EnvironmentObject private var userManager: UserManager
+    let currUser: CISUser?
+    
+    let ref = Database.database().reference(withPath: "Users")
+    
+    
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("User Profile" )
     }
 }
 

@@ -16,8 +16,10 @@ let darkBlue = Color(red: 0, green: 0.407, blue: 0.647)
 
 struct LoginView: View
 {
-    @State var email: String = ""
-    @State var password: String = ""
+@State var username: String = ""
+@State var password: String = ""
+@EnvironmentObject private var userManager: UserManager
+
 var body: some View
 {
     //stack stuff on top of each other vertically
@@ -42,7 +44,12 @@ var body: some View
             .background(lightGrey)
             .cornerRadius(5.0)
             .padding(.bottom, 15)
+        
         //Login button
+        
+        //for the button, add
+        //userManager.signIn()
+        
         NavigationLink(destination: MainView())
         {
             Text("LOGIN")
@@ -54,6 +61,7 @@ var body: some View
             .background(blue)
             .cornerRadius(15.0)
             .padding(.bottom, 20)
+            
         }
         NavigationLink(destination: CreateAccountView())
         {

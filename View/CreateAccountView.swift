@@ -96,7 +96,6 @@ struct CreateAccountView: View
             //password aint secure
             return "Please make sure your password is at least 8 characters that contains a special character and a number ಠ_ಠ"
         }
-        
         return nil
     }
     
