@@ -11,25 +11,35 @@ import Firebase
 
 struct SearchView: View
 {
-//    var allTags: [String]
     @EnvironmentObject private var userManager: UserManager
-    var tags: Set<String>
+    @State var allTags: Set<String> = []
+    @State var user: CISUser?
     
-    //get array of tags from current tags
+    //add all current tags to allTags set
     func getTags() {
+        //fetch all users from firebase
         userManager.firestore.collection("User")
             .getDocuments() { (querySnapshot, err) in
+                //catch error
                 if let err = err {
                     print("Error getting users: \(err)")
                 }
                 else {
-                    for document in querySnapshot!.documents {
-                          self.user = try document.data(as: CISUser.self)
-                    }
+                      for document in querySnapshot!.documents {
+                          //try? -> self.user will be nil, try! -> app will crash
+                          //convert document into CISUser object
+                          self.user = try? document.data(as: CISUser.self)
+                          //loop through each tag in tags Array in current user
+                          if let user = self.user {
+                              for tag in user.tags {
+                                  allTags.insert(tag)
+                              }
+                          }
+                      }
                 }
         }
     }
-//     = ["terri", "michelle", "keona", "shirley"]
+    
     //initialise text in search bar
     @State private var searchText = ""
     
@@ -38,27 +48,30 @@ struct SearchView: View
         NavigationView
         {
             List {
-                ForEach(searchResults, id: \.self) { name in
-                    NavigationLink(destination: UserProfileView(currUser: CISUser)) {
-                        //navigate to UserProfile View
-                        Text(name)
+                ForEach(searchResults, id: \.self) { tag in
+                    //navigate to UserProfile View
+                    NavigationLink(destination: UserListView(currTag: tag)) {
                     }
                 }
             }
-            .searchable(text: $searchText, prompt: "Look for someone") {
+            .searchable(text: $searchText, prompt: "Look for a tag") {
                 ForEach(searchResults, id: \.self) { result in
                     Text("Are you looking for \(result)?").searchCompletion(result)
                 }
             }
             .navigationTitle("Search")
         }
+        //task runs as view appears on the screen
+        .task {
+            getTags()
+        }
     }
     
     var searchResults: [String] {
         if searchText.isEmpty {
-            return names
+            return Array(allTags)
         } else {
-            return names.filter { $0.contains(searchText) }
+            return Array(allTags).filter { $0.contains(searchText) }
         }
     }
 }
@@ -70,38 +83,3 @@ struct SearchView_Previews: PreviewProvider
         SearchView()
     }
 }
-
-//class UserProfileViewModel: ObservableObject {
-//    let db = Firestore.firestore()
-//    @State private var errorMessage = ""
-//    //maybe create an array of CISUser objects to return
-////    var username:String
-////    var email:String
-////    var bio:String
-//
-//    Label("Error", systemImage: "cross.fill")
-//    if errorMessage.isEmpty {
-//        Label(errorMessage, systemImage: "cross.fill")
-//    }
-//
-//    func getUsers() {
-//        db.collection("users").getDocuments() { [self] (documentSnapshot, err) in
-//            if err != nil {
-//                    self.errorMessage = "Cannot get users"
-//                } else {
-//                    for document in documentSnapshot!.documents {
-//                        //convert documentSnapshot to CISUser object
-////                        documentSnapshot.toObject
-//                    }
-//                }
-//        }
-//    }
-//}
-//
-//struct UserProfileView: View {
-//    @StateObject private var viewModel = UserProfileViewModel()
-//
-//    var body: some View {
-//
-//    }
-//}

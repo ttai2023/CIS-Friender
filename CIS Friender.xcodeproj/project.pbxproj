@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		41811F7827C89C2500BDBA91 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41811F7727C89C2500BDBA91 /* SearchView.swift */; };
 		41B9DB5427C5EBC6001DCC10 /* SwipingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9DB5327C5EBC6001DCC10 /* SwipingView.swift */; };
+		41C6ACCB27D5BD7E00931E91 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6ACCA27D5BD7E00931E91 /* UserListView.swift */; };
 		518CB1E327D055BA002E1BBD /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518CB1E227D055BA002E1BBD /* Utilities.swift */; };
 		518CB1E527D1B6DA002E1BBD /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518CB1E427D1B6D9002E1BBD /* UserManager.swift */; };
 		51F625A327CAFFFD002DCF0B /* CISUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F625A227CAFFFD002DCF0B /* CISUser.swift */; };
@@ -51,6 +52,7 @@
 /* Begin PBXFileReference section */
 		41811F7727C89C2500BDBA91 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		41B9DB5327C5EBC6001DCC10 /* SwipingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingView.swift; sourceTree = "<group>"; };
+		41C6ACCA27D5BD7E00931E91 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		518CB1E227D055BA002E1BBD /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		518CB1E427D1B6D9002E1BBD /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		51F625A227CAFFFD002DCF0B /* CISUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CISUser.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				41811F7727C89C2500BDBA91 /* SearchView.swift */,
 				B927662B27BE45CB0079195A /* CreateAccountView.swift */,
 				B927662827BE45CB0079195A /* UserProfileView.swift */,
+				41C6ACCA27D5BD7E00931E91 /* UserListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				B92CA7A827BF442200338F6D /* CIS_FrienderApp.swift in Sources */,
 				B92CA7A627BF43F000338F6D /* LoginView.swift in Sources */,
 				B92CA7A727BF441F00338F6D /* MainView.swift in Sources */,
+				41C6ACCB27D5BD7E00931E91 /* UserListView.swift in Sources */,
 				51F625A327CAFFFD002DCF0B /* CISUser.swift in Sources */,
 				518CB1E327D055BA002E1BBD /* Utilities.swift in Sources */,
 				518CB1E527D1B6DA002E1BBD /* UserManager.swift in Sources */,

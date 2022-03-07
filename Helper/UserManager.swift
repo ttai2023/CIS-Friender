@@ -17,14 +17,15 @@ import FirebaseDatabase
 
 class UserManager: ObservableObject {
     
-    @Published let mAuth = Auth.auth()
-    @Published let firestore = Firestore.firestore()
-    @Published let mUser = Auth.auth().currentUser
+    @Published var mAuth = Auth.auth()
+    @Published var firestore = Firestore.firestore()
+    @Published var mUser = Auth.auth().currentUser
     
     @Published var isSignedIn = false
     @Published var currentUser: CISUser?
     @State private var username: String = ""
     
+//follow updated tutorial
 func checkIfUserIsSignnedIn()
     {
         if FIRAuth.auth()?.currentUser?.uid == nil
