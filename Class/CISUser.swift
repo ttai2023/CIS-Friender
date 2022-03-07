@@ -7,14 +7,15 @@
 
 import Foundation
 import UIKit
+import FirebaseFirestoreSwift
 
 struct Tags {
   
 }
 
-struct CISUser: Identifiable{
+struct CISUser: Identifiable, Codable{
     //this will randomly generate a UUID
-    var id = UUID().uuidString
+    @DocumentID var id = UUID().uuidString
     var username: String
     var email : String
     var bio : String

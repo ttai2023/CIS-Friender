@@ -11,8 +11,25 @@ import Firebase
 
 struct SearchView: View
 {
+//    var allTags: [String]
+    @EnvironmentObject private var userManager: UserManager
+    var tags: Set<String>
+    
     //get array of tags from current tags
-    var names: [String] = ["terri", "michelle", "keona", "shirley"]
+    func getTags() {
+        userManager.firestore.collection("User")
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting users: \(err)")
+                }
+                else {
+                    for document in querySnapshot!.documents {
+                          self.user = try document.data(as: CISUser.self)
+                    }
+                }
+        }
+    }
+//     = ["terri", "michelle", "keona", "shirley"]
     //initialise text in search bar
     @State private var searchText = ""
     
@@ -22,7 +39,7 @@ struct SearchView: View
         {
             List {
                 ForEach(searchResults, id: \.self) { name in
-                    NavigationLink(destination: UserProfileView(variable1: 1, name: name)) {
+                    NavigationLink(destination: UserProfileView(currUser: CISUser)) {
                         //navigate to UserProfile View
                         Text(name)
                     }
