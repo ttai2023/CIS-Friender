@@ -31,7 +31,7 @@ struct CreateAccountView: View
                 .aspectRatio(contentMode: .fill)
             //prevents original photo to be distorted
                 .frame(width: 150, height: 150)
-             
+            
             
             TextField("Username: " , text: $newUsername)
                 .padding(.horizontal, 10.0)
@@ -54,10 +54,10 @@ struct CreateAccountView: View
             Button("Sign Up") {
                 
             }
-    
+            
             Label("Error", systemImage: "cross.fill")
             if errorMessage.isEmpty {
-            Label(errorMessage,systemImage: "cross.fill")
+                Label(errorMessage,systemImage: "cross.fill")
             }
             
             Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Picker")) {
@@ -101,7 +101,7 @@ struct CreateAccountView: View
     }
     
     func tappedSignup(sender : Any){
-    //validate the fields
+        //validate the fields
         let error = validateFields()
         
         if error != nil{
@@ -110,38 +110,39 @@ struct CreateAccountView: View
         }
         else{
             //and create the user
-            Auth.auth().createUser(withEmail: newEmail, password: newPassword) { results, err in
+            Auth.auth().createUser(withEmail: newEmail, password: newPassword) {results, err in
                 //check for error
                 if err != nil{
-                //There is an error creating the user
+                    //There is an error creating the user
                     errorMessage = "Error creating user."
                 }
-                else{
-                    //user created sucessfully
-                    let db = Firestore.firestore()
-                    
-                    db.collection("users").addDocument(data: ["Username": newUsername, "Email":newEmail, "uid":results.CISuser.uid]) { (error) in
-                        if error != nil{
-                            //Show error message
-                            errorMessage = "Error saving data. Please contact admin."
-                        }
-                    }
+                //user created sucessfully
+                let db = Firestore.firestore()
+                let user = CISUser(username: "name", email: newEmail, bio: "bio")
                 
+                db.collection("users").document(user.id).set(user){
+                    (error) in
+                    if error != nil{
+                        //Show error message
+                        errorMessage = "Error saving data. Please contact admin."
+                    }
                 }
+                
             }
-            
-            //Transition to the home screen
-//            transitionToMain()
         }
-   
+        
+        //Transition to the home screen
+                    transitionToMain()
     }
+    
 }
 
-//func transitionToMain(){
-//    NavigationLink(LocalizedStringKey) {
-//                    MainView()
-//                }
-//}
+
+func transitionToMain(){
+    NavigationLink(LocalizedStringKey) {
+                    MainView()
+                }
+}
 
 
 struct CreateAccountView_Previews: PreviewProvider
