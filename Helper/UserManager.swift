@@ -25,12 +25,14 @@ class UserManager: ObservableObject {
     @Published var currentUser: CISUser?
     @State private var username: String = ""
     
-func checkIfUserIsSignnedIn()
+func checkIfUserIsSignedIn()
     {
         if FIRAuth.auth()?.currentUser?.uid == nil
         {
-        username = "No name"
-        }else{
+            username = "No name"
+        }
+        else
+        {
             let uid = FIRAuth.auth()?.currentUser?.uid
             FIRDatabase.database().reference().child("User").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
                 let value = snapshot.value as? NSDictionary
@@ -39,7 +41,8 @@ func checkIfUserIsSignnedIn()
             })
         }
     }
-    func signIn(useremail: String? = nil, password: String? = nil) {
+    func signIn(useremail: String? = nil, password: String? = nil)
+    {
         // firerbase authenticate w username and password
         
         // load current user
@@ -51,11 +54,32 @@ func checkIfUserIsSignnedIn()
         
     }
     
-    func signUp(username: String? = nil, email: String? = nil, password : String? = nil ){
+    func signUp(username: String? = nil, email: String? = nil, password : String? = nil )
+    {
         //implement firestore stuff here
+        Auth.auth().createUser(withEmail: newEmail, password: newPassword) { results, err in
+            //check for error
+            if err != nil{
+                //There is an error creating the user
+                errorMessage = "Error creating user."
+            }
+            //user created sucessfully
+            let db = Firestore.firestore()
+            let user = CISUser(username: "name", email: newEmail, bio: "bio")
+            
+            db.collection("users").document(user.id).set(user){
+                (error) in
+                if error != nil{
+                    //Show error message
+                    errorMessage = "Error saving data. Please contact admin."
+                }
+            }
+            
+        }
     }
     
-    func signOut() {
+    func signOut()
+    {
         // currentUser = nil
         // isSignedIn = false
         // Firebase.auth.signOut()

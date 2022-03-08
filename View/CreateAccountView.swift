@@ -109,25 +109,7 @@ struct CreateAccountView: View
         }
         else{
             //and create the user
-            Auth.auth().createUser(withEmail: newEmail, password: newPassword) {results, err in
-                //check for error
-                if err != nil{
-                    //There is an error creating the user
-                    errorMessage = "Error creating user."
-                }
-                //user created sucessfully
-                let db = Firestore.firestore()
-                let user = CISUser(username: "name", email: newEmail, bio: "bio")
-                
-                db.collection("users").document(user.id).set(user){
-                    (error) in
-                    if error != nil{
-                        //Show error message
-                        errorMessage = "Error saving data. Please contact admin."
-                    }
-                }
-                
-            }
+            UserManager.signUp(<#T##self: UserManager##UserManager#>)
         }
         
         //Transition to the home screen
