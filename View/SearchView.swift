@@ -16,6 +16,7 @@ struct SearchView: View
     @State var user: CISUser?
     
     //add all current tags to allTags set
+    //move to usermanager??
     func getTags() {
         //fetch all users from firebase
         userManager.firestore.collection("User")

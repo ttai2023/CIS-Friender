@@ -16,7 +16,7 @@ let darkBlue = Color(red: 0, green: 0.407, blue: 0.647)
 
 struct LoginView: View
 {
-@State var username: String = ""
+@State var email: String = ""
 @State var password: String = ""
 @EnvironmentObject private var userManager: UserManager
 
