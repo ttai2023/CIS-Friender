@@ -24,7 +24,7 @@ struct CreateAccountView: View
         {
             Text("Creating A New Account")
                 .font(.system(size: 33, weight: .bold))
-                .foregroundColor(lightBlue)
+                .foregroundColor(Constants.lightBlue)
                 .multilineTextAlignment(.center)
             Image("Boy 1")
                 .resizable()
@@ -36,19 +36,19 @@ struct CreateAccountView: View
             
             TextField("Username: " , text: $newUsername)
                 .padding(.horizontal, 10.0)
-                .background(lightGrey)
+                .background(Constants.lightGrey)
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
             
             TextField("Email: " , text: $newEmail)
                 .padding(.horizontal, 10.0)
-                .background(lightGrey)
+                .background(Constants.lightGrey)
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
             
             TextField("password: " , text: $newPassword)
                 .padding(.horizontal, 10.0)
-                .background(lightGrey)
+                .background(Constants.lightGrey)
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
             
