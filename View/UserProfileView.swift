@@ -8,14 +8,7 @@
 import SwiftUI
 import FirebaseDatabase
 
-
-struct UserProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserProfilesView()
-    }
-}
-
-struct UserProfilesView: View {
+struct UserProfileView: View {
     // create a database reference to locate the data
     //@EnvironmentObject private var userManager: UserManager
     
@@ -55,14 +48,8 @@ struct UserProfilesView: View {
     }
 }
 
-
-<<<<<<< HEAD
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfileView(currUser: nil)
+        UserProfileView()
     }
 }
-=======
-
-
->>>>>>> 36f31ad62002a8ada1c1e40597efa9c4767be18b
