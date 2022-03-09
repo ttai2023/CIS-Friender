@@ -17,6 +17,10 @@ struct UserListView: View {
 
 struct UserListView_Previews: PreviewProvider {
     static var previews: some View {
+<<<<<<< HEAD
         UserListView(currTag: "hi")
+=======
+    UserListView()
+>>>>>>> 36f31ad62002a8ada1c1e40597efa9c4767be18b
     }
 }

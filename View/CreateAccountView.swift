@@ -110,7 +110,32 @@ struct CreateAccountView: View
         }
         else{
             //and create the user
+<<<<<<< HEAD
             userManager.signUp(username: newUsername, email: newEmail, password: newPassword)
+=======
+            Auth.auth().createUser(withEmail: newEmail, password: newPassword) { results, err in
+                //check for error
+                if err != nil{
+                //There is an error creating the user
+                    errorMessage = "Error creating user."
+                }
+                else{
+                    //user created sucessfully
+                    //let db = Firestore.firestore()
+                    
+                    //doesn't work, read article
+//                    db.collection("users").addDocument(data: ["Username": newUsername, "Email":newEmail, "uid":results.CISUser.uid]) { (error) in
+//                        if error != nil{
+//                            //Show error message
+//                            errorMessage = "Error saving data. Please contact admin."
+//                        }
+//                    }
+                
+                }
+            }
+            //Transition to the home screen
+           
+>>>>>>> 36f31ad62002a8ada1c1e40597efa9c4767be18b
         }
     }
     
