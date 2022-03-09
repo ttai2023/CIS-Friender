@@ -25,6 +25,6 @@ struct UserProfileView: View {
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfileView(currUser: <#CISUser?#>)
+        UserProfileView(currUser: nil)
     }
 }

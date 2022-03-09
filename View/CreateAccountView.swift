@@ -11,6 +11,7 @@ import Firebase
 
 struct CreateAccountView: View
 {
+    @EnvironmentObject private var userManager: UserManager
     @State private var newUsername: String = ""
     @State private var newEmail: String = ""
     @State private var newPassword: String = ""
@@ -109,22 +110,11 @@ struct CreateAccountView: View
         }
         else{
             //and create the user
-            UserManager.signUp(<#T##self: UserManager##UserManager#>)
+            userManager.signUp(username: newUsername, email: newEmail, password: newPassword)
         }
-        
-        //Transition to the home screen
-                    transitionToMain()
     }
     
 }
-
-
-func transitionToMain(){
-    NavigationLink(LocalizedStringKey) {
-                    MainView()
-                }
-}
-
 
 struct CreateAccountView_Previews: PreviewProvider
 {

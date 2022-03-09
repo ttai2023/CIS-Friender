@@ -17,6 +17,6 @@ struct UserListView: View {
 
 struct UserListView_Previews: PreviewProvider {
     static var previews: some View {
-        UserListView(currTag: <#T##String?#>)
+        UserListView(currTag: "hi")
     }
 }

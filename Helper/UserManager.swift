@@ -10,7 +10,9 @@ import SwiftUI
 import FirebaseAuth
 import Firebase
 import FirebaseDatabase
-
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+import FirebaseFirestoreCombineSwift
 
 //this is what julian demonstrated
 //٩(๑❛ᴗ❛๑)۶
@@ -23,21 +25,22 @@ class UserManager: ObservableObject {
     
     @Published var isSignedIn = false
     @Published var currentUser: CISUser?
-    @State private var username: String = ""
+    @Published var errorMessage: String? = nil
+    @Published private var username: String = ""
     
 //follow updated tutorial
 func checkIfUserIsSignnedIn()
     {
-        if FIRAuth.auth()?.currentUser?.uid == nil
+        if mAuth.currentUser?.uid == nil
         {
             username = "No name"
         }
         else
         {
-            let uid = FIRAuth.auth()?.currentUser?.uid
-            FIRDatabase.database().reference().child("User").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
+            let uid = mAuth.currentUser?.uid
+            Database.database().reference().child("User").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
                 let value = snapshot.value as? NSDictionary
-                username = value?["Name"]as? String ?? ""
+                self.username = value?["Name"]as? String ?? ""
 
             })
         }
@@ -55,28 +58,29 @@ func checkIfUserIsSignnedIn()
         
     }
     
-    func signUp(username: String? = nil, email: String? = nil, password : String? = nil )
+    func signUp(username: String, email: String, password : String)
     {
         //implement firestore stuff here
-        Auth.auth().createUser(withEmail: newEmail, password: newPassword) { results, err in
+        mAuth.createUser(withEmail: email, password: password) { results, err in
             //check for error
             if err != nil{
                 //There is an error creating the user
-                errorMessage = "Error creating user."
+                self.errorMessage = "Error creating user."
             }
             //user created sucessfully
             let db = Firestore.firestore()
-            let user = CISUser(username: "name", email: newEmail, bio: "bio")
-            
-            db.collection("users").document(user.id).set(user){
-                (error) in
-                if error != nil{
+            let user = CISUser(username: "name", email: email, bio: "bio")
+            do {
+                try db.collection("users").document(user.id!).setData(from: user)
+            }
+            catch {
+                // error is already not nil so no need to check if it’s != nil
                     //Show error message
-                    errorMessage = "Error saving data. Please contact admin."
-                }
+                self.errorMessage = "Error saving data. Please contact admin."
             }
             
         }
+            
     }
     
     func signOut()
