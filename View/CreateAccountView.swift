@@ -117,7 +117,7 @@ struct CreateAccountView: View
                 }
                 else{
                     //user created sucessfully
-                    let db = Firestore.firestore()
+                    //let db = Firestore.firestore()
                     
                     //doesn't work, read article
 //                    db.collection("users").addDocument(data: ["Username": newUsername, "Email":newEmail, "uid":results.CISUser.uid]) { (error) in

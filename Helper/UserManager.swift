@@ -26,39 +26,39 @@ class UserManager: ObservableObject {
     @State private var username: String = ""
     
 //follow updated tutorial
-func checkIfUserIsSignnedIn()
-    {
-        if FIRAuth.auth()?.currentUser?.uid == nil
-        {
-        username = "No name"
-        }else{
-            let uid = FIRAuth.auth()?.currentUser?.uid
-            FIRDatabase.database().reference().child("User").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
-                let value = snapshot.value as? NSDictionary
-                username = value?["Name"]as? String ?? ""
-
-            })
-        }
-    }
-    func signIn(useremail: String? = nil, password: String? = nil) {
-        // firerbase authenticate w username and password
-        
-        // load current user
-        // currentUser = firebase.currentUser
-        
-        // over here,
-      
-        isSignedIn = true
-        
-    }
-    
-    func signUp(username: String? = nil, email: String? = nil, password : String? = nil ){
-        //implement firestore stuff here
-    }
-    
-    func signOut() {
-        // currentUser = nil
-        // isSignedIn = false
-        // Firebase.auth.signOut()
-    }
+//func checkIfUserIsSignnedIn()
+//    {
+//        if FIRAuth.auth()?.currentUser?.uid == nil
+//        {
+//        username = "No name"
+//        }else{
+//            let uid = FIRAuth.auth()?.currentUser?.uid
+//            FIRDatabase.database().reference().child("User").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
+//                let value = snapshot.value as? NSDictionary
+//                username = value?["Name"]as? String ?? ""
+//
+//            })
+//        }
+//    }
+//    func signIn(useremail: String? = nil, password: String? = nil) {
+//        // firerbase authenticate w username and password
+//
+//        // load current user
+//        // currentUser = firebase.currentUser
+//
+//        // over here,
+//
+//        isSignedIn = true
+//
+//    }
+//
+//    func signUp(username: String? = nil, email: String? = nil, password : String? = nil ){
+//        //implement firestore stuff here
+//    }
+//
+//    func signOut() {
+//        // currentUser = nil
+//        // isSignedIn = false
+//        // Firebase.auth.signOut()
+//    }
 }
