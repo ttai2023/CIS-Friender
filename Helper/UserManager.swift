@@ -53,7 +53,7 @@ func checkIfUserIsSignedIn()
         
         // load current user
         // currentUser = firebase.currentUser
-        
+         
         // over here,
       
         isSignedIn = true
@@ -70,10 +70,9 @@ func checkIfUserIsSignedIn()
                 self.errorMessage = "Error creating user."
             }
             //user created sucessfully
-            let db = Firestore.firestore()
-            let user = CISUser(username: "name", email: email, bio: "bio")
+            let user = CISUser(username: "name", email: "email", bio: "bio")
             do {
-                try db.collection("users").document(user.id!).setData(from: user)
+                try self.firestore.collection("users").document(user.id!).setData(from: user)
             }
             catch {
                 // error is already not nil so no need to check if it’s != nil
@@ -87,8 +86,13 @@ func checkIfUserIsSignedIn()
     
     func signOut()
     {
-        // currentUser = nil
-        // isSignedIn = false
-        // Firebase.auth.signOut()
+        currentUser = nil
+        isSignedIn = false
+        do{
+            try mAuth.signOut()
+        }
+        catch {
+            self.errorMessage = "Error signing out. Please contact admin."
+        }
     }
 }
