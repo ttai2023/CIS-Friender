@@ -79,7 +79,7 @@ func checkIfUserIsSignedIn()
                     //Show error message
                 self.errorMessage = "Error saving data. Please contact admin."
             }
-            
+            self.isSignedIn = true
         }
             
     }
