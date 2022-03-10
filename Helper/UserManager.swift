@@ -28,8 +28,10 @@ class UserManager: ObservableObject {
     @Published var errorMessage: String? = nil
     @Published private var username: String = ""
     
+    //whenever someone signs up/sign in -> set currentUser
+    
 //follow updated tutorial
-func checkIfUserIsSignnedIn()
+func checkIfUserIsSignedIn()
     {
         if mAuth.currentUser?.uid == nil
         {

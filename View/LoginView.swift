@@ -8,12 +8,6 @@
 import SwiftUI
 import Firebase
 
-let lightGrey = Color(red: 0.827, green: 0.870, blue: 0.894, opacity: 0.5)
-let lightBlue = Color(red: 0.619, green: 0.803, blue: 0.913)
-let skyBlue = Color(red: 0.313, green: 0.623, blue: 0.807)
-let blue = Color(red: 0.176, green: 0.533, blue: 0.741)
-let darkBlue = Color(red: 0, green: 0.407, blue: 0.647)
-
 struct LoginView: View
 {
     @State var email: String = ""
@@ -35,13 +29,13 @@ struct LoginView: View
                 .padding(.bottom, 10)
             TextField("Email: " , text: $email)
                 .padding()
-                .background(lightGrey)
+                .background(Constants.lightGrey)
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
             //SecureField --> changes content to dots after inputted
             SecureField("Password: ", text: $password)
                 .padding()
-                .background(lightGrey)
+                .background(Constants.lightGrey)
                 .cornerRadius(5.0)
                 .padding(.bottom, 15)
             
@@ -58,7 +52,7 @@ struct LoginView: View
                     .padding()
                 //shape of the button
                     .frame(width: 220, height: 50)
-                    .background(blue)
+                    .background(Constants.blue)
                     .cornerRadius(15.0)
                     .padding(.bottom, 20)
                 
@@ -71,7 +65,7 @@ struct LoginView: View
                     .padding()
                 //shape of the button
                     .frame(width: 220, height: 50)
-                    .background(darkBlue)
+                    .background(Constants.darkBlue)
                     .cornerRadius(15.0)
             }
         }
