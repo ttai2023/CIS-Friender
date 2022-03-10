@@ -19,6 +19,12 @@ struct UserProfileView: View {
     @State public var mbti: String = ""
     @State private var isEditing = false
     
+    var aOrB = ["A", "B"]
+    @State private var toAOrNotToB = "A"
+
+    var colors = ["Red", "Green", "Blue", "Tartan"]
+    @State private var selectedColor = "Red"
+    
     let lightGrey = Color(red: 0.827, green: 0.870, blue: 0.894, opacity: 0.5)
     
     
@@ -80,6 +86,17 @@ struct UserProfileView: View {
                         Spacer()
                         TextField("Username", text: $username)
                     }
+                    Picker("To A or Not to B?", selection: $toAOrNotToB) {
+                                            ForEach(aOrB, id: \.self) {
+                                                Text($0)
+                                            }
+                                        }.pickerStyle(.menu)
+
+                    Picker("Color", selection: $selectedColor) {
+                                            ForEach(colors, id: \.self) {
+                                                Text($0)
+                                            }
+                                        }
                 }
             }
             

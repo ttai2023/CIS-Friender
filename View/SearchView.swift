@@ -46,22 +46,18 @@ struct SearchView: View
     
     var body: some View
     {
-        NavigationView
-        {
-            List {
-                ForEach(searchResults, id: \.self) { tag in
-                    //navigate to UserProfile View
-                    NavigationLink(destination: UserListView(currTag: tag)) {
-                    }
-                }
+        List {
+            ForEach(searchResults, id: \.self) { tag in
+                //navigate to UserProfile View
+                NavigationLink(tag, destination: UserListView(currTag: tag))
             }
-            .searchable(text: $searchText, prompt: "Look for a tag") {
-                ForEach(searchResults, id: \.self) { result in
-                    Text("Are you looking for \(result)?").searchCompletion(result)
-                }
-            }
-            .navigationTitle("Search")
         }
+        .searchable(text: $searchText, prompt: "Look for a tag") {
+            ForEach(searchResults, id: \.self) { result in
+                Text("Are you looking for \(result)?").searchCompletion(result)
+            }
+        }
+        .navigationTitle("Search")
         //task runs as view appears on the screen
         .task {
             getTags()
