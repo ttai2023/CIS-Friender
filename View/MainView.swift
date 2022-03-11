@@ -16,6 +16,22 @@ struct MainView: View {
         } else {
             SwipingView()
         }
+        TabView {
+            NavigationView {
+                SwipingView()
+            }
+            .tabItem {
+                Text("S")
+                Image(systemName: "checkmark")
+            }
+            NavigationView {
+                SearchView()
+            }
+            .tabItem {
+                Text("SS")
+                Image(systemName: "search")
+            }
+        }
     }
 }
 
