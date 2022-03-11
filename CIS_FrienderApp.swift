@@ -21,7 +21,6 @@ struct CIS_FrienderApp: App {
         WindowGroup {
             NavigationView{
                 MainView ()
-
             }.environmentObject(userManager)
         }
     }
