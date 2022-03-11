@@ -12,6 +12,7 @@ struct LoginView: View
 {
     @State var email: String = ""
     @State var password: String = ""
+    @State var invalidInput = false
     @EnvironmentObject private var userManager: UserManager
     
     var body: some View
@@ -19,7 +20,7 @@ struct LoginView: View
         //stack stuff on top of each other vertically
         VStack
         {
-            WelcomeText()
+            welcomeText
             Image("keona")
                 .resizable() //so image can be resized
                 .aspectRatio(contentMode: .fill) //prevents original photo to be distorted
@@ -39,13 +40,16 @@ struct LoginView: View
                 .cornerRadius(5.0)
                 .padding(.bottom, 15)
             
-            //Login button
+            // Login button
             
-            //for the button, add
-            //userManager.signIn()
+            // for the button, add
             
-            NavigationLink(destination: MainView())
+            Button
             {
+                signIn()
+                userManager.signIn(email: email, password: password)
+                
+            } label: {
                 Text("LOGIN")
                     .font(.headline)
                     .foregroundColor(.white)
@@ -55,7 +59,6 @@ struct LoginView: View
                     .background(Constants.blue)
                     .cornerRadius(15.0)
                     .padding(.bottom, 20)
-                
             }
             NavigationLink(destination: CreateAccountView())
             {
@@ -72,16 +75,45 @@ struct LoginView: View
         //adds padding around the whole stack
         .padding()
     }
-}
-struct WelcomeText : View
-{
-    var body : some View
+    
+    var welcomeText: some View
     {
         return Text("Welcome to Friender!")
             .font(.largeTitle)
             .fontWeight(.semibold)
             .padding(.bottom, 20)
     }
+
+    
+    func validateFields() -> String?
+    {
+        //Make sure fields aint empty
+        if email.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            password.trimmingCharacters(in: .whitespacesAndNewlines)==""
+        {
+            return "Please fill in all the fields"
+        }
+        //check if password is valid, use the method from utilities
+        let cleanedPassword = password.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        return nil
+    }
+    
+    func signIn()
+    {
+        //validate the fields
+        let error = validateFields()
+        
+        if error != nil{
+            //Something is wrong with fields...
+            return invalidInput = true
+        }
+        else {
+            // sign in
+            userManager.signIn(email: email, password: password)
+        }
+    }
+    
 }
 
 struct LoginView_Previews: PreviewProvider {

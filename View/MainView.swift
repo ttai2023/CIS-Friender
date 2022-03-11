@@ -13,30 +13,39 @@ struct MainView: View {
     var body: some View {
         if !userManager.isSignedIn {
             LoginView()
-        } else {
-            SwipingView()
         }
-        TabView {
-            NavigationView {
-                SwipingView()
-            }
-            .tabItem {
-                Text("S")
-                Image(systemName: "checkmark")
-            }
-            NavigationView {
-                SearchView()
-            }
-            .tabItem {
-                Text("SS")
-                Image(systemName: "search")
+        else {
+            TabView {
+                NavigationView {
+                    SwipingView()
+                }
+                .tabItem {
+                    Image(systemName: "person.crop.rectangle.stack")
+                }
+                NavigationView {
+                    SearchView()
+                }
+                .tabItem {
+                    Image(systemName: "magnifyingglass.circle.fill")
+                }
+                NavigationView {
+                    UserProfileView()
+                }
+                .tabItem {
+                    Image(systemName: "person.fill")
+                }
+                
             }
         }
     }
 }
 
 struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
+    static var previews: some View
+    {
+        let um = UserManager()
+        um.isSignedIn = true
+        return MainView().environmentObject(um)
     }
 }
+

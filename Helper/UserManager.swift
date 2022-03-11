@@ -47,15 +47,42 @@ func checkIfUserIsSignedIn()
             })
         }
     }
-    func signIn(useremail: String? = nil, password: String? = nil)
+    func signIn(email: String, password: String)
     {
         // firerbase authenticate w username and password
+        mAuth.signIn(withEmail: email, password: password) { results, err in
+            // check for error
+            if err != nil
+            {
+                //There is an error creating the user
+                self.errorMessage = "Error signing in."
+            }
+        }
         
         // load current user
-        // currentUser = firebase.currentUser
+        let userID = (mUser?.uid)!
+        
+        let docRef = firestore.collection("users").document(userID)
+
+        docRef.getDocument(as: CISUser.self) { result in
+            // The Result type encapsulates deserialization errors or
+            // successful deserialization, and can be handled as follows:
+            //
+            //      Result
+            //        /\
+            //   Error  CISUser
+            switch result
+            {
+                case .success(let user):
+                    // A `CISUser` value was successfully initialized from the DocumentSnapshot.
+                self.currentUser = user
+                case .failure(let error):
+                    // A `City` value could not be initialized from the DocumentSnapshot.
+                    print("Error getting user.")
+                }
+        }
          
-        // over here,
-      
+        // over here
         isSignedIn = true
         
     }

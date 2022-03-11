@@ -56,9 +56,9 @@ struct CreateAccountView: View
                 signUp()
             }
             
-            Label("Error", systemImage: "cross.fill")
-            if errorMessage.isEmpty {
-                Label(errorMessage,systemImage: "cross.fill")
+            if !errorMessage.isEmpty {
+                Label(errorMessage,systemImage: "exclamationmark.triangle.fill")
+                    .foregroundColor(Constants.blue)
             }
             
             Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Picker")) {
@@ -97,20 +97,22 @@ struct CreateAccountView: View
             //password aint secure
             return "Please make sure your password is at least 8 characters that contains a special character and a number ಠ_ಠ"
         }
-        return nil
+        return "hi"
     }
     
     func signUp(){
+        print("hi")
         //validate the fields
         let error = validateFields()
-        
-        if error != nil{
+        print("hey")
+        if let error = error {
+            print("hello")
             //Something is wrong with fields...
-            return invalidInput = true
+            errorMessage = error
         }
         else{
+            print("hola")
             //and create the user
-
             userManager.signUp(username: newUsername, email: newEmail, password: newPassword)
         }
     }
