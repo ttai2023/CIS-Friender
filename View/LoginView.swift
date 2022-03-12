@@ -20,6 +20,8 @@ struct LoginView: View
         //stack stuff on top of each other vertically
         VStack
         {
+            Spacer()
+                .frame(height: 50)
             welcomeText
             Image("keona")
                 .resizable() //so image can be resized
@@ -58,22 +60,30 @@ struct LoginView: View
                     .frame(width: 220, height: 50)
                     .background(Constants.blue)
                     .cornerRadius(15.0)
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 10)
             }
-            NavigationLink(destination: CreateAccountView())
-            {
-                Text("CREATE ACCOUNT")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                //shape of the button
-                    .frame(width: 220, height: 50)
-                    .background(Constants.darkBlue)
-                    .cornerRadius(15.0)
+            
+            Button("Forgot Password?") {
+                // input forgot password code
             }
+            .foregroundColor(Constants.darkBlue)
+            
+            Spacer()
+            
+            HStack {
+                Text("Don't have an account?")
+                    .foregroundColor(Constants.blue)
+                NavigationLink(destination: CreateAccountView())
+                {
+                   Text("Sign Up")
+                }
+            }
+            .foregroundColor(Constants.darkBlue)
+           
         }
         //adds padding around the whole stack
         .padding()
+        .navigationBarHidden(true)
     }
     
     var welcomeText: some View
@@ -82,6 +92,7 @@ struct LoginView: View
             .font(.largeTitle)
             .fontWeight(.semibold)
             .padding(.bottom, 20)
+            .foregroundColor(Constants.darkBlue)
     }
 
     

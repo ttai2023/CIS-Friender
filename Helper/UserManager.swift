@@ -25,7 +25,7 @@ class UserManager: ObservableObject {
     
     @Published var isSignedIn = false
     @Published var currentUser: CISUser?
-    @Published var errorMessage: String? = nil
+    @Published var errorMessage: String = ""
     @Published private var username: String = ""
     
     //whenever someone signs up/sign in -> set currentUser
@@ -77,9 +77,9 @@ func checkIfUserIsSignedIn()
                     // A `CISUser` value was successfully initialized from the DocumentSnapshot.
                 self.currentUser = user
                 case .failure(let error):
-                    // A `City` value could not be initialized from the DocumentSnapshot.
-                    print("Error getting user.")
-                }
+                    // A `CISUser` value could not be initialized from the DocumentSnapshot.
+                self.errorMessage = "Error getting user."
+            }
         }
          
         // over here
@@ -97,7 +97,7 @@ func checkIfUserIsSignedIn()
                 self.errorMessage = "Error creating user."
             }
             //user created sucessfully
-            let user = CISUser(username: "name", email: "email", bio: "bio")
+            let user = CISUser(username: "name", email: email, bio: "bio", imageName: "girl1")
             do {
                 try self.firestore.collection("users").document(user.id!).setData(from: user)
             }

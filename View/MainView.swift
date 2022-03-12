@@ -12,7 +12,9 @@ struct MainView: View {
     
     var body: some View {
         if !userManager.isSignedIn {
-            LoginView()
+            NavigationView {
+                LoginView()
+            }
         }
         else {
             TabView {
