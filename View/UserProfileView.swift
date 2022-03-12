@@ -40,29 +40,6 @@ struct UserProfileView: View {
                 .clipped() //area outside of frame will be cut
                 .cornerRadius(100)
                 .padding(.bottom, 10)
-//            List
-//            {
-//                HStack {
-//                    Text("Name")
-//                        .bold()
-//                    Spacer()
-//                    Text("name")
-//                }
-//                HStack {
-//                    Text("Name")
-//                        .bold()
-//                    Spacer()
-//                    Text("name")
-//                }
-//            }
-//            Form {
-//                HStack {
-//                    Text("Username")
-//                        .bold()
-//                    Spacer()
-//                    TextField("Username", text: $username)
-//                }
-//            }
             Button("Toggle Edit Mode") {
                 isEditing.toggle()
             }
@@ -85,6 +62,12 @@ struct UserProfileView: View {
                             .bold()
                         Spacer()
                         TextField("Username", text: $username)
+                    }
+                    HStack {
+                        Text("Email")
+                            .bold()
+                        Spacer()
+                        Text("email")
                     }
                     Picker("To A or Not to B?", selection: $toAOrNotToB) {
                                             ForEach(aOrB, id: \.self) {
