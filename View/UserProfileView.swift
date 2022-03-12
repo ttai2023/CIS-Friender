@@ -21,6 +21,9 @@ struct UserProfileView: View {
     
     var aOrB = ["A", "B"]
     @State private var toAOrNotToB = "A"
+    
+    var signs = ["Unknown", "Taurus", "Cancer", "Virgo", "Capricorn"]
+    var mbtis = ["Unknown", "ISTJ", "INFJ", "ENFJ", "ISTP"]
 
     var colors = ["Red", "Green", "Blue", "Tartan"]
     @State private var selectedColor = "Red"
@@ -53,6 +56,25 @@ struct UserProfileView: View {
                         Spacer()
                         Text(username)
                     }
+                    HStack {
+                        Text("Email")
+                            .bold()
+                        Spacer()
+                        Text("email")
+                    }
+                    HStack {
+                        Text("Zodiac Sign")
+                            .bold()
+                        Spacer()
+                        Text(sign)
+                    }
+                    HStack {
+                        Text("MBTI")
+                            .bold()
+                        Spacer()
+                        Text(mbti)
+                    }
+                    
                 }
             }
             else {
@@ -69,11 +91,29 @@ struct UserProfileView: View {
                         Spacer()
                         Text("email")
                     }
-                    Picker("To A or Not to B?", selection: $toAOrNotToB) {
-                                            ForEach(aOrB, id: \.self) {
-                                                Text($0)
-                                            }
-                                        }.pickerStyle(.menu)
+                    HStack {
+                        Text("Zodiac Sign")
+                            .bold()
+                        Spacer()
+                        Picker("Zodiac Sign", selection: $sign) {
+                            ForEach(signs, id: \.self) {sign in
+                                Text(sign)
+                            }
+                        }.pickerStyle(.menu)
+                        
+                    }
+                    HStack {
+                        Text("MBTI")
+                            .bold()
+                        Spacer()
+                        Picker("MBTI", selection: $mbti) {
+                            ForEach(mbtis, id: \.self) {mbti in
+                                Text(mbti)
+                            }
+                        }.pickerStyle(.menu)
+                        
+                    }
+                    
 
                     Picker("Color", selection: $selectedColor) {
                                             ForEach(colors, id: \.self) {
