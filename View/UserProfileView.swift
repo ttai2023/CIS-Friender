@@ -125,7 +125,9 @@ struct UserProfileView: View {
             
             
         }
+        .navigationBarHidden(true)
     }
+    
 }
 
 struct UserProfileView_Previews: PreviewProvider {

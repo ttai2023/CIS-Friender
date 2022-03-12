@@ -83,6 +83,7 @@ struct LoginView: View
         }
         //adds padding around the whole stack
         .padding()
+        .navigationBarHidden(true)
     }
     
     var welcomeText: some View

@@ -27,6 +27,7 @@ struct CreateAccountView: View
                 .foregroundColor(Constants.lightBlue)
                 .multilineTextAlignment(.center)
                 .padding(.bottom, 20)
+                .lineLimit(2)
             Image("Boy 1")
                 .resizable()
             //so image can be resized
@@ -90,6 +91,7 @@ struct CreateAccountView: View
             }
         }
         .padding()
+        .navigationBarTitle("", displayMode: .inline)
     }
     
     //This is a method to check the fields. If everything is correct, it returns nil.

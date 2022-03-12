@@ -51,7 +51,6 @@ struct CISUser: Identifiable, Codable{
             CISUser(username: "Keona", email:"keonal2023@student.cis.edu.hk", bio: "self-proclaimed introvert", imageName: "keona3"),
             CISUser(username: "Kirsten", email:"keonal2023@student.cis.edu.hk", bio: "i write poems", imageName: "kirsten"),
             CISUser(username: "Charlie", email:"keonal2023@student.cis.edu.hk", bio: "i love baking", imageName: "charlie"),
-            CISUser(username: "Shirley", email:"keonal2023@student.cis.edu.hk", bio: "no.", imageName: "shirley"),
             CISUser(username: "Rachel", email:"keonal2023@student.cis.edu.hk", bio: "fun times", imageName: "rachel")
             
         ]
