@@ -21,6 +21,7 @@ struct LoginView: View
         VStack
         {
             Spacer()
+                .frame(height: 50)
             welcomeText
             Image("keona")
                 .resizable() //so image can be resized
