@@ -113,18 +113,21 @@ struct CreateAccountView: View
         return nil
     }
     
+    //duplicate sign up
+    //TODO: Send a user a verification email(=´ω`=)
+    
     func signUp(){
-        print("hi")
+       
         //validate the fields
         let error = validateFields()
-        print("hey")
+    
         if let error = error {
-            print("hello")
+       
             //Something is wrong with fields...
             errorMessage = error
         }
         else{
-            print("hola")
+         
             //and create the user
             userManager.signUp(username: newUsername, email: newEmail, password: newPassword)
         }

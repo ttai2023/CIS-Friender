@@ -47,6 +47,8 @@ func checkIfUserIsSignedIn()
             })
         }
     }
+    
+    
     func signIn(email: String, password: String)
     {
         // firerbase authenticate w username and password
@@ -122,4 +124,20 @@ func checkIfUserIsSignedIn()
             self.errorMessage = "Error signing out. Please contact admin."
         }
     }
+    
+    //TODO: RESET PASSWORD FUNCTION
+//    func resetPassword()
+//    {
+//        mAuth.sendPasswordReset(withEmail: emailField.text!) { Error? in
+//            do{
+//
+//            }
+//            catch{
+//                self.errorMessage = "Error resetting password.(´･_･`)"
+//            }
+//        }
+//    }
+    
 }
+
+

@@ -7,6 +7,10 @@
 
 import Foundation
 import UIKit
+import SwiftUI
+import FirebaseAuth
+import AuthenticationServices
+import CryptoKit
 
 class Utilities{
     
@@ -17,5 +21,7 @@ class Utilities{
 //        return passwordTest.evaluate(with: password)
         return true
     }
+    
 }
+//TODO: Find a good password evaluation function
 

@@ -130,6 +130,8 @@ struct UserProfileView: View {
     
 }
 
+//TODO: DELETE ACCOUNT
+
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
         UserProfileView()
