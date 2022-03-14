@@ -36,7 +36,6 @@ struct CreateAccountView: View
                 .frame(width: 150, height: 150)
                 .padding(.bottom, 20)
             
-            
             TextField("Username: " , text: $newUsername)
                 .padding()
                 .background(Constants.lightGrey)
@@ -127,7 +126,6 @@ struct CreateAccountView: View
             errorMessage = error
         }
         else{
-         
             //and create the user
             userManager.signUp(username: newUsername, email: newEmail, password: newPassword)
         }

@@ -12,6 +12,7 @@ import FirebaseAuth
 struct ForgotPasswordView:View{
     @State var user: CISUser?
     @State var forgotErrorMessage : String? = ""
+    @State private var userEmail: String = ""
     
     var body : some View {
         
@@ -22,14 +23,20 @@ struct ForgotPasswordView:View{
                     .fontWeight(.semibold)
                     .padding(.bottom, 20)
                     .foregroundColor(Constants.darkBlue)
+                    .multilineTextAlignment(.center)
                 
-                if let user = Binding($user){
-                    TextField("Enter email address", text : user.email).autocapitalization(.none).keyboardType(.emailAddress)
-                }
+                
+                    TextField("Enter email address", text : $userEmail).autocapitalization(.none).keyboardType(.emailAddress)
+                    .padding()
+                    .background(Constants.lightGrey)
+                    .cornerRadius(5.0)
+                    .padding(.bottom, 20)
+                    
+                
                 
                 Button
                 {
-                    //action
+                    forgetPassword()
                     
                 } label: {
                     Text("RESET")
@@ -54,19 +61,18 @@ struct ForgotPasswordView:View{
     }
     
     func forgetPassword(){
-        
-    forgotErrorMessage = "oh dip"
-        
-        if let forgotErrorMessage = forgotErrorMessage{
-            //something went wrong
-            
+        Auth.auth().sendPasswordReset(withEmail: userEmail) { error in
+            if let error = error{
+                //fail
+                forgotErrorMessage = "oh dip"
+            }
+            else{
+                //suceed
+                forgotErrorMessage = "Sent! (▰˘◡˘▰)"
+            }
         }
-        else{
-            //reset password
-        }
+    
     }
-    
-    
 }
 
 struct ForgotPasswordView_Previews: PreviewProvider {
