@@ -46,6 +46,15 @@ struct UserProfileView: View {
                 .clipped() //area outside of frame will be cut
                 .cornerRadius(100)
                 .padding(.bottom, 10)
+            
+            Text("Change profile photo")
+                    .font(.headline)
+                    .frame(maxWidth: 150)
+                    .frame(height: 25)
+                    .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.262745098, green: 0.0862745098, blue: 0.8588235294, alpha: 1)), Color(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1))]), startPoint: .top, endPoint: .bottom))
+                    .cornerRadius(16)
+                    .foregroundColor(.white)
+            
             Button(action: {isEditing.toggle()}) {
                 VStack {
                     Image(systemName: "pencil.circle")
