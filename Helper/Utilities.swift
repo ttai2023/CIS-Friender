@@ -24,4 +24,3 @@ class Utilities{
     
 }
 //TODO: Find a good password evaluation function
-

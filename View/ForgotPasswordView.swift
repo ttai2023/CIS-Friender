@@ -10,9 +10,10 @@ import Firebase
 import FirebaseAuth
 
 struct ForgotPasswordView:View{
+    @State var user: CISUser?
+    @State var forgotErrorMessage : String? = ""
+    
     var body : some View {
-        @State var user: CISUser?
-        @State var forgotErrorMessage = ""
         
         NavigationView{
             VStack{
@@ -22,7 +23,9 @@ struct ForgotPasswordView:View{
                     .padding(.bottom, 20)
                     .foregroundColor(Constants.darkBlue)
                 
-                TextField("Enter email address", text : user?!.email).autocapitalization(.none).keyboardType(.emailAddress)
+                if let user = Binding($user){
+                    TextField("Enter email address", text : user.email).autocapitalization(.none).keyboardType(.emailAddress)
+                }
                 
                 Button
                 {
@@ -41,8 +44,8 @@ struct ForgotPasswordView:View{
                         .padding(.bottom, 10)
                 }
                 
-                if !forgotErrorMessage.isEmpty {
-                    Label(forgotErrorMessage,systemImage: "exclamationmark.triangle.fill")
+                if forgotErrorMessage?.isEmpty == false{
+                    Label(forgotErrorMessage!,systemImage: "exclamationmark.triangle.fill")
                         .foregroundColor(Color.red)
                 }
                 
@@ -52,9 +55,9 @@ struct ForgotPasswordView:View{
     
     func forgetPassword(){
         
-    let forgotErrorMessage = "oh dip"
+    forgotErrorMessage = "oh dip"
         
-        if letforgotErrorMessage = forgotErrorMessage{
+        if let forgotErrorMessage = forgotErrorMessage{
             //something went wrong
             
         }
