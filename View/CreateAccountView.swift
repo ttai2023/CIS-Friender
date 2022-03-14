@@ -70,7 +70,7 @@ struct CreateAccountView: View
                 Label(errorMessage,systemImage: "exclamationmark.triangle.fill")
                     .foregroundColor(Color.red)
             }
-            
+
             Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Picker")) {
                 Text("Pick your zodiac").tag(1)
                 Text("Capricorn").tag(2)

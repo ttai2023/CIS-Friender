@@ -14,9 +14,11 @@ struct UserProfileView: View {
     
     //let ref = Database.database().reference(withPath: "Users")
     @EnvironmentObject private var userManager: UserManager
+//    @State public var user: CISUser
     @State public var username: String = ""
     @State public var sign: String = ""
     @State public var mbti: String = ""
+    @State public var bio: String = ""
     @State private var isEditing = false
     
     //for image picker
@@ -35,7 +37,6 @@ struct UserProfileView: View {
     
     var body: some View {
         
-        
         VStack(alignment: .center, spacing: 10.0)
         {
             Image(uiImage: self.image)
@@ -45,26 +46,14 @@ struct UserProfileView: View {
                 .clipped() //area outside of frame will be cut
                 .cornerRadius(100)
                 .padding(.bottom, 10)
-            
-            // add a button for the user to change profile pic
-            Text("Change profile photo")
-                    .font(.headline)
-                    .frame(maxWidth:200)
-                    .frame(height: 25)
-                    .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.262745098, green: 0.0862745098, blue: 0.8588235294, alpha: 1)), Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1))]), startPoint: .top, endPoint: .bottom))
-                    .cornerRadius(16)
-                    .foregroundColor(.white)
-                    .onTapGesture {
-                                showSheet = true
-                              }
-                    .padding(.horizontal, 20)
-                       .sheet(isPresented: $showSheet) {
-                                   // Pick an image from the photo library:
-                               ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
-                       }
-            
-            Button("edit user info") {
-                isEditing.toggle()
+            Button(action: {isEditing.toggle()}) {
+                VStack {
+                    Image(systemName: "pencil.circle")
+                        .resizable().aspectRatio(contentMode: .fit).frame(height: 40)
+                        .foregroundColor(Constants.darkBlue)
+                    Text("Edit Profile")
+                        .foregroundColor(Constants.darkBlue)
+                }
             }
             
             if !isEditing
@@ -94,7 +83,12 @@ struct UserProfileView: View {
                         Spacer()
                         Text(mbti)
                     }
-                    
+                    HStack {
+                        Text("Bio")
+                            .bold()
+                        Spacer()
+                        Text(bio)
+                    }
                 }
             }
             else {
@@ -105,33 +99,39 @@ struct UserProfileView: View {
                         Spacer()
                         TextField("Username", text: $username)
                     }
+                    
                     HStack {
                         Text("Email")
                             .bold()
                         Spacer()
                         Text("email")
                     }
-                    HStack {
-                        Text("Zodiac Sign")
-                            .bold()
-                        Spacer()
-                        Picker("Zodiac Sign", selection: $sign) {
-                            ForEach(signs, id: \.self) {sign in
-                                Text(sign)
-                            }
-                        }.pickerStyle(.menu)
+                    
+                    Picker("Zodiac Sign", selection: $sign) {
+                        ForEach(signs, id: \.self) {sign in
+                            Text(sign)
+                        }
+                    }
+                    
+                    Picker("MBTI", selection: $mbti) {
+                        ForEach(mbtis, id: \.self) {mbti in
+                            Text(mbti)
+                        }
                         
                     }
+                    
                     HStack {
-                        Text("MBTI")
+                        Text("Bio")
                             .bold()
                         Spacer()
-                        Picker("MBTI", selection: $mbti) {
-                            ForEach(mbtis, id: \.self) {mbti in
-                                Text(mbti)
-                            }
-                        }.pickerStyle(.menu)
-                        
+                        TextField("bio", text: $bio)
+                    }
+                    
+
+                    Picker("Color", selection: $selectedColor) {
+                        ForEach(colors, id: \.self) {
+                            Text($0)
+                        }
                     }
                 }
             }
