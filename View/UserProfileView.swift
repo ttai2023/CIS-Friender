@@ -44,8 +44,14 @@ struct UserProfileView: View {
                 .clipped() //area outside of frame will be cut
                 .cornerRadius(100)
                 .padding(.bottom, 10)
-            Button("Toggle Edit Mode") {
-                isEditing.toggle()
+            Button(action: {isEditing.toggle()}) {
+                VStack {
+                    Image(systemName: "pencil.circle")
+                        .resizable().aspectRatio(contentMode: .fit).frame(height: 40)
+                        .foregroundColor(Constants.darkBlue)
+                    Text("Edit Profile")
+                        .foregroundColor(Constants.darkBlue)
+                }
             }
             
             if !isEditing
