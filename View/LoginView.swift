@@ -12,6 +12,7 @@ struct LoginView: View
 {
     @State var email: String = ""
     @State var password: String = ""
+    @State var invalidInput = false
     @EnvironmentObject private var userManager: UserManager
     
     var body: some View
@@ -19,7 +20,9 @@ struct LoginView: View
         //stack stuff on top of each other vertically
         VStack
         {
-            WelcomeText()
+            Spacer()
+                .frame(height: 50)
+            welcomeText
             Image("keona")
                 .resizable() //so image can be resized
                 .aspectRatio(contentMode: .fill) //prevents original photo to be distorted
@@ -39,13 +42,16 @@ struct LoginView: View
                 .cornerRadius(5.0)
                 .padding(.bottom, 15)
             
-            //Login button
+            // Login button
             
-            //for the button, add
-            //userManager.signIn()
+            // for the button, add
             
-            NavigationLink(destination: MainView())
+            Button
             {
+                signIn()
+                userManager.signIn(email: email, password: password)
+                
+            } label: {
                 Text("LOGIN")
                     .font(.headline)
                     .foregroundColor(.white)
@@ -54,34 +60,73 @@ struct LoginView: View
                     .frame(width: 220, height: 50)
                     .background(Constants.blue)
                     .cornerRadius(15.0)
-                    .padding(.bottom, 20)
-                
+                    .padding(.bottom, 10)
             }
-            NavigationLink(destination: CreateAccountView())
-            {
-                Text("CREATE ACCOUNT")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                //shape of the button
-                    .frame(width: 220, height: 50)
-                    .background(Constants.darkBlue)
-                    .cornerRadius(15.0)
+            
+            NavigationLink ( destination: ForgotPasswordView() ){
+                    Text("Forgot Password?")
+                        }
+            .foregroundColor(Constants.darkBlue)
+            .navigationBarHidden(true)
+            
+            
+            Spacer()
+            
+            HStack {
+                Text("Don't have an account?")
+                    .foregroundColor(Constants.blue)
+                NavigationLink(destination: CreateAccountView())
+                {
+                   Text("Sign Up")
+                }
             }
+            .foregroundColor(Constants.darkBlue)
+           
         }
         //adds padding around the whole stack
         .padding()
+        .navigationBarHidden(true)
     }
-}
-struct WelcomeText : View
-{
-    var body : some View
+    
+    var welcomeText: some View
     {
         return Text("Welcome to Friender!")
             .font(.largeTitle)
             .fontWeight(.semibold)
             .padding(.bottom, 20)
+            .foregroundColor(Constants.darkBlue)
     }
+
+    
+    func validateFields() -> String?
+    {
+        //Make sure fields aint empty
+        if email.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            password.trimmingCharacters(in: .whitespacesAndNewlines)==""
+        {
+            return "Please fill in all the fields"
+        }
+        //check if password is valid, use the method from utilities
+        let cleanedPassword = password.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        return nil
+    }
+    
+    func signIn()
+    {
+        //validate the fields
+        let error = validateFields()
+        
+        if error != nil{
+            //Something is wrong with fields...
+            return invalidInput = true
+        }
+        else {
+            // sign in
+            userManager.signIn(email: email, password: password)
+        }
+    }
+    
 }
 
 struct LoginView_Previews: PreviewProvider {

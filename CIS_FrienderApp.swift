@@ -19,9 +19,8 @@ struct CIS_FrienderApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView{
-                SearchView()
-            }
+            
+                MainView ()
             .environmentObject(userManager)
         }
     }

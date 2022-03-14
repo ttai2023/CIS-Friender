@@ -25,7 +25,7 @@ class UserManager: ObservableObject {
     
     @Published var isSignedIn = false
     @Published var currentUser: CISUser?
-    @Published var errorMessage: String? = nil
+    @Published var errorMessage: String = ""
     @Published private var username: String = ""
     
     //whenever someone signs up/sign in -> set currentUser
@@ -47,15 +47,44 @@ func checkIfUserIsSignedIn()
             })
         }
     }
-    func signIn(useremail: String? = nil, password: String? = nil)
+    
+    
+    func signIn(email: String, password: String)
     {
         // firerbase authenticate w username and password
+        mAuth.signIn(withEmail: email, password: password) { results, err in
+            // check for error
+            if err != nil
+            {
+                //There is an error creating the user
+                self.errorMessage = "Error signing in."
+            }
+        }
         
         // load current user
-        // currentUser = firebase.currentUser
+        let userID = (mUser?.uid)!
         
-        // over here,
-      
+        let docRef = firestore.collection("users").document(userID)
+
+        docRef.getDocument(as: CISUser.self) { result in
+            // The Result type encapsulates deserialization errors or
+            // successful deserialization, and can be handled as follows:
+            //
+            //      Result
+            //        /\
+            //   Error  CISUser
+            switch result
+            {
+                case .success(let user):
+                    // A `CISUser` value was successfully initialized from the DocumentSnapshot.
+                self.currentUser = user
+                case .failure(let error):
+                    // A `CISUser` value could not be initialized from the DocumentSnapshot.
+                self.errorMessage = "Error getting user."
+            }
+        }
+         
+        // over here
         isSignedIn = true
         
     }
@@ -70,25 +99,45 @@ func checkIfUserIsSignedIn()
                 self.errorMessage = "Error creating user."
             }
             //user created sucessfully
-            let db = Firestore.firestore()
-            let user = CISUser(username: "name", email: email, bio: "bio")
+            let user = CISUser(username: "name", email: email, bio: "bio", imageName: "girl1")
             do {
-                try db.collection("users").document(user.id!).setData(from: user)
+                try self.firestore.collection("users").document(user.id!).setData(from: user)
             }
             catch {
                 // error is already not nil so no need to check if it’s != nil
                     //Show error message
                 self.errorMessage = "Error saving data. Please contact admin."
             }
-            
+            self.isSignedIn = true
         }
             
     }
     
     func signOut()
     {
-        // currentUser = nil
-        // isSignedIn = false
-        // Firebase.auth.signOut()
+        currentUser = nil
+        isSignedIn = false
+        do{
+            try mAuth.signOut()
+        }
+        catch {
+            self.errorMessage = "Error signing out. Please contact admin."
+        }
     }
+    
+    //TODO: RESET PASSWORD FUNCTION
+//    func resetPassword()
+//    {
+//        mAuth.sendPasswordReset(withEmail: emailField.text!) { Error? in
+//            do{
+//
+//            }
+//            catch{
+//                self.errorMessage = "Error resetting password.(´･_･`)"
+//            }
+//        }
+//    }
+    
 }
+
+

@@ -8,13 +8,46 @@
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject private var userManager: UserManager
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if !userManager.isSignedIn {
+            NavigationView {
+                LoginView()
+            }
+        }
+        else {
+            TabView {
+                NavigationView {
+                    SwipingView()
+                }
+                .tabItem {
+                    Image(systemName: "person.crop.rectangle.stack")
+                }
+                NavigationView {
+                    SearchView()
+                }
+                .tabItem {
+                    Image(systemName: "magnifyingglass.circle.fill")
+                }
+                NavigationView {
+                    UserProfileView()
+                }
+                .tabItem {
+                    Image(systemName: "person.fill")
+                }
+                
+            }
+        }
     }
 }
 
 struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
+    static var previews: some View
+    {
+        let um = UserManager()
+        um.isSignedIn = true
+        return MainView().environmentObject(um)
     }
 }
+
