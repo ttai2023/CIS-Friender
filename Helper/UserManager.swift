@@ -57,10 +57,17 @@ func checkIfUserIsSignedIn()
                 //There is an error creating the user
                 self.errorMessage = "Error signing in."
             }
+            
+//            firestore.collection("users").document(self.mUser.uid) {snapshot, error in
+//                if let error
+//                    error {
+//                        return ("Failed to fetch current user:", error)
+//                    }
+//                guard let data = snapshot?.data() else { return }
         }
         
         // load current user
-        let userID = (mUser?.uid)!
+            let userID = (self.mUser?.uid)!
         
         let docRef = firestore.collection("users").document(userID)
 
@@ -83,7 +90,7 @@ func checkIfUserIsSignedIn()
         }
          
         // over here
-        isSignedIn = true
+        self.isSignedIn = true
         
     }
     

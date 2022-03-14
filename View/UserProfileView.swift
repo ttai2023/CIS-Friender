@@ -14,9 +14,11 @@ struct UserProfileView: View {
     
     //let ref = Database.database().reference(withPath: "Users")
     @EnvironmentObject private var userManager: UserManager
+//    @State public var user: CISUser
     @State public var username: String = ""
     @State public var sign: String = ""
     @State public var mbti: String = ""
+    @State public var bio: String = ""
     @State private var isEditing = false
     
     var aOrB = ["A", "B"]
@@ -32,7 +34,6 @@ struct UserProfileView: View {
     
     
     var body: some View {
-        
         
         VStack(alignment: .center, spacing: 10.0)
         {
@@ -74,7 +75,12 @@ struct UserProfileView: View {
                         Spacer()
                         Text(mbti)
                     }
-                    
+                    HStack {
+                        Text("Bio")
+                            .bold()
+                        Spacer()
+                        Text(bio)
+                    }
                 }
             }
             else {
@@ -85,41 +91,40 @@ struct UserProfileView: View {
                         Spacer()
                         TextField("Username", text: $username)
                     }
+                    
                     HStack {
                         Text("Email")
                             .bold()
                         Spacer()
                         Text("email")
                     }
-                    HStack {
-                        Text("Zodiac Sign")
-                            .bold()
-                        Spacer()
-                        Picker("Zodiac Sign", selection: $sign) {
-                            ForEach(signs, id: \.self) {sign in
-                                Text(sign)
-                            }
-                        }.pickerStyle(.menu)
+                    
+                    Picker("Zodiac Sign", selection: $sign) {
+                        ForEach(signs, id: \.self) {sign in
+                            Text(sign)
+                        }
+                    }
+                    
+                    Picker("MBTI", selection: $mbti) {
+                        ForEach(mbtis, id: \.self) {mbti in
+                            Text(mbti)
+                        }
                         
                     }
+                    
                     HStack {
-                        Text("MBTI")
+                        Text("Bio")
                             .bold()
                         Spacer()
-                        Picker("MBTI", selection: $mbti) {
-                            ForEach(mbtis, id: \.self) {mbti in
-                                Text(mbti)
-                            }
-                        }.pickerStyle(.menu)
-                        
+                        TextField("bio", text: $bio)
                     }
                     
 
                     Picker("Color", selection: $selectedColor) {
-                                            ForEach(colors, id: \.self) {
-                                                Text($0)
-                                            }
-                                        }
+                        ForEach(colors, id: \.self) {
+                            Text($0)
+                        }
+                    }
                 }
             }
             

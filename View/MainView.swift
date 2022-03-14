@@ -34,10 +34,11 @@ struct MainView: View {
                     UserProfileView()
                 }
                 .tabItem {
-                    Image(systemName: "person.fill")
+                    Image(systemName: "person.circle")
                 }
                 
             }
+            
         }
     }
 }
