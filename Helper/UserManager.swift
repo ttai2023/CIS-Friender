@@ -67,7 +67,7 @@ func checkIfUserIsSignedIn()
         }
         
         // load current user
-            let userID = (self.mUser?.uid)!
+        let userID = (self.mUser?.uid)!
         
         let docRef = firestore.collection("users").document(userID)
 
