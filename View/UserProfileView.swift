@@ -16,6 +16,7 @@ struct UserProfileView: View {
     @EnvironmentObject private var userManager: UserManager
 //    @State public var user: CISUser
     @State public var username: String = ""
+    @State public var useremail: String = ""
     @State public var sign: String = ""
     @State public var mbti: String = ""
     @State public var bio: String = ""
@@ -47,14 +48,7 @@ struct UserProfileView: View {
                 .cornerRadius(100)
                 .padding(.bottom, 10)
             
-            Text("Change profile photo")
-                    .font(.headline)
-                    .frame(maxWidth: 150)
-                    .frame(height: 25)
-                    .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.262745098, green: 0.0862745098, blue: 0.8588235294, alpha: 1)), Color(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1))]), startPoint: .top, endPoint: .bottom))
-                    .cornerRadius(16)
-                    .foregroundColor(.white)
-            
+        
             Button(action: {isEditing.toggle()}) {
                 VStack {
                     Image(systemName: "pencil.circle")
@@ -64,6 +58,23 @@ struct UserProfileView: View {
                         .foregroundColor(Constants.darkBlue)
                 }
             }
+            
+            Text("Change profile photo")
+                    .font(.headline)
+                    .frame(maxWidth: 200)
+                    .frame(height: 25)
+                    .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.262745098, green: 0.0862745098, blue: 0.8588235294, alpha: 1)), Color(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1))]), startPoint: .top, endPoint: .bottom))
+                    .cornerRadius(16)
+                    .foregroundColor(.white)
+                    .onTapGesture {
+                        showSheet = true
+                    }
+                    .padding(.horizontal, 20)
+                       .sheet(isPresented: $showSheet) {
+                                   // Pick an image from the photo library:
+                               ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
+
+                           }
             
             if !isEditing
             {
@@ -113,7 +124,7 @@ struct UserProfileView: View {
                         Text("Email")
                             .bold()
                         Spacer()
-                        Text("email")
+                        TextField("email", text: $useremail)
                     }
                     
                     Picker("Zodiac Sign", selection: $sign) {
@@ -134,13 +145,6 @@ struct UserProfileView: View {
                             .bold()
                         Spacer()
                         TextField("bio", text: $bio)
-                    }
-                    
-
-                    Picker("Color", selection: $selectedColor) {
-                        ForEach(colors, id: \.self) {
-                            Text($0)
-                        }
                     }
                 }
             }
