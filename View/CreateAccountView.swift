@@ -75,7 +75,13 @@ struct CreateAccountView: View
                 Text("INFJ").tag(3)
                 Text("ESFJ").tag(4)
                 Text("ISTP").tag(5)
-                
+            }
+            Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Picker")) {
+                Text("Choose your tag").tag(1)
+                Text("Graphic designer").tag(2)
+                Text("Singer").tag(3)
+                Text("Artist").tag(4)
+                Text("Dancer").tag(5)
             }
         }
         .padding(5.0)
