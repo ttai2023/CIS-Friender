@@ -63,10 +63,12 @@ struct LoginView: View
                     .padding(.bottom, 10)
             }
             
-            Button("Forgot Password?") {
-                // input forgot password code
-            }
+            NavigationLink ( destination: ForgotPasswordView() ){
+                    Text("Forgot Password?")
+                        }
             .foregroundColor(Constants.darkBlue)
+            .navigationBarHidden(true)
+            
             
             Spacer()
             
