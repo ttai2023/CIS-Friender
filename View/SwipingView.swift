@@ -9,29 +9,21 @@ import SwiftUI
 
 struct SwipingView: View {
 //    @State var swipeDirection: SwipeDirection = .none
+    @EnvironmentObject private var userManager: UserManager
+    @State var listOfUsers = [CISUser]()
     
-    static var data: [CISUser] {
-        [
-
-            CISUser(username: "Keona", email:"keonal2023@student.cis.edu.hk", bio: "self-proclaimed introvert", imageName: "keona1", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
-            CISUser(username: "Keona", email:"keonal2023@student.cis.edu.hk", bio: "self-proclaimed introvert", imageName: "keona2", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
-            CISUser(username: "Keona", email:"keonal2023@student.cis.edu.hk", bio: "self-proclaimed introvert", imageName: "keona3", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
-            CISUser(username: "Kirsten", email:"keonal2023@student.cis.edu.hk", bio: "i write poems", imageName: "kirsten", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
-            CISUser(username: "Charlie", email:"keonal2023@student.cis.edu.hk", bio: "i love baking", imageName: "charlie", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
-            CISUser(username: "Rachel", email:"keonal2023@student.cis.edu.hk", bio: "fun times", imageName: "rachel", zodiac: "zodiac", MBTI: "MBTI", talent: "talent")
-            
-        ]
-
-//            CISUser(username: "Keona", email:"keonal2023@student.cis.edu.hk", bio: "self-proclaimed introvert", imageName: "Boy 1"),
-//            CISUser(username: "Keona", email:"keonal2023@student.cis.edu.hk", bio: "self-proclaimed introvert", imageName: "keona2"),
-//            CISUser(username: "Keona", email:"keonal2023@student.cis.edu.hk", bio: "self-proclaimed introvert", imageName: "keona3"),
-//            CISUser(username: "Kirsten", email:"keonal2023@student.cis.edu.hk", bio: "i write poems", imageName: "kirsten"),
-//            CISUser(username: "Charlie", email:"keonal2023@student.cis.edu.hk", bio: "i love baking", imageName: "charlie"),
-//            CISUser(username: "Rachel", email:"keonal2023@student.cis.edu.hk", bio: "fun times", imageName: "rachel")
-       
-                    
-    }
-    
+//    {
+//        [
+//
+//            CISUser(username: "Keona", email:"keonal2023@student.cis.edu.hk", bio: "self-proclaimed introvert", imageName: "keona1", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
+//            CISUser(username: "Keona", email:"keonal2023@student.cis.edu.hk", bio: "self-proclaimed introvert", imageName: "keona2", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
+//            CISUser(username: "Keona", email:"keonal2023@student.cis.edu.hk", bio: "self-proclaimed introvert", imageName: "keona3", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
+//            CISUser(username: "Kirsten", email:"keonal2023@student.cis.edu.hk", bio: "i write poems", imageName: "kirsten", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
+//            CISUser(username: "Charlie", email:"keonal2023@student.cis.edu.hk", bio: "i love baking", imageName: "charlie", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
+//            CISUser(username: "Rachel", email:"keonal2023@student.cis.edu.hk", bio: "fun times", imageName: "rachel", zodiac: "zodiac", MBTI: "MBTI", talent: "talent")
+//
+//        ]
+//    }
     
     var body: some View {
         VStack {
@@ -47,7 +39,7 @@ struct SwipingView: View {
             }.padding(.horizontal).frame(height: 45)
             
             ZStack {
-                ForEach(CISUser.data.reversed()) { user in
+                ForEach(listOfUsers.reversed()) { user in
                     CardView(card: user).padding(8)
                 }
             }
@@ -90,7 +82,7 @@ struct SwipingView: View {
     }
     
     func getUsers(){
-        Firestore.firestore().collection("User")
+        userManager.firestore.collection("Users")
             .getDocuments() { (querySnapshot, err) in
                 //catch error
                 if let err = err {
@@ -98,15 +90,16 @@ struct SwipingView: View {
                 }
                 else {
                       for document in querySnapshot!.documents {
-                          //try? -> self.user will be nil, try! -> app will crash
-                          //convert document into CISUser object
-                          self.user = try? document.data(as: CISUser.self)
+                          if let docUser = try? document.data(as: CISUser.self) {
+                                  listOfUsers.append(docUser)
+                          
                           //loop through each tag in tags Array in current user
                       }
                 }
             }
-    }
+            }
     
+    }
 }
 
 struct SwipingView_Previews: PreviewProvider {
