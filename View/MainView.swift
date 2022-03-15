@@ -31,13 +31,20 @@ struct MainView: View {
                     Image(systemName: "magnifyingglass.circle.fill")
                 }
                 NavigationView {
+                    ChattingView()
+                }
+                .tabItem{
+                    Image(systemName: "bubble.right.circle")
+                }
+                NavigationView {
                     UserProfileView()
                 }
                 .tabItem {
-                    Image(systemName: "person.fill")
+                    Image(systemName: "person.circle")
                 }
                 
             }
+            
         }
     }
 }
