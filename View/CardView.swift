@@ -9,12 +9,22 @@ import SwiftUI
 
 struct CardView: View {
     @State var card: CISUser
+//    @Binding var sign: String
+//    @Binding var mbti: String
 //    @Binding var swipeDirection: SwipeDirection
 //
     var body: some View {
         
         ZStack(alignment: .topLeading) {
-            Image(card.imageName) .resizable()
+            if card.imageName == "" {
+                Image(systemName: "person.fill")
+                    .resizable()
+                    .foregroundColor(Constants.darkBlue)
+            }
+            else {
+                Image(card.imageName) .resizable()
+            }
+           
             VStack {
                 Spacer()
                 VStack(alignment: .leading) {
@@ -50,7 +60,7 @@ struct CardView: View {
             .padding(10)
         }
         .cornerRadius(20)
-        .frame(maxHeight: .infinity)
+        .frame(maxHeight: 580)
         // follows coordinates of CISUser card
         .offset(x: card.x, y: card.y)
         .rotationEffect(.init(degrees: card.degree))

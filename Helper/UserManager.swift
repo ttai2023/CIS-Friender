@@ -59,37 +59,44 @@ func checkIfUserIsSignedIn()
                 //There is an error creating the user
                 self.errorMessage = "Error signing in."
             }
+            
+//            firestore.collection("users").document(self.mUser.uid) {snapshot, error in
+//                if let error
+//                    error {
+//                        return ("Failed to fetch current user:", error)
+//                    }
+//                guard let data = snapshot?.data() else { return }
         }
         
         // load current user
-        let userID = (mUser?.uid)!
+        let userID = (self.mUser?.uid)!
         
         let docRef = firestore.collection("users").document(userID)
 
-        docRef.getDocument(as: CISUser.self) { result in
-            // The Result type encapsulates deserialization errors or
-            // successful deserialization, and can be handled as follows:
-            //
-            //      Result
-            //        /\
-            //   Error  CISUser
-            switch result
-            {
-                case .success(let user):
-                    // A `CISUser` value was successfully initialized from the DocumentSnapshot.
-                self.currentUser = user
-                case .failure(let error):
-                    // A `CISUser` value could not be initialized from the DocumentSnapshot.
-                self.errorMessage = "Error getting user."
-            }
-        }
+//        docRef.getDocument(as: CISUser.self) { result in
+//            // The Result type encapsulates deserialization errors or
+//            // successful deserialization, and can be handled as follows:
+//            //
+//            //      Result
+//            //        /\
+//            //   Error  CISUser
+//            switch result
+//            {
+//                case .success(let user):
+//                    // A `CISUser` value was successfully initialized from the DocumentSnapshot.
+//                self.currentUser = user
+//                case .failure(let error):
+//                    // A `CISUser` value could not be initialized from the DocumentSnapshot.
+//                self.errorMessage = "Error getting user."
+//            }
+//        }
          
         // over here
-        isSignedIn = true
+        self.isSignedIn = true
         
     }
     
-    func signUp(username: String, email: String, password : String)
+    func signUp(username: String, email: String, password: String)
     {
         //implement firestore stuff here
         mAuth.createUser(withEmail: email, password: password) { results, err in
@@ -99,7 +106,7 @@ func checkIfUserIsSignedIn()
                 self.errorMessage = "Error creating user."
             }
             //user created sucessfully
-            let user = CISUser(username: "name", email: email, bio: "bio", imageName: "girl1")
+            let user = CISUser(username: username, email: email, bio: "bio", imageName: "girl1", zodiac: "zodiac", MBTI: "MBTI", talent: "talent")
             do {
                 try self.firestore.collection("users").document(user.id!).setData(from: user)
             }

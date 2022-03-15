@@ -54,6 +54,7 @@
 		B9D0486C27B79538002DB924 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = B9D0486B27B79538002DB924 /* FirebaseStorageCombine-Community */; };
 		B9D0486E27B79538002DB924 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = B9D0486D27B79538002DB924 /* FirebaseStorageSwift-Beta */; };
 		E217976127CCE2F700072C2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B927662727BE45CB0079195A /* Assets.xcassets */; };
+		E2BF8C6627DF87CE001B5152 /* imagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF8C6527DF87CE001B5152 /* imagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		B9CBBB3727DCB0E800C1D550 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B9CBBB3927DCB39C00C1D550 /* SwipeDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDirection.swift; sourceTree = "<group>"; };
 		B9D0482027B76C41002DB924 /* CIS Friender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CIS Friender.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2BF8C6527DF87CE001B5152 /* imagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				518CB1E227D055BA002E1BBD /* Utilities.swift */,
 				518CB1E427D1B6D9002E1BBD /* UserManager.swift */,
 				B921836127D8D79D006A44A8 /* Constants.swift */,
+				E2BF8C6527DF87CE001B5152 /* imagePicker.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9CBBB3827DCB0E800C1D550 /* CardView.swift in Sources */,
+				E2BF8C6627DF87CE001B5152 /* imagePicker.swift in Sources */,
 				41B9DB5427C5EBC6001DCC10 /* SwipingView.swift in Sources */,
 				51AF5D8427DF22F1009A1741 /* ChatModel.swift in Sources */,
 				41811F7827C89C2500BDBA91 /* SearchView.swift in Sources */,
