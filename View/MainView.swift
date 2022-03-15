@@ -42,6 +42,12 @@ struct MainView: View {
                 .tabItem {
                     Image(systemName: "person.circle")
                 }
+                NavigationView {
+                    ChattingView()
+                }
+                .tabItem {
+                    Image(systemName: "person")
+                }
                 
             }
             

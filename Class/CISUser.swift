@@ -25,6 +25,9 @@ struct CISUser: Identifiable, Codable{
     var email : String
     var bio : String
     var imageName: String
+    var zodiac: String
+    var MBTI: String
+    var talent: String
     
     var x: CGFloat = 0.0
     var y: CGFloat = 0.0
@@ -41,15 +44,27 @@ struct CISUser: Identifiable, Codable{
     var tags: [String] = []
     
     //initializing my variables
-    init(username: String, email: String, bio:String, imageName: String) {
+    init(username: String, email: String, bio: String, imageName: String, zodiac: String, MBTI: String, talent: String) {
         self.username = username
         self.email = email
         self.bio = bio
         self.imageName = imageName
+        self.zodiac = zodiac
+        self.MBTI = MBTI
+        self.talent = talent
    }
     
     static var data: [CISUser] {
         [
+<<<<<<< HEAD
+            CISUser(username: "Keona", email:"keonal2023@student.cis.edu.hk", bio: "self-proclaimed introvert", imageName: "keona1", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
+            CISUser(username: "Keona", email:"keonal2023@student.cis.edu.hk", bio: "self-proclaimed introvert", imageName: "keona2", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
+            CISUser(username: "Keona", email:"keonal2023@student.cis.edu.hk", bio: "self-proclaimed introvert", imageName: "keona3", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
+            CISUser(username: "Kirsten", email:"keonal2023@student.cis.edu.hk", bio: "i write poems", imageName: "kirsten", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
+            CISUser(username: "Charlie", email:"keonal2023@student.cis.edu.hk", bio: "i love baking", imageName: "charlie", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
+            CISUser(username: "Rachel", email:"keonal2023@student.cis.edu.hk", bio: "fun times", imageName: "rachel", zodiac: "zodiac", MBTI: "MBTI", talent: "talent")
+            
+=======
 //            Firestore.firestore().collection("User")
 //                .getDocuments() { (querySnapshot, err) in
 //                    //catch error
@@ -71,6 +86,7 @@ struct CISUser: Identifiable, Codable{
             CISUser(username: "Kirsten", email:"keonal2023@student.cis.edu.hk", bio: "i write poems", imageName: "kirsten"),
             CISUser(username: "Charlie", email:"keonal2023@student.cis.edu.hk", bio: "i love baking", imageName: "charlie"),
             CISUser(username: "Rachel", email:"keonal2023@student.cis.edu.hk", bio: "fun times", imageName: "rachel")
+>>>>>>> 65bd1de187cb6ee37ba3d5230bf5311289fff1ef
         ]
                     
     }
