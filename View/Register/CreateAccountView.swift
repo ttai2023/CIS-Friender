@@ -71,8 +71,6 @@ struct CreateAccountView: View
                 Label(errorMessage,systemImage: "exclamationmark.triangle.fill")
                     .foregroundColor(Color.red)
             }
-<<<<<<< HEAD
-=======
 
             Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Picker")) {
                 Text("Pick your zodiac").tag(1)
@@ -97,7 +95,6 @@ struct CreateAccountView: View
                 Text("Artist").tag(4)
                 Text("Dancer").tag(5)
             }
->>>>>>> 65bd1de187cb6ee37ba3d5230bf5311289fff1ef
         }
         .padding()
         .navigationBarTitle("", displayMode: .inline)
