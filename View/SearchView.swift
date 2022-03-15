@@ -12,7 +12,8 @@ import Firebase
 struct SearchView: View
 {
     @EnvironmentObject private var userManager: UserManager
-    @State var allTags: Set<String> = []
+//    @State var allTags: Set<String> = []
+    @State var tagsDict: [String: Int] = [:]
     @State var user: CISUser?
     
     //add all current tags to allTags set
@@ -30,11 +31,36 @@ struct SearchView: View
                           //try? -> self.user will be nil, try! -> app will crash
                           //convert document into CISUser object
                           self.user = try? document.data(as: CISUser.self)
-                          //loop through each tag in tags Array in current user
+                          //if current user's zodiac/MBTI/talent doesn't exists, create new key value pair
+                          //if already exists, increase quantity by 1
                           if let user = self.user {
-                              for tag in user.tags {
-                                  allTags.insert(tag)
+                              let zodiacExists = tagsDict[user.zodiac] != nil
+                              if !zodiacExists {
+                                  tagsDict[user.zodiac] = 0
                               }
+                              else {
+                                  tagsDict.updateValue(tagsDict[user.zodiac] ?? 0 + 1, forKey: user.zodiac)
+                              }
+                              
+                              let MBTIExists = tagsDict[user.MBTI] != nil
+                              if !MBTIExists {
+                                  tagsDict[user.MBTI] = 0
+                              }
+                              else {
+                                  tagsDict.updateValue(tagsDict[user.MBTI] ?? 0 + 1, forKey: user.MBTI)
+                              }
+                              
+                              let talentExists = tagsDict[user.talent] != nil
+                              if !talentExists {
+                                  tagsDict[user.talent] = 0
+                              }
+                              else {
+                                  tagsDict.updateValue(tagsDict[user.talent] ?? 0 + 1, forKey: user.talent)
+                              }
+
+//                              for tag in user.tags {
+//                                  allTags.insert(tag)
+//                              }
                           }
                       }
                 }
@@ -65,10 +91,20 @@ struct SearchView: View
     }
     
     var searchResults: [String] {
+        //convert dictionary keys into an array arranged in an ascending order of quantity (popularity)
+        var tags: [String] = []
+        var maxValue: Int = 0
+        for (tag, quantity) in tagsDict {
+            if quantity > maxValue {
+                maxValue = quantity
+                tags.append(tag)
+            }
+        }
+        
         if searchText.isEmpty {
-            return Array(allTags)
+            return tags
         } else {
-            return Array(allTags).filter { $0.contains(searchText) }
+            return tags.filter { $0.contains(searchText) }
         }
     }
 }
