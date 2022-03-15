@@ -108,7 +108,7 @@ struct UserProfileView: View {
                         Text("MBTI")
                             .bold()
                         Spacer()
-                        Text(mbti)
+                        Text(userManager.userMBTI)
                     }
                     HStack {
                         Text("Bio")

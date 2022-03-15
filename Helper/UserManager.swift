@@ -27,6 +27,7 @@ class UserManager: ObservableObject {
     @Published var currentUser: CISUser?
     @Published var errorMessage: String = ""
     @Published private var username: String = ""
+    @Published var userMBTI: String = ""
     
     //whenever someone signs up/sign in -> set currentUser
     
@@ -131,7 +132,7 @@ func checkIfUserIsSignedIn()
         
         let docRef = db.collection("Users").document(mUserID)
         
-        docRef.getDocumet{(document, error) in
+        docRef.getDocument{(document, error) in
             guard error == nil else
             {
                 print("error", error ?? "")
@@ -144,17 +145,11 @@ func checkIfUserIsSignedIn()
                 if let data = data
                 {
                     print("data", data)
+                    self.userMBTI = data["MBTI"]as? String??""
                 }
             }
         }
     }
-    
-    
-    
-    
-    
-    
-    
     
     
     
