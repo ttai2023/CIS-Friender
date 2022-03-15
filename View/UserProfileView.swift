@@ -6,15 +6,22 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import Firebase
 import FirebaseDatabase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+import FirebaseFirestoreCombineSwift
+
 
 struct UserProfileView: View {
+    @EnvironmentObject private var userManager: UserManager
+    
     // create a database reference to locate the data
-    //@EnvironmentObject private var userManager: UserManager
+   
     
     //let ref = Database.database().reference(withPath: "Users")
-    @EnvironmentObject private var userManager: UserManager
-//    @State public var user: CISUser
+   
     @State public var username: String = ""
     @State public var useremail: String = ""
     @State public var sign: String = ""
@@ -161,5 +168,6 @@ struct UserProfileView: View {
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
         UserProfileView()
+            .environmentObject(UserManager())
     }
 }

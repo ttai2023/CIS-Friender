@@ -22,7 +22,7 @@ class UserManager: ObservableObject {
     @Published var mAuth = Auth.auth()
     @Published var firestore = Firestore.firestore()
     @Published var mUser = Auth.auth().currentUser
-    
+    @Published var mUserID : String = ""
     @Published var isSignedIn = false
     @Published var currentUser: CISUser?
     @Published var errorMessage: String = ""
@@ -40,7 +40,7 @@ func checkIfUserIsSignedIn()
         else
         {
             let uid = mAuth.currentUser?.uid
-            Database.database().reference().child("User").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
+            Database.database().reference().child("Users").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
                 let value = snapshot.value as? NSDictionary
                 self.username = value?["Name"]as? String ?? ""
 
@@ -59,6 +59,11 @@ func checkIfUserIsSignedIn()
                 //There is an error creating the user
                 self.errorMessage = "Error signing in."
             }
+            else
+            {
+                self.mUserID = (self.mUser?.uid)!
+                self.fetchCurUserData()
+            }
             
 //            firestore.collection("users").document(self.mUser.uid) {snapshot, error in
 //                if let error
@@ -69,9 +74,9 @@ func checkIfUserIsSignedIn()
         }
         
         // load current user
-        let userID = (self.mUser?.uid)!
         
-        let docRef = firestore.collection("users").document(userID)
+        
+//        let docRef = firestore.collection("Users").document(userID)
 
 //        docRef.getDocument(as: CISUser.self) { result in
 //            // The Result type encapsulates deserialization errors or
@@ -107,18 +112,51 @@ func checkIfUserIsSignedIn()
             }
             //user created sucessfully
             let user = CISUser(username: username, email: email, bio: "bio", imageName: "girl1", zodiac: "zodiac", MBTI: "MBTI", talent: "talent")
-            do {
-                try self.firestore.collection("users").document(user.id!).setData(from: user)
-            }
-            catch {
-                // error is already not nil so no need to check if it’s != nil
-                    //Show error message
-                self.errorMessage = "Error saving data. Please contact admin."
-            }
+//            do {
+//                try self.firestore.collection("Users").document(user.id!).setData(from: user)
+//            }
+//            catch {
+//                // error is already not nil so no need to check if it’s != nil
+//                    //Show error message
+//                self.errorMessage = "Error saving data. Please contact admin."
+//            }
             self.isSignedIn = true
+            self.fetchCurUserData()
         }
             
     }
+    
+    func fetchCurUserData(){
+        let db = Firestore.firestore()
+        
+        let docRef = db.collection("Users").document(mUserID)
+        
+        docRef.getDocumet{(document, error) in
+            guard error == nil else
+            {
+                print("error", error ?? "")
+                return
+            }
+            
+            if let document = document, document.exists
+            {
+                let data = document.data()
+                if let data = data
+                {
+                    print("data", data)
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     func signOut()
     {
