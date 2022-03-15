@@ -36,6 +36,12 @@ struct MainView: View {
                 .tabItem {
                     Image(systemName: "person.fill")
                 }
+                NavigationView {
+                    ChattingView()
+                }
+                .tabItem {
+                    Image(systemName: "person")
+                }
                 
             }
         }

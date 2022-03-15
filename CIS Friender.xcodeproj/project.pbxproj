@@ -15,6 +15,8 @@
 		518CB1E327D055BA002E1BBD /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518CB1E227D055BA002E1BBD /* Utilities.swift */; };
 		518CB1E527D1B6DA002E1BBD /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518CB1E427D1B6D9002E1BBD /* UserManager.swift */; };
 		51AF5D7E27DF08DA009A1741 /* ChattingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF5D7D27DF08DA009A1741 /* ChattingView.swift */; };
+		51AF5D8027DF1AE5009A1741 /* ChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF5D7F27DF1AE5009A1741 /* ChatRow.swift */; };
+		51AF5D8427DF22F1009A1741 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF5D8327DF22F1009A1741 /* ChatModel.swift */; };
 		51F625A327CAFFFD002DCF0B /* CISUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F625A227CAFFFD002DCF0B /* CISUser.swift */; };
 		B921836227D8D79D006A44A8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B921836127D8D79D006A44A8 /* Constants.swift */; };
 		B92CA7A627BF43F000338F6D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927662627BE45CB0079195A /* LoginView.swift */; };
@@ -63,6 +65,8 @@
 		518CB1E227D055BA002E1BBD /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		518CB1E427D1B6D9002E1BBD /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		51AF5D7D27DF08DA009A1741 /* ChattingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingView.swift; sourceTree = "<group>"; };
+		51AF5D7F27DF1AE5009A1741 /* ChatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRow.swift; sourceTree = "<group>"; };
+		51AF5D8327DF22F1009A1741 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		51F625A227CAFFFD002DCF0B /* CISUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CISUser.swift; sourceTree = "<group>"; };
 		B921836127D8D79D006A44A8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B927662627BE45CB0079195A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -119,17 +123,14 @@
 		518CB1DF27D05493002E1BBD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B927662627BE45CB0079195A /* LoginView.swift */,
+				51AF5D8227DF1AF9009A1741 /* Register */,
 				B927663027BE45CB0079195A /* MainView.swift */,
-				B92CA7AC27BF448900338F6D /* WelcomeView.swift */,
 				41B9DB5327C5EBC6001DCC10 /* SwipingView.swift */,
 				41811F7727C89C2500BDBA91 /* SearchView.swift */,
-				B927662B27BE45CB0079195A /* CreateAccountView.swift */,
 				B927662827BE45CB0079195A /* UserProfileView.swift */,
 				41C6ACCA27D5BD7E00931E91 /* UserListView.swift */,
 				B9CBBB3727DCB0E800C1D550 /* CardView.swift */,
-				5143B95327DD60C800ED5D8F /* ForgotPasswordView.swift */,
-				51AF5D7D27DF08DA009A1741 /* ChattingView.swift */,
+				51AF5D8127DF1AED009A1741 /* Chatting */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -151,6 +152,27 @@
 				B921836127D8D79D006A44A8 /* Constants.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		51AF5D8127DF1AED009A1741 /* Chatting */ = {
+			isa = PBXGroup;
+			children = (
+				51AF5D7D27DF08DA009A1741 /* ChattingView.swift */,
+				51AF5D7F27DF1AE5009A1741 /* ChatRow.swift */,
+				51AF5D8327DF22F1009A1741 /* ChatModel.swift */,
+			);
+			path = Chatting;
+			sourceTree = "<group>";
+		};
+		51AF5D8227DF1AF9009A1741 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				B927662627BE45CB0079195A /* LoginView.swift */,
+				B92CA7AC27BF448900338F6D /* WelcomeView.swift */,
+				B927662B27BE45CB0079195A /* CreateAccountView.swift */,
+				5143B95327DD60C800ED5D8F /* ForgotPasswordView.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 		B927662527BE45CB0079195A /* CIS-Friender */ = {
@@ -306,8 +328,10 @@
 			files = (
 				B9CBBB3827DCB0E800C1D550 /* CardView.swift in Sources */,
 				41B9DB5427C5EBC6001DCC10 /* SwipingView.swift in Sources */,
+				51AF5D8427DF22F1009A1741 /* ChatModel.swift in Sources */,
 				41811F7827C89C2500BDBA91 /* SearchView.swift in Sources */,
 				5143B95427DD60C800ED5D8F /* ForgotPasswordView.swift in Sources */,
+				51AF5D8027DF1AE5009A1741 /* ChatRow.swift in Sources */,
 				B92CA7AB27BF443600338F6D /* CreateAccountView.swift in Sources */,
 				B92CA7AA27BF442800338F6D /* UserProfileView.swift in Sources */,
 				B92CA7A827BF442200338F6D /* CIS_FrienderApp.swift in Sources */,
