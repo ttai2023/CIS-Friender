@@ -20,7 +20,7 @@ struct SearchView: View
     //move to usermanager??
     func getTags() {
         //fetch all users from firebase
-        userManager.firestore.collection("User")
+        userManager.firestore.collection("users")
             .getDocuments() { (querySnapshot, err) in
                 //catch error
                 if let err = err {
@@ -34,28 +34,40 @@ struct SearchView: View
                           //if current user's zodiac/MBTI/talent doesn't exists, create new key value pair
                           //if already exists, increase quantity by 1
                           if let user = self.user {
-                              let zodiacExists = tagsDict[user.zodiac] != nil
-                              if !zodiacExists {
-                                  tagsDict[user.zodiac] = 0
-                              }
-                              else {
-                                  tagsDict.updateValue(tagsDict[user.zodiac] ?? 0 + 1, forKey: user.zodiac)
-                              }
-                              
-                              let MBTIExists = tagsDict[user.MBTI] != nil
-                              if !MBTIExists {
-                                  tagsDict[user.MBTI] = 0
-                              }
-                              else {
-                                  tagsDict.updateValue(tagsDict[user.MBTI] ?? 0 + 1, forKey: user.MBTI)
-                              }
-                              
-                              let talentExists = tagsDict[user.talent] != nil
-                              if !talentExists {
-                                  tagsDict[user.talent] = 0
-                              }
-                              else {
-                                  tagsDict.updateValue(tagsDict[user.talent] ?? 0 + 1, forKey: user.talent)
+                              if !tagsDict.isEmpty {
+                                  //check if user's zodiac exists already
+                                  let zodiacExists = tagsDict[user.zodiac] != nil
+                                  print("Does user's zodiac exist already? " + String(zodiacExists))
+                                  
+                                  if zodiacExists {
+                                      print("Zodiac already exists")
+                                      print("Original zodiac: " + user.zodiac + String(tagsDict[user.zodiac] ?? 0))
+                                      //if already exists, increase value by 1
+                                      tagsDict.updateValue(tagsDict[user.zodiac] ?? 0 + 1, forKey: user.zodiac)
+                                      print("Updated zodiac: " + user.zodiac + String(tagsDict[user.zodiac] ?? 0))
+                                  }
+                                  else {
+                                      //if doesn't already exists, create new key value pair
+                                      tagsDict[user.zodiac] = 0
+                                      print("Zodiac doesn't already exist")
+                                      print("New zodiac: " + user.zodiac + String(tagsDict[user.zodiac] ?? 0))
+                                  }
+                                  
+                                  let MBTIExists = tagsDict[user.MBTI] != nil
+                                  if !MBTIExists {
+                                      tagsDict[user.MBTI] = 0
+                                  }
+                                  else {
+                                      tagsDict.updateValue(tagsDict[user.MBTI] ?? 0 + 1, forKey: user.MBTI)
+                                  }
+                                  
+                                  let talentExists = tagsDict[user.talent] != nil
+                                  if !talentExists {
+                                      tagsDict[user.talent] = 0
+                                  }
+                                  else {
+                                      tagsDict.updateValue(tagsDict[user.talent] ?? 0 + 1, forKey: user.talent)
+                                  }
                               }
 
 //                              for tag in user.tags {
@@ -85,13 +97,11 @@ struct SearchView: View
         }
         .navigationTitle("Search")
         //task runs as view appears on the screen
-        .task {
-            getTags()
-        }
     }
     
     var searchResults: [String] {
         //convert dictionary keys into an array arranged in an ascending order of quantity (popularity)
+        getTags()
         var tags: [String] = []
         var maxValue: Int = 0
         for (tag, quantity) in tagsDict {
