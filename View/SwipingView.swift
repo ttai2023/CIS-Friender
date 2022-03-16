@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import Firebase
 
 struct SwipingView: View {
 //    @State var swipeDirection: SwipeDirection = .none
@@ -82,7 +84,7 @@ struct SwipingView: View {
     }
     
     func getUsers(){
-        userManager.firestore.collection("Users")
+        userManager.firestore.collection("users")
             .getDocuments() { (querySnapshot, err) in
                 //catch error
                 if let err = err {

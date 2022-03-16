@@ -34,7 +34,7 @@ struct SearchView: View
                           //if current user's zodiac/MBTI/talent doesn't exists, create new key value pair
                           //if already exists, increase quantity by 1
                           if let user = self.user {
-                              if !tagsDict.isEmpty {
+//                              if !tagsDict.isEmpty {
                                   //check if user's zodiac exists already
                                   let zodiacExists = tagsDict[user.zodiac] != nil
                                   print("Does user's zodiac exist already? " + String(zodiacExists))
@@ -68,7 +68,10 @@ struct SearchView: View
                                   else {
                                       tagsDict.updateValue(tagsDict[user.talent] ?? 0 + 1, forKey: user.talent)
                                   }
-                              }
+//                              }
+//                              else {
+//
+//                              }
 
 //                              for tag in user.tags {
 //                                  allTags.insert(tag)
@@ -76,6 +79,7 @@ struct SearchView: View
                           }
                       }
                 }
+                print("tags: ", tagsDict)
         }
     }
     
@@ -95,22 +99,24 @@ struct SearchView: View
                 Text("Are you looking for \(result)?").searchCompletion(result)
             }
         }
+        .task {
+            getTags()
+        }
         .navigationTitle("Search")
         //task runs as view appears on the screen
     }
     
     var searchResults: [String] {
         //convert dictionary keys into an array arranged in an ascending order of quantity (popularity)
-        getTags()
         var tags: [String] = []
         var maxValue: Int = 0
         for (tag, quantity) in tagsDict {
-            if quantity > maxValue {
-                maxValue = quantity
-                tags.append(tag)
-            }
+//            if quantity >= maxValue {
+//                maxValue = quantity
+//            }
+            tags.append(tag)
         }
-        
+        print("tags: ", tags, tagsDict)
         if searchText.isEmpty {
             return tags
         } else {

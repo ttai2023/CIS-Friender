@@ -41,7 +41,7 @@ func checkIfUserIsSignedIn()
         else
         {
             let uid = mAuth.currentUser?.uid
-            Database.database().reference().child("Users").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
+            Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
                 let value = snapshot.value as? NSDictionary
                 self.username = value?["Name"]as? String ?? ""
 
@@ -77,7 +77,7 @@ func checkIfUserIsSignedIn()
         // load current user
         
         
-//        let docRef = firestore.collection("Users").document(userID)
+//        let docRef = firestore.collection("users").document(userID)
 
 //        docRef.getDocument(as: CISUser.self) { result in
 //            // The Result type encapsulates deserialization errors or
@@ -113,15 +113,16 @@ func checkIfUserIsSignedIn()
             }
             //user created sucessfully
             let user = CISUser(username: username, email: email, bio: "bio", imageName: "girl1", zodiac: "zodiac", MBTI: "MBTI", talent: "talent")
-//            do {
-//                try self.firestore.collection("Users").document(user.id!).setData(from: user)
-//            }
-//            catch {
-//                // error is already not nil so no need to check if it’s != nil
-//                    //Show error message
-//                self.errorMessage = "Error saving data. Please contact admin."
-//            }
+            do {
+                try self.firestore.collection("users").document(user.id!).setData(from: user)
+            }
+            catch {
+                // error is already not nil so no need to check if it’s != nil
+                    //Show error message
+                self.errorMessage = "Error saving data. Please contact admin."
+            }
             self.isSignedIn = true
+            self.mUserID = user.id!
             self.fetchCurUserData()
         }
             
@@ -130,7 +131,7 @@ func checkIfUserIsSignedIn()
     func fetchCurUserData(){
         let db = Firestore.firestore()
         
-        let docRef = db.collection("Users").document(mUserID)
+        let docRef = db.collection("users").document(mUserID)
         
         docRef.getDocument{(document, error) in
             guard error == nil else
@@ -145,7 +146,7 @@ func checkIfUserIsSignedIn()
                 if let data = data
                 {
                     print("data", data)
-                    self.userMBTI = data["MBTI"]as? String??""
+                    self.userMBTI = data["MBTI"] as? String ?? ""
                 }
             }
         }
