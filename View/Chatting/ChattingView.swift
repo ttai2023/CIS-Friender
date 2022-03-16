@@ -9,21 +9,19 @@ import SwiftUI
 
 struct ChattingView: View {
     var body: some View {
-        NavigationView{
-            List{
-                ForEach(0..<10){ i in
-                    ChatRow()
-                }
+        List{
+            ForEach(0..<10){ i in
+                ChatRow()
             }
-            .listStyle(PlainListStyle())
-            .navigationTitle("Chats")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        // do something here
-                    } label: {
-                        Label("tap to stop keona singing", systemImage: "square.and.pencil")
-                    }
+        }
+        .listStyle(PlainListStyle())
+        .navigationTitle("Chats")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    // do something here
+                } label: {
+                    Label("tap to stop keona singing", systemImage: "square.and.pencil")
                 }
             }
         }

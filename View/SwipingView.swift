@@ -8,24 +8,15 @@
 import SwiftUI
 import FirebaseAuth
 import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+import FirebaseFirestoreCombineSwift
+import Foundation
 
 struct SwipingView: View {
 //    @State var swipeDirection: SwipeDirection = .none
     @EnvironmentObject private var userManager: UserManager
     @State var listOfUsers = [CISUser]()
-    
-//    {
-//        [
-//
-//            CISUser(username: "Keona", email:"keonal2023@student.cis.edu.hk", bio: "self-proclaimed introvert", imageName: "keona1", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
-//            CISUser(username: "Keona", email:"keonal2023@student.cis.edu.hk", bio: "self-proclaimed introvert", imageName: "keona2", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
-//            CISUser(username: "Keona", email:"keonal2023@student.cis.edu.hk", bio: "self-proclaimed introvert", imageName: "keona3", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
-//            CISUser(username: "Kirsten", email:"keonal2023@student.cis.edu.hk", bio: "i write poems", imageName: "kirsten", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
-//            CISUser(username: "Charlie", email:"keonal2023@student.cis.edu.hk", bio: "i love baking", imageName: "charlie", zodiac: "zodiac", MBTI: "MBTI", talent: "talent"),
-//            CISUser(username: "Rachel", email:"keonal2023@student.cis.edu.hk", bio: "fun times", imageName: "rachel", zodiac: "zodiac", MBTI: "MBTI", talent: "talent")
-//
-//        ]
-//    }
     
     var body: some View {
         VStack {
@@ -52,6 +43,7 @@ struct SwipingView: View {
                         .resizable().aspectRatio(contentMode: .fit).frame(height: 45)
                         .foregroundColor(Constants.darkBlue)
                 }
+                
                 Spacer()
                 Button(action: {}) {
                     Image(systemName: "xmark.circle")
@@ -80,9 +72,12 @@ struct SwipingView: View {
                 
             }.padding(.horizontal)
         }
+        .task {
+            getUsers()
+        }
         .navigationBarHidden(true)
     }
-    
+        
     func getUsers(){
         userManager.firestore.collection("users")
             .getDocuments() { (querySnapshot, err) in
@@ -94,15 +89,17 @@ struct SwipingView: View {
                       for document in querySnapshot!.documents {
                           if let docUser = try? document.data(as: CISUser.self) {
                                   listOfUsers.append(docUser)
-                          
+                              
+                          }
+
                           //loop through each tag in tags Array in current user
                       }
                 }
-            }
-            }
-    
+                print(listOfUsers)
+        }
     }
 }
+
 
 struct SwipingView_Previews: PreviewProvider {
     static var previews: some View {
