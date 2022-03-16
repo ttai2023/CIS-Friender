@@ -17,7 +17,7 @@ struct UserListView: View {
     @State var user: CISUser? = nil
     
     func getUsersWithTag() {
-        userManager.firestore.collection("User")
+        userManager.firestore.collection("users")
             .getDocuments() { (querySnapshot, err) in
                 //catch error
                 if let err = err {
@@ -45,17 +45,19 @@ struct UserListView: View {
     }
     
     var body: some View {
+        //make a recview of users
         VStack(alignment: .center, spacing: 10.0) {
-            Image("Boy 1")
-                .resizable() //so image can be resized
-                .aspectRatio(contentMode: .fill) //prevents original photo to be distorted
-                .frame(width: 150, height: 150)//frame of circle
-                .clipped() //area outside of frame will be cut
-                .cornerRadius(100)
-                .padding(.bottom, 10)
-            
             List {
                 if let user = self.user {
+                    HStack {
+                        Image("Boy 1")
+                            .resizable() //so image can be resized
+                            .aspectRatio(contentMode: .fill) //prevents original photo to be distorted
+                            .frame(width: 150, height: 150)//frame of circle
+                            .clipped() //area outside of frame will be cut
+                            .cornerRadius(100)
+                            .padding(.bottom, 10)
+                    }
                     HStack {
                         Text("Username")
                             .bold()
@@ -88,6 +90,9 @@ struct UserListView: View {
                     }
                 }
             }
+        }
+        .task {
+            getUsersWithTag()
         }
     }
 }
