@@ -41,35 +41,35 @@ struct UserListView: View {
                           }
                       }
                 }
+                print("Users with tag: ", usersWithTag)
         }
     }
     
     var body: some View {
         //make a recview of users
-        VStack(alignment: .center, spacing: 10.0) {
-            List {
-                if let user = self.user {
+        ScrollView {
+            VStack(alignment: .leading) {
+                ForEach(usersWithTag) { currUser in
                     HStack {
                         Image("Boy 1")
                             .resizable() //so image can be resized
                             .aspectRatio(contentMode: .fill) //prevents original photo to be distorted
-                            .frame(width: 150, height: 150)//frame of circle
+                            .frame(width: 80, height: 80)//frame of circle
                             .clipped() //area outside of frame will be cut
                             .cornerRadius(100)
                             .padding(.bottom, 10)
-                    }
-                    HStack {
-                        VStack {
-                            Text("Username")
-                                .bold()
-                            Spacer()
-                            Text(user.username)
-                        }
-                        
-                        VStack {
-                            Text("Email")
-                            Spacer()
-                            Text(user.email)
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text("Username:")
+                                    .bold()
+                                Text(currUser.username)
+                            }
+                            
+                            HStack {
+                                Text("Email:")
+                                    .bold()
+                                Text(currUser.email)
+                            }
                         }
                     }
                 }
@@ -78,6 +78,7 @@ struct UserListView: View {
         .task {
             getUsersWithTag()
         }
+        //nav link to user profile
     }
 }
 
