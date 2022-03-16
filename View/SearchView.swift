@@ -8,6 +8,10 @@
 import SwiftUI
 import FirebaseAuth
 import Firebase
+import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+import FirebaseFirestoreCombineSwift
 
 struct SearchView: View
 {

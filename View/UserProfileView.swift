@@ -55,7 +55,6 @@ struct UserProfileView: View {
                 .cornerRadius(100)
                 .padding(.bottom, 10)
             
-        
             Button(action: {isEditing.toggle()}) {
                 VStack {
                     Image(systemName: "pencil.circle")
@@ -81,7 +80,7 @@ struct UserProfileView: View {
                                    // Pick an image from the photo library:
                                ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
 
-                           }
+                       }
             
             if !isEditing
             {
@@ -155,7 +154,6 @@ struct UserProfileView: View {
                     }
                 }
             }
-            
             
         }
         .navigationBarHidden(true)
