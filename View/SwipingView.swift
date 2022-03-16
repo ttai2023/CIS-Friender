@@ -80,7 +80,6 @@ struct SwipingView: View {
         }
         .navigationBarHidden(true)
     }
-    
     func getUsers(){
         userManager.firestore.collection("Users")
             .getDocuments() { (querySnapshot, err) in
@@ -92,13 +91,13 @@ struct SwipingView: View {
                       for document in querySnapshot!.documents {
                           if let docUser = try? document.data(as: CISUser.self) {
                                   listOfUsers.append(docUser)
-                          
+
                           //loop through each tag in tags Array in current user
                       }
                 }
             }
             }
-    
+
     }
 }
 
