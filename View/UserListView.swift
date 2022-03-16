@@ -59,34 +59,18 @@ struct UserListView: View {
                             .padding(.bottom, 10)
                     }
                     HStack {
-                        Text("Username")
-                            .bold()
-                        Spacer()
-                        Text(user.username)
-                    }
-                    HStack {
-                        Text("Email")
-                            .bold()
-                        Spacer()
-                        Text(user.email)
-                    }
-                    HStack {
-                        Text("Zodiac Sign")
-                            .bold()
-                        Spacer()
-                        Text(user.zodiac)
-                    }
-                    HStack {
-                        Text("MBTI")
-                            .bold()
-                        Spacer()
-                        Text(user.MBTI)
-                    }
-                    HStack {
-                        Text("Talent")
-                            .bold()
-                        Spacer()
-                        Text(user.talent)
+                        VStack {
+                            Text("Username")
+                                .bold()
+                            Spacer()
+                            Text(user.username)
+                        }
+                        
+                        VStack {
+                            Text("Email")
+                            Spacer()
+                            Text(user.email)
+                        }
                     }
                 }
             }
