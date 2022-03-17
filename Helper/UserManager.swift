@@ -13,6 +13,7 @@ import FirebaseDatabase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseFirestoreCombineSwift
+import Combine
 
 //this is what julian demonstrated
 //٩(๑❛ᴗ❛๑)۶
@@ -28,6 +29,8 @@ class UserManager: ObservableObject {
     @Published var errorMessage: String = ""
     @Published private var username: String = ""
     @Published var userMBTI: String = ""
+    //written with assistance from Julian
+    private var userListener: AnyCancellable? //store listener, otherwise will delete
     
     //whenever someone signs up/sign in -> set currentUser
     
@@ -120,6 +123,25 @@ func checkIfUserIsSignedIn()
                     print("no")
                 }
             }
+        }
+    }
+    
+    func updateUser()
+    {
+        if let currentUser = currentUser {
+            try self.firestore.collection("users").document(currentUser.id!).setData(from: currentUser)
+        }
+    }
+    
+    // Julian helped write this
+    func listenToUser()
+    {
+        if let currentUser = currentUser {
+            //listens to updates
+            //sink --> whenever publisher is called, listener will be called, user --> new user
+            userListener = $currentUser.sink(receiveValue: { user in
+                self.updateUser()
+            })
         }
     }
     

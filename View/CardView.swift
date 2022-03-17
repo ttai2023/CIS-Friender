@@ -14,50 +14,61 @@ struct CardView: View {
 //    @Binding var swipeDirection: SwipeDirection
 
     var body: some View {
-        
-        ZStack(alignment: .topLeading) {
-            if card.imageName == "" {
-                Image(systemName: "person.fill")
-                    .resizable()
-                    .foregroundColor(Constants.darkBlue)
-            }
-            else {
-                Image(card.imageName) .resizable()
-            }
-           
-            VStack {
-                Spacer()
-                VStack(alignment: .leading) {
+        ZStack(alignment: .center) {
+//            RoundedRectangle(cornerRadius: 8).frame().foregroundColor(Constants.lightBlue).padding()
+            VStack(spacing:0) {
+                Text("Keona").font(.largeTitle).fontWeight(.bold)
+                if card.imageName == "" {
+                    Image(systemName: "person.fill")
+                        .resizable()
+                        .foregroundColor(Constants.darkBlue)
+                }
+                else {
+                    Image(card.imageName)
+                        .resizable()
+                        .frame(maxHeight: .infinity)
+//                        .scaledToFill()
+//                        .frame(minHeight: 0, maxHeight: .infinity)
+//                        .aspectRatio(1, contentMode: .fit)
+                        .clipped()
+                       
+                        .padding()
+                 
+                }
+                VStack(alignment: .center) {
                     HStack {
-                        Text(card.username).font(.largeTitle).fontWeight(.bold)
+                        Text(card.zodiac)
+                        Text(card.MBTI)
                     }
+                    Text("tags")
                     Text(card.bio)
                 }
             }
             .padding()
-            .foregroundColor(.white)
-            
-            HStack {
-                // if like
-                Image(systemName: "heart.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 100)
-                    .foregroundColor(Color.red)
-                    // if like, make visible
-                    .opacity(Double(card.x/10 - 1))
+            .foregroundColor(.black)
+            VStack {
+                HStack {
+                    // if like
+                    Image(systemName: "heart.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100)
+                        .foregroundColor(Color.red)
+                        // if like, make visible
+                        .opacity(Double(card.x/10 - 1))
+                    Spacer()
+                    // if rejected
+                    Image(systemName: "xmark")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100)
+                        .foregroundColor(Color.red)
+                        // if don't like, make visible
+                        .opacity(Double(card.x/10 * -1 - 1))
+                }
+                .padding(10)
                 Spacer()
-                
-                // if rejected
-                Image(systemName: "xmark")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 100)
-                    .foregroundColor(Color.red)
-                    // if don't like, make visible
-                    .opacity(Double(card.x/10 * -1 - 1))
             }
-            .padding(10)
         }
         .cornerRadius(20)
         .frame(maxHeight: 580)
@@ -110,12 +121,15 @@ struct CardView: View {
                     }
                 }
         )
+        .padding(2)
+        .background(Constants.lightBlue).cornerRadius(50)
+        .padding()
         
     }
 }
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: CISUser(username: "", email: "", bio: "", imageName: "", zodiac: "", MBTI: "", talent: ""))
+        CardView(card: CISUser(username: "Keona", email: "", bio: "self-proclamed introvert", imageName: "keona1", zodiac: "Taurus", MBTI: "ISTP", talent: "none"))
     }
 }
