@@ -62,43 +62,13 @@ func checkIfUserIsSignedIn()
             }
             else
             {
-                self.mUserID = (self.mUser?.uid)!
+                self.mUserID = results!.user.uid
                 self.fetchCurUserData()
+                self.isSignedIn = true
+                
             }
-            
-//            firestore.collection("users").document(self.mUser.uid) {snapshot, error in
-//                if let error
-//                    error {
-//                        return ("Failed to fetch current user:", error)
-//                    }
-//                guard let data = snapshot?.data() else { return }
-        }
-        
-        // load current user
-        
-        
-//        let docRef = firestore.collection("users").document(userID)
 
-//        docRef.getDocument(as: CISUser.self) { result in
-//            // The Result type encapsulates deserialization errors or
-//            // successful deserialization, and can be handled as follows:
-//            //
-//            //      Result
-//            //        /\
-//            //   Error  CISUser
-//            switch result
-//            {
-//                case .success(let user):
-//                    // A `CISUser` value was successfully initialized from the DocumentSnapshot.
-//                self.currentUser = user
-//                case .failure(let error):
-//                    // A `CISUser` value could not be initialized from the DocumentSnapshot.
-//                self.errorMessage = "Error getting user."
-//            }
-//        }
-         
-        // over here
-        self.isSignedIn = true
+        }
         
     }
     
@@ -142,17 +112,16 @@ func checkIfUserIsSignedIn()
             
             if let document = document, document.exists
             {
-                let data = document.data()
-                if let data = data
-                {
-                    print("data", data)
-                    self.userMBTI = data["MBTI"] as? String ?? ""
+                if let docUser = try? document.data(as: CISUser.self) {
+                    self.currentUser = docUser
+                    self.mUserID = docUser.id!
+                }
+                else {
+                    print("no")
                 }
             }
         }
     }
-    
-    
     
     func signOut()
     {

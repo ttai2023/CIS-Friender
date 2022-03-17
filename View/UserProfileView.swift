@@ -89,7 +89,7 @@ struct UserProfileView: View {
                         Text("Username")
                             .bold()
                         Spacer()
-                        Text(username)
+                        Text(userManager.currentUser?.username ?? "unknown")
                     }
                     HStack {
                         Text("Email")

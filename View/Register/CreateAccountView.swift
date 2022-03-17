@@ -49,7 +49,7 @@ struct CreateAccountView: View
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
             
-            TextField("Password" , text: $newPassword)
+            SecureField("Password" , text: $newPassword)
                 .padding()
                 .background(Constants.lightGrey)
                 .cornerRadius(5.0)
