@@ -12,7 +12,7 @@ struct CardView: View {
 //    @Binding var sign: String
 //    @Binding var mbti: String
 //    @Binding var swipeDirection: SwipeDirection
-//
+
     var body: some View {
         
         ZStack(alignment: .topLeading) {
@@ -72,7 +72,7 @@ struct CardView: View {
                         card.x = value.translation.width
                         card.y = value.translation.height
                         card.degree = 7 * (card.x > 0 ? 1 : -1 )
-//                        swipeDirection = card.x > 0 ? .left : .right
+//   swipeDirection = card.x > 0 ? .left : .right
                     }
                 }
                 .onEnded{ value in
@@ -106,8 +106,6 @@ struct CardView: View {
                                 card.x = -500; card.degree = -12
                             
                             default: card.x = 0; card.y = 0
-                            
-                        
                         }
                     }
                 }
