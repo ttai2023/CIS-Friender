@@ -72,29 +72,29 @@ struct CreateAccountView: View
                     .foregroundColor(Color.red)
             }
 
-            Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Picker")) {
-                Text("Pick your zodiac").tag(1)
-                Text("Capricorn").tag(2)
-                Text("Virgo").tag(3)
-                Text("Cancer").tag(4)
-                Text("Taurus").tag(5)
-                Text("Libra").tag(6)
-            }
-            .foregroundColor(Constants.blue)
-            Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Picker")) {
-                Text("Pick your MBTI").tag(1)
-                Text("ISTJ").tag(2)
-                Text("INFJ").tag(3)
-                Text("ENFJ").tag(4)
-                Text("ISTP").tag(5)
-            }
-            Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Picker")) {
-                Text("Choose your tag").tag(1)
-                Text("Graphic designer").tag(2)
-                Text("Singer").tag(3)
-                Text("Artist").tag(4)
-                Text("Dancer").tag(5)
-            }
+//            Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Picker")) {
+//                Text("Pick your zodiac").tag(1)
+//                Text("Capricorn").tag(2)
+//                Text("Virgo").tag(3)
+//                Text("Cancer").tag(4)
+//                Text("Taurus").tag(5)
+//                Text("Libra").tag(6)
+//            }
+//            .foregroundColor(Constants.blue)
+//            Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Picker")) {
+//                Text("Pick your MBTI").tag(1)
+//                Text("ISTJ").tag(2)
+//                Text("INFJ").tag(3)
+//                Text("ENFJ").tag(4)
+//                Text("ISTP").tag(5)
+//            }
+//            Picker(selection: /*@START_MENU_TOKEN@*/.constant(1)/*@END_MENU_TOKEN@*/, label: Text("Picker")) {
+//                Text("Choose your tag").tag(1)
+//                Text("Graphic designer").tag(2)
+//                Text("Singer").tag(3)
+//                Text("Artist").tag(4)
+//                Text("Dancer").tag(5)
+//            }
         }
         .padding()
         .navigationBarTitle("", displayMode: .inline)

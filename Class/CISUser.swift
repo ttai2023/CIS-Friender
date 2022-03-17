@@ -40,9 +40,6 @@ struct CISUser: Identifiable, Codable{
         "one" : "",
     ]
     
-    //this is an array
-    var tags: [String] = []
-    
     //initializing my variables
     init(username: String, email: String, bio: String, imageName: String, zodiac: String, MBTI: String, talent: String) {
         self.username = username

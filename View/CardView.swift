@@ -116,6 +116,6 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: CISUser.data[0])
+        CardView(card: CISUser(username: "", email: "", bio: "", imageName: "", zodiac: "", MBTI: "", talent: ""))
     }
 }
