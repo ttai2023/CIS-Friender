@@ -164,6 +164,7 @@ struct UserProfileView: View {
 }
 
 //TODO: DELETE ACCOUNT
+//TODO: Sign out
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {

@@ -131,7 +131,7 @@ func checkIfUserIsSignedIn()
         
         let docRef = db.collection("Users").document(mUserID)
         
-        docRef.getDocumet{(document, error) in
+        docRef.getDocument{(document, error) in
             guard error == nil else
             {
                 print("error", error ?? "")

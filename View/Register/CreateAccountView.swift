@@ -119,7 +119,7 @@ struct CreateAccountView: View
         return nil
     }
     
-    //duplicate sign up
+    //TODO: NO duplicate sign up
     //TODO: Send a user a verification email(=´ω`=)
     
     func signUp(){
