@@ -29,6 +29,7 @@ class UserManager: ObservableObject {
     @Published var errorMessage: String = ""
     @Published private var username: String = ""
     @Published var userMBTI: String = ""
+    private var handle: Any?
     //written with assistance from Julian
     private var userListener: AnyCancellable? //store listener, otherwise will delete
     
@@ -43,6 +44,9 @@ func checkIfUserIsSignedIn()
         }
         else
         {
+            handle? = mAuth.addStateDidChangeListener { auth, user in
+                self.mUser = user
+            }
             let uid = mAuth.currentUser?.uid
             Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
                 let value = snapshot.value as? NSDictionary

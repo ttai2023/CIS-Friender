@@ -26,7 +26,8 @@ struct SwipingView: View {
                     .resizable().aspectRatio(contentMode: .fit).frame(height: 45)
                     .foregroundColor(Constants.blue)
                 Text("Friender")
-                    .font(.system(size: 45))
+                    .font(Font.custom("inconsolata", size: 45))
+                    .bold()
                     .foregroundColor(Constants.blue)
             }.padding(.horizontal).frame(height: 45)
             ZStack {
@@ -88,11 +89,12 @@ struct SwipingView: View {
                 else {
                       for document in querySnapshot!.documents {
                           if let docUser = try? document.data(as: CISUser.self) {
+                              if !(docUser.id == userManager.currentUser?.id)
+                              {
                                   listOfUsers.append(docUser)
-                              
+                              }
                           }
-
-                          //loop through each tag in tags Array in current user
+                          //loop through each user in users collection
                       }
                 }
                 print(listOfUsers)

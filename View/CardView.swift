@@ -17,7 +17,7 @@ struct CardView: View {
         ZStack(alignment: .center) {
 //            RoundedRectangle(cornerRadius: 8).frame().foregroundColor(Constants.lightBlue).padding()
             VStack(spacing:0) {
-                Text("Keona").font(.largeTitle).fontWeight(.bold)
+                Text(card.username).font(.largeTitle).fontWeight(.bold)
                 if card.imageName == "" {
                     Image(systemName: "person.fill")
                         .resizable()
@@ -27,11 +27,7 @@ struct CardView: View {
                     Image(card.imageName)
                         .resizable()
                         .frame(maxHeight: .infinity)
-//                        .scaledToFill()
-//                        .frame(minHeight: 0, maxHeight: .infinity)
-//                        .aspectRatio(1, contentMode: .fit)
                         .clipped()
-                       
                         .padding()
                  
                 }
@@ -41,7 +37,14 @@ struct CardView: View {
                         Text(card.MBTI)
                     }
                     Text("tags")
+                        .foregroundColor(Constants.darkBlue)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Constants.darkBlue)
+                                .padding(0.1)
+                        )
                     Text(card.bio)
+//                        .font(.custom(name: ))
                 }
             }
             .padding()
@@ -121,8 +124,7 @@ struct CardView: View {
                     }
                 }
         )
-        .padding(2)
-        .background(Constants.lightBlue).cornerRadius(50)
+        .background(Constants.lightBlue).cornerRadius(20)
         .padding()
         
     }
