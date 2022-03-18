@@ -33,9 +33,6 @@ struct UserProfileView: View {
     @State private var image = UIImage()
     @State private var showSheet = false
     
-    var aOrB = ["A", "B"]
-    @State private var toAOrNotToB = "A"
-    
     var signs = ["Unknown", "Taurus", "Cancer", "Virgo", "Capricorn"]
     var mbtis = ["Unknown", "ISTJ", "INFJ", "ENFJ", "ISTP"]
     @State private var selectedColor = "Red"
