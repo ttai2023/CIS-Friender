@@ -25,6 +25,7 @@
 		B92CA7AA27BF442800338F6D /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927662827BE45CB0079195A /* UserProfileView.swift */; };
 		B92CA7AB27BF443600338F6D /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927662B27BE45CB0079195A /* CreateAccountView.swift */; };
 		B92CA7AD27BF448900338F6D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92CA7AC27BF448900338F6D /* WelcomeView.swift */; };
+		B9AF029127E4629D0001DF93 /* SizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AF029027E4629D0001DF93 /* SizePreferenceKey.swift */; };
 		B9CBBB3827DCB0E800C1D550 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CBBB3727DCB0E800C1D550 /* CardView.swift */; };
 		B9CBBB3A27DCB39C00C1D550 /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CBBB3927DCB39C00C1D550 /* SwipeDirection.swift */; };
 		B9D0483C27B79538002DB924 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B9D0483B27B79538002DB924 /* FirebaseAnalytics */; };
@@ -79,6 +80,7 @@
 		B927662F27BE45CB0079195A /* CIS_FrienderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIS_FrienderApp.swift; sourceTree = "<group>"; };
 		B927663027BE45CB0079195A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B92CA7AC27BF448900338F6D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		B9AF029027E4629D0001DF93 /* SizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizePreferenceKey.swift; sourceTree = "<group>"; };
 		B9CBBB3727DCB0E800C1D550 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B9CBBB3927DCB39C00C1D550 /* SwipeDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDirection.swift; sourceTree = "<group>"; };
 		B9D0482027B76C41002DB924 /* CIS Friender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CIS Friender.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				51F625A227CAFFFD002DCF0B /* CISUser.swift */,
+				B9AF029027E4629D0001DF93 /* SizePreferenceKey.swift */,
 				B9CBBB3927DCB39C00C1D550 /* SwipeDirection.swift */,
 			);
 			path = Class;
@@ -343,6 +346,7 @@
 				B92CA7A727BF441F00338F6D /* MainView.swift in Sources */,
 				B921836227D8D79D006A44A8 /* Constants.swift in Sources */,
 				51AF5D7E27DF08DA009A1741 /* ChattingView.swift in Sources */,
+				B9AF029127E4629D0001DF93 /* SizePreferenceKey.swift in Sources */,
 				B9CBBB3A27DCB39C00C1D550 /* SwipeDirection.swift in Sources */,
 				41C6ACCB27D5BD7E00931E91 /* UserListView.swift in Sources */,
 				51F625A327CAFFFD002DCF0B /* CISUser.swift in Sources */,

@@ -9,13 +9,13 @@ import SwiftUI
 
 struct CardView: View {
     @State var card: CISUser
-//    @Binding var sign: String
-//    @Binding var mbti: String
-//    @Binding var swipeDirection: SwipeDirection
+    @Binding var swipeDirection: SwipeDirection
+    @Binding var size: CGSize
 
     var body: some View {
+
         ZStack(alignment: .center) {
-//            RoundedRectangle(cornerRadius: 8).frame().foregroundColor(Constants.lightBlue).padding()
+
             VStack(spacing:0) {
                 Text(card.username).font(.largeTitle).fontWeight(.bold)
                 if card.imageName == "" {
@@ -124,6 +124,18 @@ struct CardView: View {
                     }
                 }
         )
+        .onChange(of: swipeDirection, perform: { newValue in
+            switch newValue {
+                case .right:
+                    card.x = size.width
+                    card.degree = 12
+                case .left:
+                    card.x = -size.width
+                    card.degree = -12
+                case .none:
+                    break
+            }
+        })
         .background(Constants.lightBlue).cornerRadius(20)
         .padding()
         
@@ -132,6 +144,6 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: CISUser(username: "Keona", email: "", bio: "self-proclamed introvert", imageName: "keona1", zodiac: "Taurus", MBTI: "ISTP", talent: "none"))
+        CardView(card: CISUser(username: "Keona", email: "", bio: "self-proclamed introvert", imageName: "keona1", zodiac: "Taurus", MBTI: "ISTP", talent: "none"), swipeDirection: .constant(.none), size: .constant(CGSize.zero))
     }
 }

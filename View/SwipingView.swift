@@ -15,9 +15,10 @@ import FirebaseFirestoreCombineSwift
 import Foundation
 
 struct SwipingView: View {
-//    @State var swipeDirection: SwipeDirection = .none
+    @State var swipeDirection: SwipeDirection = .none
     @EnvironmentObject private var userManager: UserManager
     @State var listOfUsers = [CISUser]()
+    @State var size = CGSize.zero
     
     var body: some View {
         VStack {
@@ -33,20 +34,15 @@ struct SwipingView: View {
             ZStack {
                 ZStack {
                     ForEach(listOfUsers.reversed()) { user in
-                        CardView(card: user).padding(8)
+                        CardView(card: user, swipeDirection: $swipeDirection, size: $size).padding(8)
                     }
                 }
             }
             
             HStack {
-//                Button(action: {}) {
-//                    Image(systemName: "arrowshape.turn.up.backward.circle")
-//                        .resizable().aspectRatio(contentMode: .fit).frame(height: 45)
-//                        .foregroundColor(Constants.darkBlue)
-//                }
-                
-//                Spacer()
-                Button(action: {}) {
+                Button(action: {
+                    swipeDirection = .left
+                }) {
                     Image(systemName: "xmark.circle")
                         .resizable().aspectRatio(contentMode: .fit).frame(height: 45)
                         .foregroundColor(Constants.blue)
@@ -58,21 +54,27 @@ struct SwipingView: View {
                         .foregroundColor(Constants.blue)
                 }
                 Spacer()
-                Button(action: {}) {
+                Button(action: {
+                    swipeDirection = .right
+                }) {
                     Image(systemName: "heart.circle")
                         .resizable().aspectRatio(contentMode: .fit).frame(height: 45)
                         .foregroundColor(Constants.blue)
                         .foregroundColor(Constants.blue)
                 }
-//                Spacer()
-//                Button(action: {}) {
-//                    Image(systemName: "star.circle")
-//                        .resizable().aspectRatio(contentMode: .fit).frame(height: 45)
-//                        .foregroundColor(Constants.darkBlue)
-//                }
-                
+
             }.padding(.horizontal)
         }
+        .background(
+            //reads size of view
+              GeometryReader { geometryProxy in
+                Color.clear
+                  .preference(key: SizePreferenceKey.self, value: geometryProxy.size)
+              }
+            )
+        .onPreferenceChange(SizePreferenceKey.self) { newSize in
+                size = newSize
+            }
         .task {
             getUsers()
         }

@@ -122,7 +122,7 @@ struct SearchView: View
             if !tagsDict.isEmpty {
                 for currTag in tags {
                     if quantity >= tagsDict[currTag] ?? 0 {
-                        tags.insert(tag, at: find(tags, currTag))
+//                        tags.insert(tag, at: find(tags, currTag))
                     }
                     tags.append(tag)
                 }
