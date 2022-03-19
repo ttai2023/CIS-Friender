@@ -18,8 +18,19 @@ struct PickAvatar: View {
     private let images = [
         "Boy 1",
         "Boy 2",
+        "Boy 3",
+        "Boy 4",
+        "Boy 5",
+        "Boy 6",
         "Girl 1",
-        "Girl 2"
+        "Girl 2",
+        "Girl 3",
+        "Girl 4",
+        "Girl 5",
+        "Girl 6",
+        "Blue jelly",
+        "Pink jelly"
+        
     ]
     
     var body: some View {
