@@ -17,8 +17,11 @@ import Foundation
 struct SwipingView: View {
     @State var swipeDirection: SwipeDirection = .none
     @EnvironmentObject private var userManager: UserManager
+    @EnvironmentObject private  var swipingData: SwipingModel
     @State var listOfUsers = [CISUser]()
     @State var size = CGSize.zero
+//    @State var index: Int
+//    var user: CISUser
     
     var body: some View {
         VStack {
@@ -31,13 +34,28 @@ struct SwipingView: View {
                     .bold()
                     .foregroundColor(Constants.blue)
             }.padding(.horizontal).frame(height: 45)
-            ZStack {
+//            GeometryReader { proxy in
+//                let size = proxy.size
+//                let index = CGFloat(swipingData.getIndex(user: user))
                 ZStack {
-                    ForEach(listOfUsers.reversed()) { user in
-                        CardView(card: user, swipeDirection: $swipeDirection, size: $size).padding(8)
+                    ZStack {
+                        if let users = swipingData.listOfUsers {
+                            if users.isEmpty {
+                                Text("Looks like there are no more users to swipe through right now :( Come back later!")
+                                    .font(.caption)
+                                    .foregroundColor(Constants.blue)
+                            }
+                            else {
+                                ForEach(listOfUsers.reversed()) { user in
+                                    CardView(card: user, swipeDirection: $swipeDirection, size: $size)
+                                        .padding(8)
+                                        .environmentObject(swipingData)
+                                }
+                            }
+                        }
                     }
                 }
-            }
+//            }
             
             HStack {
                 Button(action: {
@@ -65,6 +83,9 @@ struct SwipingView: View {
 
             }.padding(.horizontal)
         }
+        .task {
+            swipingData.getUsers()
+        }
         .background(
             //reads size of view
               GeometryReader { geometryProxy in
@@ -75,33 +96,9 @@ struct SwipingView: View {
         .onPreferenceChange(SizePreferenceKey.self) { newSize in
                 size = newSize
             }
-        .task {
-            getUsers()
-        }
         .navigationBarHidden(true)
     }
-        
-    func getUsers(){
-        userManager.firestore.collection("users")
-            .getDocuments() { (querySnapshot, err) in
-                //catch error
-                if let err = err {
-                    print("Error getting users: \(err)")
-                }
-                else {
-                      for document in querySnapshot!.documents {
-                          if let docUser = try? document.data(as: CISUser.self) {
-                              if !(docUser.id == userManager.currentUser?.id)
-                              {
-                                  listOfUsers.append(docUser)
-                              }
-                          }
-                          //loop through each user in users collection
-                      }
-                }
-                print(listOfUsers)
-        }
-    }
+
 }
 
 
@@ -109,6 +106,7 @@ struct SwipingView_Previews: PreviewProvider {
     static var previews: some View {
         SwipingView()
             .environmentObject(UserManager())
+            .environmentObject(SwipingModel())
     }
 }
 

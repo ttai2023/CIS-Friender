@@ -11,6 +11,7 @@ import Firebase
 @main
 struct CIS_FrienderApp: App {
     @StateObject private var userManager = UserManager()
+    @StateObject private var swipingData = SwipingModel()
     
     init()
     {
@@ -19,9 +20,14 @@ struct CIS_FrienderApp: App {
     
     var body: some Scene {
         WindowGroup {
-            
                 MainView ()
             .environmentObject(userManager)
+            .environmentObject(swipingData)
+            .task {
+                swipingData.userManager = self.userManager
+                swipingData.getUsers()
+            }
+            
         }
     }
 }

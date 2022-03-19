@@ -26,6 +26,7 @@
 		B92CA7AB27BF443600338F6D /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927662B27BE45CB0079195A /* CreateAccountView.swift */; };
 		B92CA7AD27BF448900338F6D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92CA7AC27BF448900338F6D /* WelcomeView.swift */; };
 		B9AF029127E4629D0001DF93 /* SizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AF029027E4629D0001DF93 /* SizePreferenceKey.swift */; };
+		B9AF029827E5E52C0001DF93 /* SwipingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AF029727E5E52C0001DF93 /* SwipingModel.swift */; };
 		B9CBBB3827DCB0E800C1D550 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CBBB3727DCB0E800C1D550 /* CardView.swift */; };
 		B9CBBB3A27DCB39C00C1D550 /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CBBB3927DCB39C00C1D550 /* SwipeDirection.swift */; };
 		B9D0483C27B79538002DB924 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B9D0483B27B79538002DB924 /* FirebaseAnalytics */; };
@@ -82,6 +83,7 @@
 		B927663027BE45CB0079195A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B92CA7AC27BF448900338F6D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		B9AF029027E4629D0001DF93 /* SizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizePreferenceKey.swift; sourceTree = "<group>"; };
+		B9AF029727E5E52C0001DF93 /* SwipingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingModel.swift; sourceTree = "<group>"; };
 		B9CBBB3727DCB0E800C1D550 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B9CBBB3927DCB39C00C1D550 /* SwipeDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDirection.swift; sourceTree = "<group>"; };
 		B9D0482027B76C41002DB924 /* CIS Friender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CIS Friender.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,13 +131,12 @@
 		518CB1DF27D05493002E1BBD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B9AF029427E5DF980001DF93 /* Swiping */,
 				51AF5D8227DF1AF9009A1741 /* Register */,
 				B927663027BE45CB0079195A /* MainView.swift */,
-				41B9DB5327C5EBC6001DCC10 /* SwipingView.swift */,
 				41811F7727C89C2500BDBA91 /* SearchView.swift */,
 				B927662827BE45CB0079195A /* UserProfileView.swift */,
 				41C6ACCA27D5BD7E00931E91 /* UserListView.swift */,
-				B9CBBB3727DCB0E800C1D550 /* CardView.swift */,
 				51AF5D8127DF1AED009A1741 /* Chatting */,
 			);
 			path = View;
@@ -210,6 +211,16 @@
 		B927662D27BE45CB0079195A /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B9AF029427E5DF980001DF93 /* Swiping */ = {
+			isa = PBXGroup;
+			children = (
+				B9CBBB3727DCB0E800C1D550 /* CardView.swift */,
+				41B9DB5327C5EBC6001DCC10 /* SwipingView.swift */,
+				B9AF029727E5E52C0001DF93 /* SwipingModel.swift */,
+			);
+			path = Swiping;
 			sourceTree = "<group>";
 		};
 		B9D0481727B76C41002DB924 = {
@@ -345,6 +356,7 @@
 				B92CA7AB27BF443600338F6D /* CreateAccountView.swift in Sources */,
 				B92CA7AA27BF442800338F6D /* UserProfileView.swift in Sources */,
 				B92CA7A827BF442200338F6D /* CIS_FrienderApp.swift in Sources */,
+				B9AF029827E5E52C0001DF93 /* SwipingModel.swift in Sources */,
 				E26A682B27E5C6F700A1E06D /* pickAvatar.swift in Sources */,
 				B92CA7A627BF43F000338F6D /* LoginView.swift in Sources */,
 				B92CA7A727BF441F00338F6D /* MainView.swift in Sources */,

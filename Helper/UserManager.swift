@@ -46,13 +46,14 @@ func checkIfUserIsSignedIn()
         {
             handle? = mAuth.addStateDidChangeListener { auth, user in
                 self.mUser = user
+                self.fetchCurUserData()
             }
-            let uid = mAuth.currentUser?.uid
-            Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
-                let value = snapshot.value as? NSDictionary
-                self.username = value?["Name"]as? String ?? ""
-
-            })
+//            let uid = mAuth.currentUser?.uid
+//            Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
+//                let value = snapshot.value as? NSDictionary
+//                self.username = value?["Name"]as? String ?? ""
+//
+//            })
         }
     }
     
