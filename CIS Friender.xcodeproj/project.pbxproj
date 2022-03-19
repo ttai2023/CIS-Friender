@@ -55,6 +55,7 @@
 		B9D0486C27B79538002DB924 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = B9D0486B27B79538002DB924 /* FirebaseStorageCombine-Community */; };
 		B9D0486E27B79538002DB924 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = B9D0486D27B79538002DB924 /* FirebaseStorageSwift-Beta */; };
 		E217976127CCE2F700072C2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B927662727BE45CB0079195A /* Assets.xcassets */; };
+		E26A682B27E5C6F700A1E06D /* pickAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26A682A27E5C6F600A1E06D /* pickAvatar.swift */; };
 		E2BF8C6627DF87CE001B5152 /* imagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF8C6527DF87CE001B5152 /* imagePicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		B9CBBB3727DCB0E800C1D550 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B9CBBB3927DCB39C00C1D550 /* SwipeDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDirection.swift; sourceTree = "<group>"; };
 		B9D0482027B76C41002DB924 /* CIS Friender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CIS Friender.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E26A682A27E5C6F600A1E06D /* pickAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickAvatar.swift; sourceTree = "<group>"; };
 		E2BF8C6527DF87CE001B5152 /* imagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,6 +158,7 @@
 				518CB1E427D1B6D9002E1BBD /* UserManager.swift */,
 				B921836127D8D79D006A44A8 /* Constants.swift */,
 				E2BF8C6527DF87CE001B5152 /* imagePicker.swift */,
+				E26A682A27E5C6F600A1E06D /* pickAvatar.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				B92CA7AB27BF443600338F6D /* CreateAccountView.swift in Sources */,
 				B92CA7AA27BF442800338F6D /* UserProfileView.swift in Sources */,
 				B92CA7A827BF442200338F6D /* CIS_FrienderApp.swift in Sources */,
+				E26A682B27E5C6F700A1E06D /* pickAvatar.swift in Sources */,
 				B92CA7A627BF43F000338F6D /* LoginView.swift in Sources */,
 				B92CA7A727BF441F00338F6D /* MainView.swift in Sources */,
 				B921836227D8D79D006A44A8 /* Constants.swift in Sources */,
