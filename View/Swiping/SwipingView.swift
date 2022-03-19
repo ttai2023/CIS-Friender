@@ -18,7 +18,7 @@ struct SwipingView: View {
     @State var swipeDirection: SwipeDirection = .none
     @EnvironmentObject private var userManager: UserManager
     @EnvironmentObject private  var swipingData: SwipingModel
-    @State var listOfUsers = [CISUser]()
+    
     @State var size = CGSize.zero
 //    @State var index: Int
 //    var user: CISUser
@@ -38,28 +38,33 @@ struct SwipingView: View {
 //                let size = proxy.size
 //                let index = CGFloat(swipingData.getIndex(user: user))
                 ZStack {
-                    ZStack {
-                        if let users = swipingData.listOfUsers {
-                            if users.isEmpty {
-                                Text("Looks like there are no more users to swipe through right now :( Come back later!")
-                                    .font(.caption)
-                                    .foregroundColor(Constants.blue)
+                    if let users = swipingData.listOfUsers { //if we let users become listOfUsers from swiping model
+                        if users.isEmpty { //if list is empty
+                            Text("Looks like there are no more users to swipe through right now :( Come back later!")
+                                .font(.caption)
+                                .foregroundColor(Constants.blue)
+                        }
+                        else {
+                            ForEach(swipingData.listOfUsers.reversed().dropFirst()) { user in //show all cards except first user
+                                
+                                CardView(card: user, swipeDirection: .constant(.none), size: .constant(CGSize.zero)) //swipe direction and size is for automated swiping
+                                    .padding(8)
+                                    .environmentObject(swipingData)
                             }
-                            else {
-                                ForEach(listOfUsers.reversed()) { user in
-                                    CardView(card: user, swipeDirection: $swipeDirection, size: $size)
-                                        .padding(8)
-                                        .environmentObject(swipingData)
-                                }
-                            }
+                            CardView(card: swipingData.listOfUsers[0],swipeDirection: $swipeDirection, size: $size) //show the first user's card
+                                .padding(8)
+                                .environmentObject(swipingData)
                         }
                     }
                 }
+            
 //            }
             
             HStack {
                 Button(action: {
                     swipeDirection = .left
+                    swipingData.listOfUsers.insert(swipingData.listOfUsers.reversed()[0],at: swipingData.listOfUsers.endIndex)
+                    swipingData.listOfUsers.remove(at: 0)
                 }) {
                     Image(systemName: "xmark.circle")
                         .resizable().aspectRatio(contentMode: .fit).frame(height: 45)
@@ -74,6 +79,8 @@ struct SwipingView: View {
                 Spacer()
                 Button(action: {
                     swipeDirection = .right
+                    swipingData.listOfUsers.insert(swipingData.listOfUsers.reversed()[0],at: swipingData.listOfUsers.endIndex)
+                    swipingData.listOfUsers.remove(at: 0)
                 }) {
                     Image(systemName: "heart.circle")
                         .resizable().aspectRatio(contentMode: .fit).frame(height: 45)

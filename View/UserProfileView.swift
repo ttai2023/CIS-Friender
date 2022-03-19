@@ -35,9 +35,6 @@ struct UserProfileView: View {
     
     @State private var showSheet = false
     
-    var aOrB = ["A", "B"]
-    @State private var toAOrNotToB = "A"
-    
     var signs = ["Unknown", "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
     
     var mbtis = ["Unknown", "ESTJ", "ENTJ", "ESFJ", "ENFJ", "ISTJ", "ISFJ", "INTJ", "INFJ", "ESTP", "ESFP", "ENTP", "ENFP", "ISTP","ISFP", "INTP", "INFP"]
@@ -59,6 +56,15 @@ struct UserProfileView: View {
                     .cornerRadius(100)
                     .padding(.bottom, 10)
             }
+            else {
+                Image("Boy 1")
+                    .resizable() //so image can be resized
+                    .aspectRatio(contentMode: .fill) //prevents original photo to be distorted
+                    .frame(width: 150, height: 150)//frame of circle
+                    .clipped() //area outside of frame will be cut
+                    .cornerRadius(100)
+                    .padding(.bottom, 10)
+            }
             
             Button(action: {isEditing.toggle()}) {
                 VStack {
@@ -68,8 +74,10 @@ struct UserProfileView: View {
                     Text("Edit Profile")
                         .foregroundColor(Constants.darkBlue)
                 }
+            }
                 Button
                 {
+                    isEditing = true
                     isPickAvatarPresented  = true
                 } label: {
                     Text("Change profile photo")
@@ -80,14 +88,11 @@ struct UserProfileView: View {
                             .cornerRadius(16)
                             .foregroundColor(.white)
                 }
-            }
             .sheet(isPresented: $isPickAvatarPresented)
             {
                 PickAvatar(imageName: $imageName)
             }
             .padding(.horizontal)
-            
-
             
             if !isEditing
             {

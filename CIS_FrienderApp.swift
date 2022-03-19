@@ -26,6 +26,7 @@ struct CIS_FrienderApp: App {
             .task {
                 swipingData.userManager = self.userManager
                 swipingData.getUsers()
+                userManager.checkIfUserIsSignedIn()
             }
             
         }

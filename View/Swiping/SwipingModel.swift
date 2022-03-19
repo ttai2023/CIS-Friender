@@ -31,7 +31,6 @@ class SwipingModel: ObservableObject {
                           }
                           //loop through each user in users collection
                       }
-                    print("")
                 }
         }
     }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CardView: View {
+    @EnvironmentObject var swipingData: SwipingModel
     @State var card: CISUser
     @Binding var swipeDirection: SwipeDirection
     @Binding var size: CGSize
@@ -73,9 +74,9 @@ struct CardView: View {
                 Spacer()
             }
         }
-        .cornerRadius(20)
         .frame(maxHeight: 580)
         // follows coordinates of CISUser card
+        .background(Constants.lightBlue).cornerRadius(20)
         .offset(x: card.x, y: card.y)
         .rotationEffect(.init(degrees: card.degree))
         .gesture(
@@ -107,7 +108,11 @@ struct CardView: View {
                             case let x where x > 100:
                                 // disappear from screen completely
                                 card.x = 500; card.degree = 12
-                
+                            withAnimation {
+                                swipingData.listOfUsers.insert(card,at: swipingData.listOfUsers.endIndex)
+                                swipingData.listOfUsers.remove(at: 0)
+                                swipeDirection = .none
+                            }
                             
                             //swipe right
                             case (-100)...(-1):
@@ -118,6 +123,13 @@ struct CardView: View {
                             case let x where x < -100:
                                 // disappear from screen completely
                                 card.x = -500; card.degree = -12
+                            withAnimation {
+                                swipingData.listOfUsers.insert(card,at: swipingData.listOfUsers.endIndex)
+                                swipingData.listOfUsers.remove(at: 0)
+                                swipeDirection = .none
+                            }
+                        
+                            
                             
                             default: card.x = 0; card.y = 0
                         }
@@ -136,7 +148,6 @@ struct CardView: View {
                     break
             }
         })
-        .background(Constants.lightBlue).cornerRadius(20)
         .padding()
         
     }
