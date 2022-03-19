@@ -113,13 +113,25 @@ struct SearchView: View
     var searchResults: [String] {
         //convert dictionary keys into an array arranged in an ascending order of quantity (popularity)
         var tags: [String] = []
-        var maxValue: Int = 0
+//        var maxValue: Int = 0
+        
         for (tag, quantity) in tagsDict {
-//            if quantity >= maxValue {
-//                maxValue = quantity
-//            }
-            tags.append(tag)
+        //            if quantity >= maxValue {
+        //                maxValue = quantity
+        //            }
+            if !tagsDict.isEmpty {
+                for currTag in tags {
+                    if quantity >= tagsDict[currTag] ?? 0 {
+                        tags.insert(tag, at: find(tags, currTag))
+                    }
+                    tags.append(tag)
+                }
+            }
+            else {
+                tags.append(tag)
+            }
         }
+        
         print("tags: ", tags, tagsDict)
         if searchText.isEmpty {
             return tags
