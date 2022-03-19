@@ -38,22 +38,26 @@ class UserManager: ObservableObject {
 //follow updated tutorial
 func checkIfUserIsSignedIn()
     {
-        if mAuth.currentUser?.uid == nil
+        
+        self.mUser = mAuth.currentUser
+        if let mUser = mUser
         {
-            username = "No name"
+            isSignedIn = true
+            mUserID = mUser.uid
+            self.fetchCurUserData()
         }
-        else
-        {
-            handle? = mAuth.addStateDidChangeListener { auth, user in
-                self.mUser = user
+        
+        handle = mAuth.addStateDidChangeListener { auth, user in
+            self.mUser = user
+            if let mUser = self.mUser
+            {
+                self.isSignedIn = true
+                self.mUserID = mUser.uid
+                self.fetchCurUserData()
             }
-            let uid = mAuth.currentUser?.uid
-            Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
-                let value = snapshot.value as? NSDictionary
-                self.username = value?["Name"]as? String ?? ""
 
-            })
         }
+        
     }
     
     
@@ -106,6 +110,7 @@ func checkIfUserIsSignedIn()
     }
     
     func fetchCurUserData(){
+        print("fetching curr user...")
         let db = Firestore.firestore()
         
         let docRef = db.collection("users").document(mUserID)
