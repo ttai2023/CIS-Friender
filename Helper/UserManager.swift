@@ -13,6 +13,7 @@ import FirebaseDatabase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseFirestoreCombineSwift
+import Combine
 
 //this is what julian demonstrated
 //٩(๑❛ᴗ❛๑)۶
@@ -28,6 +29,9 @@ class UserManager: ObservableObject {
     @Published var errorMessage: String = ""
     @Published private var username: String = ""
     @Published var userMBTI: String = ""
+    private var handle: Any?
+    //written with assistance from Julian
+    private var userListener: AnyCancellable? //store listener, otherwise will delete
     
     //whenever someone signs up/sign in -> set currentUser
     
@@ -40,6 +44,9 @@ func checkIfUserIsSignedIn()
         }
         else
         {
+            handle? = mAuth.addStateDidChangeListener { auth, user in
+                self.mUser = user
+            }
             let uid = mAuth.currentUser?.uid
             Database.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: {(snapshot) in
                 let value = snapshot.value as? NSDictionary
@@ -62,43 +69,13 @@ func checkIfUserIsSignedIn()
             }
             else
             {
-                self.mUserID = (self.mUser?.uid)!
+                self.mUserID = results!.user.uid
                 self.fetchCurUserData()
+                self.isSignedIn = true
+                
             }
-            
-//            firestore.collection("users").document(self.mUser.uid) {snapshot, error in
-//                if let error
-//                    error {
-//                        return ("Failed to fetch current user:", error)
-//                    }
-//                guard let data = snapshot?.data() else { return }
-        }
-        
-        // load current user
-        
-        
-//        let docRef = firestore.collection("users").document(userID)
 
-//        docRef.getDocument(as: CISUser.self) { result in
-//            // The Result type encapsulates deserialization errors or
-//            // successful deserialization, and can be handled as follows:
-//            //
-//            //      Result
-//            //        /\
-//            //   Error  CISUser
-//            switch result
-//            {
-//                case .success(let user):
-//                    // A `CISUser` value was successfully initialized from the DocumentSnapshot.
-//                self.currentUser = user
-//                case .failure(let error):
-//                    // A `CISUser` value could not be initialized from the DocumentSnapshot.
-//                self.errorMessage = "Error getting user."
-//            }
-//        }
-         
-        // over here
-        self.isSignedIn = true
+        }
         
     }
     
@@ -142,17 +119,35 @@ func checkIfUserIsSignedIn()
             
             if let document = document, document.exists
             {
-                let data = document.data()
-                if let data = data
-                {
-                    print("data", data)
-                    self.userMBTI = data["MBTI"] as? String ?? ""
+                if let docUser = try? document.data(as: CISUser.self) {
+                    self.currentUser = docUser
+                    self.mUserID = docUser.id!
+                }
+                else {
+                    print("no")
                 }
             }
         }
     }
     
+    func updateUser()
+    {
+        if let currentUser = currentUser {
+            try self.firestore.collection("users").document(currentUser.id!).setData(from: currentUser)
+        }
+    }
     
+    // Julian helped write this
+    func listenToUser()
+    {
+        if let currentUser = currentUser {
+            //listens to updates
+            //sink --> whenever publisher is called, listener will be called, user --> new user
+            userListener = $currentUser.sink(receiveValue: { user in
+                self.updateUser()
+            })
+        }
+    }
     
     func signOut()
     {

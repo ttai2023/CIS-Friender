@@ -22,30 +22,30 @@ struct SwipingView: View {
     var body: some View {
         VStack {
             HStack {
-                Button (action: {}) {
-                    Image(systemName: "person.crop.square")
-                        .resizable().aspectRatio(contentMode: .fit).frame(height: 45)
-                        .foregroundColor(Constants.blue)
-                }
+                Image(systemName: "person.crop.square")
+                    .resizable().aspectRatio(contentMode: .fit).frame(height: 45)
+                    .foregroundColor(Constants.blue)
                 Text("Friender")
-                    .font(.system(size: 45))
+                    .font(Font.custom("inconsolata", size: 45))
+                    .bold()
                     .foregroundColor(Constants.blue)
             }.padding(.horizontal).frame(height: 45)
-            
             ZStack {
-                ForEach(listOfUsers.reversed()) { user in
-                    CardView(card: user).padding(8)
+                ZStack {
+                    ForEach(listOfUsers.reversed()) { user in
+                        CardView(card: user).padding(8)
+                    }
                 }
             }
             
             HStack {
-                Button(action: {}) {
-                    Image(systemName: "arrowshape.turn.up.backward.circle")
-                        .resizable().aspectRatio(contentMode: .fit).frame(height: 45)
-                        .foregroundColor(Constants.darkBlue)
-                }
+//                Button(action: {}) {
+//                    Image(systemName: "arrowshape.turn.up.backward.circle")
+//                        .resizable().aspectRatio(contentMode: .fit).frame(height: 45)
+//                        .foregroundColor(Constants.darkBlue)
+//                }
                 
-                Spacer()
+//                Spacer()
                 Button(action: {}) {
                     Image(systemName: "xmark.circle")
                         .resizable().aspectRatio(contentMode: .fit).frame(height: 45)
@@ -64,12 +64,12 @@ struct SwipingView: View {
                         .foregroundColor(Constants.blue)
                         .foregroundColor(Constants.blue)
                 }
-                Spacer()
-                Button(action: {}) {
-                    Image(systemName: "star.circle")
-                        .resizable().aspectRatio(contentMode: .fit).frame(height: 45)
-                        .foregroundColor(Constants.darkBlue)
-                }
+//                Spacer()
+//                Button(action: {}) {
+//                    Image(systemName: "star.circle")
+//                        .resizable().aspectRatio(contentMode: .fit).frame(height: 45)
+//                        .foregroundColor(Constants.darkBlue)
+//                }
                 
             }.padding(.horizontal)
         }
@@ -89,11 +89,12 @@ struct SwipingView: View {
                 else {
                       for document in querySnapshot!.documents {
                           if let docUser = try? document.data(as: CISUser.self) {
+                              if !(docUser.id == userManager.currentUser?.id)
+                              {
                                   listOfUsers.append(docUser)
-                              
+                              }
                           }
-
-                          //loop through each tag in tags Array in current user
+                          //loop through each user in users collection
                       }
                 }
                 print(listOfUsers)
@@ -105,6 +106,7 @@ struct SwipingView: View {
 struct SwipingView_Previews: PreviewProvider {
     static var previews: some View {
         SwipingView()
+            .environmentObject(UserManager())
     }
 }
 

@@ -96,13 +96,13 @@ struct UserProfileView: View {
                         Text("Username")
                             .bold()
                         Spacer()
-                        Text(username)
+                        Text(userManager.currentUser?.username ?? "unknown")
                     }
                     HStack {
                         Text("Email")
                             .bold()
                         Spacer()
-                        Text("email")
+                        Text(userManager.currentUser?.email ?? "unknown")
                     }
                     HStack {
                         Text("Zodiac Sign")
@@ -133,13 +133,6 @@ struct UserProfileView: View {
                         TextField("Username", text: $username)
                     }
                     
-                    HStack {
-                        Text("Email")
-                            .bold()
-                        Spacer()
-                        TextField("email", text: $useremail)
-                    }
-                    
                     Picker("Zodiac Sign", selection: $sign) {
                         ForEach(signs, id: \.self) {sign in
                             Text(sign)
@@ -150,7 +143,6 @@ struct UserProfileView: View {
                         ForEach(mbtis, id: \.self) {mbti in
                             Text(mbti)
                         }
-                        
                     }
                     
                     HStack {
@@ -164,6 +156,28 @@ struct UserProfileView: View {
             
         }
         .navigationBarHidden(true)
+        .onChange(of: username) { newValue in
+            userManager.currentUser?.username = newValue
+        }
+        .onChange(of: useremail) { newValue in
+            userManager.currentUser?.email = newValue
+        }
+        .onChange(of: sign) { newValue in
+            userManager.currentUser?.zodiac = newValue
+        }
+        .onChange(of: mbti) { newValue in
+            userManager.currentUser?.MBTI = newValue
+        }
+        .onChange(of: bio) { newValue in
+            userManager.currentUser?.bio = newValue
+        }
+        .task {
+            self.username = userManager.currentUser?.username ?? ""
+            self.useremail = userManager.currentUser?.email ?? ""
+            self.sign = userManager.currentUser?.zodiac ?? ""
+            self.mbti = userManager.currentUser?.MBTI ?? ""
+            self.bio = userManager.currentUser?.bio ?? ""
+        }
     }
     
 }

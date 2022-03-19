@@ -11,7 +11,7 @@ struct ChatRow: View {
     
     var body: some View {
         HStack(spacing: 20){
-            Image("Girl 1")
+            Image("girl1")
                 .resizable()
                 .frame(width: 70, height: 70, alignment: .topLeading)
                 .clipShape(Circle())
