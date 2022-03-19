@@ -141,6 +141,23 @@ struct UserProfileView: View {
                         Spacer()
                         TextField("bio", text: $bio)
                     }
+                    
+                    HStack {
+                        Text("Sign out")
+                            .bold()
+                        Spacer()
+                        TextField("bio", text: $bio)
+                    }
+                    
+                    HStack {
+                        Text("DELETE ACCCOUNT")
+                            .bold()
+                        foregroundColor(.red)
+                        Spacer()
+                        TextField("bio", text: $bio)
+                    }
+
+
                 }
             }
             
