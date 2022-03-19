@@ -19,12 +19,12 @@ struct ForgotPasswordView:View{
         NavigationView{
             VStack{
                 Text("You are forgetful, but that's okay.")
+//                    .font(Font.custom("inconsolata", size: 45)
                     .font(.largeTitle)
                     .fontWeight(.semibold)
                     .padding(.bottom, 20)
                     .foregroundColor(Constants.darkBlue)
                     .multilineTextAlignment(.center)
-                
                 
                     TextField("Enter email address", text : $userEmail).autocapitalization(.none).keyboardType(.emailAddress)
                     .padding()

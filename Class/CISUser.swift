@@ -51,30 +51,6 @@ struct CISUser: Identifiable, Codable{
         self.talent = talent
    }
     
-    
-    
-    func getUsers() {
-//        //fetch all users from firebase
-//        Firestore.firestore().collection("User")
-//            .getDocuments() { (querySnapshot, err) in
-//                //catch error
-//                if let err = err {
-//                    print("Error getting users: \(err)")
-//                }
-//                else {
-//                      for document in querySnapshot!.documents {
-//                          //try? -> self.user will be nil, try! -> app will crash
-//                          //convert document into CISUser object
-//                          self.user = try? document.data(as: CISUser.self)
-//                          //loop through each tag in tags Array in current user
-//                          if let user = self.user {
-//                              continue
-//                          }
-//                      }
-//                }
-//        }
-    }
-    
 //U dont need getters, setters and toString() for swift, java sucks!
 //⋋_⋌
 
