@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ChattingView: View {
     
-    let chats = Chats.sampleChat
+    //let chats = Chats.sampleChat
     
     @State private var query = ""
     
     var body: some View {
         List{
             ForEach(chats){ i in
-                ChatRow(chat: chat)
+               // ChatRow(chat: chat)
             }
         }
         .listStyle(PlainListStyle())

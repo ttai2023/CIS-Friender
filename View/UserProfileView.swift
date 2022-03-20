@@ -161,6 +161,7 @@ struct UserProfileView: View {
                         Spacer()
                         TextField("bio", text: $bio)
                     }
+                     
                     
                     HStack {
                         Text("DELETE ACCCOUNT")
@@ -169,7 +170,6 @@ struct UserProfileView: View {
                         Spacer()
                         TextField("bio", text: $bio)
                     }
-
 
                 }
             }
@@ -198,33 +198,12 @@ struct UserProfileView: View {
             self.mbti = userManager.currentUser?.MBTI ?? ""
             self.bio = userManager.currentUser?.bio ?? ""
         }
-        
-        updateUserProfile()
-        
-        
-        
-        
-    }
-
-    
-    func updateUserProfile(){
-        let db = Firestore.firestore()
-        let docRef = db.collection("User").document(userManager.mUserID)
-        docRef.updateData(["userName": username])
-        docRef.updateData(["mbti": mbti])
-        docRef.updateData(["imageName": mbti])
-        docRef.updateData(["zodiac": sign])
-        docRef.updateData(["bio": bio])
-        {error in
-            if let error = error{
-                print("Error updating user profile:\(error)")
-            }else{
-                print("Successfully updated!")
-            }
-        }
-        
     }
     
+    func updateProfile(){
+            userManager.updateUserProfile()
+    }
+  
 }
 
 //TODO: DELETE ACCOUNT

@@ -33,6 +33,8 @@ class UserManager: ObservableObject {
     //written with assistance from Julian
     private var userListener: AnyCancellable? //store listener, otherwise will delete
     
+    var userProfile = UserProfileView()
+    
     //whenever someone signs up/sign in -> set currentUser
     
 //follow updated tutorial
@@ -134,6 +136,26 @@ func checkIfUserIsSignedIn()
             }
         }
     }
+    
+    func updateUserProfile(){
+        let db = Firestore.firestore()
+        let docRef = db.collection("User").document(mUserID)
+        docRef.updateData(["userName": userProfile.username])
+        docRef.updateData(["mbti": userProfile.mbti])
+        docRef.updateData(["imageName": userProfile.mbti])
+        docRef.updateData(["zodiac": userProfile.sign])
+        docRef.updateData(["bio": userProfile.bio])
+        {error in
+            if let error = error{
+                print("Error updating user profile:\(error)")
+            }else{
+                print("Successfully updated!")
+            }
+        }
+        
+    }
+
+
     
     func updateUser()
     {
