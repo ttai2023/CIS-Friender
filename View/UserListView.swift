@@ -17,6 +17,7 @@ struct UserListView: View {
     @State var user: CISUser? = nil
     
     func getUsersWithTag() {
+        usersWithTag.removeAll()
         userManager.firestore.collection("users")
             .getDocuments() { (querySnapshot, err) in
                 //catch error
@@ -27,16 +28,19 @@ struct UserListView: View {
                       for document in querySnapshot!.documents {
                           //convert document into CISUser object
                           self.user = try? document.data(as: CISUser.self)
-                          
+
                           if let user = self.user {
-                              if user.zodiac == currTag {
-                                  usersWithTag.append(user)
-                              }
-                              else if user.MBTI == currTag {
-                                  usersWithTag.append(user)
-                              }
-                              else if user.talent == currTag {
-                                  usersWithTag.append(user)
+                              //if user is not current user
+                              if user.email != userManager.currentUser?.email {
+                                  if user.zodiac == currTag {
+                                      usersWithTag.append(user)
+                                  }
+                                  else if user.MBTI == currTag {
+                                      usersWithTag.append(user)
+                                  }
+                                  else if user.talent == currTag {
+                                      usersWithTag.append(user)
+                                  }
                               }
                           }
                       }
@@ -50,25 +54,46 @@ struct UserListView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 ForEach(usersWithTag) { currUser in
-                    HStack {
-                        Image("Boy 1")
-                            .resizable() //so image can be resized
-                            .aspectRatio(contentMode: .fill) //prevents original photo to be distorted
-                            .frame(width: 80, height: 80)//frame of circle
-                            .clipped() //area outside of frame will be cut
-                            .cornerRadius(100)
-                            .padding(.bottom, 10)
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text("Username:")
-                                    .bold()
-                                Text(currUser.username)
-                            }
-                            
-                            HStack {
-                                Text("Email:")
-                                    .bold()
-                                Text(currUser.email)
+                    NavigationLink(destination: OtherUserProfileView(currUser: currUser)) {
+                        HStack {
+                            //currUser.imageName
+                            Image("Girl 1")
+                                .resizable() //so image can be resized
+                                .aspectRatio(contentMode: .fill) //prevents original photo to be distorted
+                                .frame(width: 80, height: 80)//frame of circle
+                                .clipped() //area outside of frame will be cut
+                                .cornerRadius(100)
+                                .padding(.bottom, 10)
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text("Username:")
+                                        .bold()
+                                    Text(currUser.username)
+                                }
+                                
+                                HStack {
+                                    Text(currUser.zodiac)
+                                        .foregroundColor(Constants.darkBlue)
+                                        .padding(5)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .stroke(Constants.darkBlue)
+                                        )
+                                    Text(currUser.MBTI)
+                                        .foregroundColor(Constants.blue)
+                                        .padding(5)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .stroke(Constants.blue)
+                                        )
+                                    Text(currUser.talent)
+                                        .foregroundColor(Constants.skyBlue)
+                                        .padding(5)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .stroke(Constants.skyBlue)
+                                        )
+                                }
                             }
                         }
                     }

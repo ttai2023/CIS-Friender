@@ -93,7 +93,7 @@ func checkIfUserIsSignedIn()
                 self.errorMessage = "Error creating user."
             }
             //user created sucessfully
-            let user = CISUser(username: username, email: email, bio: "bio", imageName: "girl1", zodiac: "zodiac", MBTI: "MBTI", talent: "talent")
+            let user = CISUser(username: username, email: email, bio: "bio", imageName: "Girl 1", zodiac: "?zodiac", MBTI: "?MBTI", talent: "?talent")
             do {
                 try self.firestore.collection("users").document(user.id!).setData(from: user)
             }

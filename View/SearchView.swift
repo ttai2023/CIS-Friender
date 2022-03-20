@@ -23,6 +23,7 @@ struct SearchView: View
     //add all current tags to allTags set
     //move to usermanager??
     func getTags() {
+        tagsDict.removeAll()
         //fetch all users from firebase
         userManager.firestore.collection("users")
             .getDocuments() { (querySnapshot, err) in
@@ -38,23 +39,16 @@ struct SearchView: View
                           //if current user's zodiac/MBTI/talent doesn't exists, create new key value pair
                           //if already exists, increase quantity by 1
                           if let user = self.user {
-//                              if !tagsDict.isEmpty {
                                   //check if user's zodiac exists already
                                   let zodiacExists = tagsDict[user.zodiac] != nil
-                                  print("Does user's zodiac exist already? " + String(zodiacExists))
                                   
                                   if zodiacExists {
-                                      print("Zodiac already exists")
-                                      print("Original zodiac: " + user.zodiac + String(tagsDict[user.zodiac] ?? 0))
                                       //if already exists, increase value by 1
-                                      tagsDict.updateValue(tagsDict[user.zodiac] ?? 0 + 1, forKey: user.zodiac)
-                                      print("Updated zodiac: " + user.zodiac + String(tagsDict[user.zodiac] ?? 0))
+                                      tagsDict.updateValue((tagsDict[user.zodiac] ?? 0) + 1, forKey: user.zodiac)
                                   }
                                   else {
                                       //if doesn't already exists, create new key value pair
                                       tagsDict[user.zodiac] = 0
-                                      print("Zodiac doesn't already exist")
-                                      print("New zodiac: " + user.zodiac + String(tagsDict[user.zodiac] ?? 0))
                                   }
                                   
                                   let MBTIExists = tagsDict[user.MBTI] != nil
@@ -62,7 +56,7 @@ struct SearchView: View
                                       tagsDict[user.MBTI] = 0
                                   }
                                   else {
-                                      tagsDict.updateValue(tagsDict[user.MBTI] ?? 0 + 1, forKey: user.MBTI)
+                                      tagsDict.updateValue((tagsDict[user.MBTI] ?? 0) + 1, forKey: user.MBTI)
                                   }
                                   
                                   let talentExists = tagsDict[user.talent] != nil
@@ -70,20 +64,11 @@ struct SearchView: View
                                       tagsDict[user.talent] = 0
                                   }
                                   else {
-                                      tagsDict.updateValue(tagsDict[user.talent] ?? 0 + 1, forKey: user.talent)
+                                      tagsDict.updateValue((tagsDict[user.talent] ?? 0) + 1, forKey: user.talent)
                                   }
-//                              }
-//                              else {
-//
-//                              }
-
-//                              for tag in user.tags {
-//                                  allTags.insert(tag)
-//                              }
                           }
                       }
                 }
-                print("tags: ", tagsDict)
         }
     }
     
@@ -113,26 +98,37 @@ struct SearchView: View
     var searchResults: [String] {
         //convert dictionary keys into an array arranged in an ascending order of quantity (popularity)
         var tags: [String] = []
+        var insertIndex: Int = 0
+        var added: BooleanLiteralType = false
 //        var maxValue: Int = 0
         
-        for (tag, quantity) in tagsDict {
-        //            if quantity >= maxValue {
-        //                maxValue = quantity
-        //            }
-            if !tagsDict.isEmpty {
+        //loop through each tag, quantity pair in tags dictionary
+        for (dictTag, quantity) in tagsDict {
+            added = false
+            //if tags array is not empty
+            if !tags.isEmpty {
+                //loop through each tag in tags array
                 for currTag in tags {
-                    if quantity >= tagsDict[currTag] ?? 0 {
-//                        tags.insert(tag, at: find(tags, currTag))
+                    //check if the dictionary tag's quantity is more than the current array tag's quantity
+                    if quantity > tagsDict[currTag] ?? 0 {
+                        insertIndex = tags.firstIndex(of: currTag) ?? 0
+                        //if yes, insert at current array tag's position
+                        tags.insert(dictTag, at: insertIndex)
+                        added = true
+                        break
                     }
-                    tags.append(tag)
+                }
+                //if not added, add to array tag
+                if !added {
+                    tags.append(dictTag)
                 }
             }
+            //if tags array is empty, append tag to array tags
             else {
-                tags.append(tag)
+                tags.append(dictTag)
             }
         }
         
-        print("tags: ", tags, tagsDict)
         if searchText.isEmpty {
             return tags
         } else {
