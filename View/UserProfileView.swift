@@ -17,18 +17,16 @@ import FirebaseFirestoreCombineSwift
 struct UserProfileView: View {
     @EnvironmentObject private var userManager: UserManager
     @State private var isPickAvatarPresented = false
-    
-    // create a database reference to locate the data
+
    
-    
-    //let ref = Database.database().reference(withPath: "Users")
-   
+    @State public var curImageName: String = ""
     @State public var username: String = ""
     @State public var useremail: String = ""
     @State public var sign: String = ""
     @State public var mbti: String = ""
     @State public var bio: String = ""
     @State private var isEditing = false
+    
     
     //for image picker
     @State private var imageName: String?
@@ -119,7 +117,7 @@ struct UserProfileView: View {
                         Text("MBTI")
                             .bold()
                         Spacer()
-                        Text(userManager.userMBTI)
+                        Text(mbti)
                     }
                     HStack {
                         Text("Bio")
@@ -163,6 +161,7 @@ struct UserProfileView: View {
                         Spacer()
                         TextField("bio", text: $bio)
                     }
+                     
                     
                     HStack {
                         Text("DELETE ACCCOUNT")
@@ -171,7 +170,6 @@ struct UserProfileView: View {
                         Spacer()
                         TextField("bio", text: $bio)
                     }
-
 
                 }
             }
@@ -202,6 +200,10 @@ struct UserProfileView: View {
         }
     }
     
+    func updateProfile(){
+            userManager.updateUserProfile()
+    }
+  
 }
 
 //TODO: DELETE ACCOUNT

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PickAvatar: View {
     @Environment(\.dismiss) private var dismiss
-    @Binding var imageName: String?
+    @Binding public var imageName: String?
     
     private let columns = [
         GridItem(.adaptive(minimum: 80))
