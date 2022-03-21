@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ChattingView: View {
     
-    let chats = Chats.sampleChat
+    let chats = Chat.sampleChat
     
     @State private var query = ""
     
     var body: some View {
         List{
-            ForEach(chats){ i in
+            ForEach(chats){ chat in
                 ChatRow(chat: chat)
             }
         }

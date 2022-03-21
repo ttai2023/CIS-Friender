@@ -128,9 +128,6 @@ struct CardView: View {
                                 swipingData.listOfUsers.remove(at: 0)
                                 swipeDirection = .none
                             }
-                        
-                            
-                            
                             default: card.x = 0; card.y = 0
                         }
                     }

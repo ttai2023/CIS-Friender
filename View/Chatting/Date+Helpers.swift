@@ -25,13 +25,14 @@ extension Date{
             let weekdayIndex = Calendar.current.component(.weekday, from: self) - 1
             return formatter.weekdaySymbols[weekdayIndex]
         }
+        return formatter.string(from: self)
     }
     
     func daysBetween(date:Date) -> Int{
         let calendar = Calendar.current
         let date1 = calendar.startOfDay(for: self)
         let date2 = calendar.startOfDay(for: date)
-        if let daysBetween = Calender.dateComponents([.day], from: date1, to:date2).day{
+        if let daysBetween = calender.dateComponents([.day], from: date1, to:date2).day{
             return daysBetween
         }
         return 0
