@@ -138,16 +138,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		412F834127E9E8640043C945 /* Searching */ = {
+			isa = PBXGroup;
+			children = (
+				41811F7727C89C2500BDBA91 /* SearchView.swift */,
+				41C6ACCA27D5BD7E00931E91 /* UserListView.swift */,
+				41547C9127E6421400A1C854 /* OtherUserProfileView.swift */,
+			);
+			path = Searching;
+			sourceTree = "<group>";
+		};
 		518CB1DF27D05493002E1BBD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B927663027BE45CB0079195A /* MainView.swift */,
+				E2B3539F27E9D39C00AB801A /* UserProfile */,
+				412F834127E9E8640043C945 /* Searching */,
 				B9AF029427E5DF980001DF93 /* Swiping */,
 				51AF5D8227DF1AF9009A1741 /* Register */,
-				B927663027BE45CB0079195A /* MainView.swift */,
-				41811F7727C89C2500BDBA91 /* SearchView.swift */,
-				41C6ACCA27D5BD7E00931E91 /* UserListView.swift */,
 				51AF5D8127DF1AED009A1741 /* Chatting */,
-				41547C9127E6421400A1C854 /* OtherUserProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -197,7 +206,6 @@
 		B927662527BE45CB0079195A /* CIS-Friender */ = {
 			isa = PBXGroup;
 			children = (
-				E2B3539F27E9D39C00AB801A /* UserProfile */,
 				518CB1E127D055A2002E1BBD /* Helper */,
 				518CB1E027D05575002E1BBD /* Class */,
 				518CB1DF27D05493002E1BBD /* View */,
