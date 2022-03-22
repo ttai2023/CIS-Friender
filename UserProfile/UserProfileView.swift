@@ -19,7 +19,6 @@ struct UserProfileView: View {
     @State private var isPickAvatarPresented = false
 
    
-    @State public var curImageName: String = ""
     @State public var username: String = ""
     @State public var useremail: String = ""
     @State public var sign: String = ""
@@ -176,6 +175,9 @@ struct UserProfileView: View {
             
         }
         .navigationBarHidden(true)
+        .onChange(of: imageName!){newValue in
+            userManager.currentUser?.imageName = newValue
+        }
         .onChange(of: username) { newValue in
             userManager.currentUser?.username = newValue
         }
@@ -199,6 +201,7 @@ struct UserProfileView: View {
             self.bio = userManager.currentUser?.bio ?? ""
         }
     }
+
     
     func updateProfile(){
             userManager.updateUserProfile()

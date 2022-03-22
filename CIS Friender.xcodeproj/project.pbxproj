@@ -60,6 +60,8 @@
 		E217976127CCE2F700072C2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B927662727BE45CB0079195A /* Assets.xcassets */; };
 		E231EABA27E72BCB00B9FFD6 /* pickTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = E231EAB927E72BCB00B9FFD6 /* pickTags.swift */; };
 		E26A682B27E5C6F700A1E06D /* pickAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26A682A27E5C6F600A1E06D /* pickAvatar.swift */; };
+		E2B353A127E9D3DD00AB801A /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B353A027E9D3DD00AB801A /* TagsView.swift */; };
+		E2B353A327E9D44600AB801A /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B353A227E9D44600AB801A /* Tag.swift */; };
 		E2BF8C6627DF87CE001B5152 /* imagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF8C6527DF87CE001B5152 /* imagePicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +96,8 @@
 		B9D0482027B76C41002DB924 /* CIS Friender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CIS Friender.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E231EAB927E72BCB00B9FFD6 /* pickTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickTags.swift; sourceTree = "<group>"; };
 		E26A682A27E5C6F600A1E06D /* pickAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickAvatar.swift; sourceTree = "<group>"; };
+		E2B353A027E9D3DD00AB801A /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
+		E2B353A227E9D44600AB801A /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		E2BF8C6527DF87CE001B5152 /* imagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,7 +145,6 @@
 				51AF5D8227DF1AF9009A1741 /* Register */,
 				B927663027BE45CB0079195A /* MainView.swift */,
 				41811F7727C89C2500BDBA91 /* SearchView.swift */,
-				B927662827BE45CB0079195A /* UserProfileView.swift */,
 				41C6ACCA27D5BD7E00931E91 /* UserListView.swift */,
 				51AF5D8127DF1AED009A1741 /* Chatting */,
 				41547C9127E6421400A1C854 /* OtherUserProfileView.swift */,
@@ -165,9 +168,6 @@
 				518CB1E227D055BA002E1BBD /* Utilities.swift */,
 				518CB1E427D1B6D9002E1BBD /* UserManager.swift */,
 				B921836127D8D79D006A44A8 /* Constants.swift */,
-				E2BF8C6527DF87CE001B5152 /* imagePicker.swift */,
-				E26A682A27E5C6F600A1E06D /* pickAvatar.swift */,
-				E231EAB927E72BCB00B9FFD6 /* pickTags.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -197,6 +197,7 @@
 		B927662527BE45CB0079195A /* CIS-Friender */ = {
 			isa = PBXGroup;
 			children = (
+				E2B3539F27E9D39C00AB801A /* UserProfile */,
 				518CB1E127D055A2002E1BBD /* Helper */,
 				518CB1E027D05575002E1BBD /* Class */,
 				518CB1DF27D05493002E1BBD /* View */,
@@ -246,6 +247,19 @@
 				B9D0482027B76C41002DB924 /* CIS Friender.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E2B3539F27E9D39C00AB801A /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				B927662827BE45CB0079195A /* UserProfileView.swift */,
+				E2BF8C6527DF87CE001B5152 /* imagePicker.swift */,
+				E26A682A27E5C6F600A1E06D /* pickAvatar.swift */,
+				E231EAB927E72BCB00B9FFD6 /* pickTags.swift */,
+				E2B353A027E9D3DD00AB801A /* TagsView.swift */,
+				E2B353A227E9D44600AB801A /* Tag.swift */,
+			);
+			path = UserProfile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,6 +377,7 @@
 				51AF5D8427DF22F1009A1741 /* ChatModel.swift in Sources */,
 				41811F7827C89C2500BDBA91 /* SearchView.swift in Sources */,
 				5143B95427DD60C800ED5D8F /* ForgotPasswordView.swift in Sources */,
+				E2B353A127E9D3DD00AB801A /* TagsView.swift in Sources */,
 				51AF5D8027DF1AE5009A1741 /* ChatRow.swift in Sources */,
 				511A902727E62AEB002AFB12 /* Date+Helpers.swift in Sources */,
 				B92CA7AB27BF443600338F6D /* CreateAccountView.swift in Sources */,
@@ -378,6 +393,7 @@
 				B9CBBB3A27DCB39C00C1D550 /* SwipeDirection.swift in Sources */,
 				41C6ACCB27D5BD7E00931E91 /* UserListView.swift in Sources */,
 				51F625A327CAFFFD002DCF0B /* CISUser.swift in Sources */,
+				E2B353A327E9D44600AB801A /* Tag.swift in Sources */,
 				518CB1E327D055BA002E1BBD /* Utilities.swift in Sources */,
 				518CB1E527D1B6DA002E1BBD /* UserManager.swift in Sources */,
 				B92CA7AD27BF448900338F6D /* WelcomeView.swift in Sources */,
