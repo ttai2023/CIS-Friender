@@ -34,7 +34,7 @@ struct TagsView: View {
                     
                     ForEach(getRows(), id: \.self){ rows in
                         
-                        HStack(spacing: 0){
+                        HStack(spacing: 6){
                             
                             ForEach(rows){row in
                                 
@@ -76,14 +76,16 @@ struct TagsView: View {
         
         Text(tag.text)
             .font(.system(size: fontSize))
+            .foregroundColor(.black)
             .padding(.horizontal, 14)
-            .padding(.vertical)
+            .padding(.vertical, 8)
             .background(
                 
                 Capsule()
                     .fill(.white)
             )
             .foregroundColor(Color("Color"))
+            .lineLimit(1)
     }
     
     func getIndex(tag: Tag)->Int{
@@ -109,12 +111,14 @@ struct TagsView: View {
         tags.forEach { tag in
             
             // updating total wideth...
-            totalWidth += tag.size
+            totalWidth += (tag.size + 40)
             
             //checking if total width is greater than size
             if totalWidth > screenWidth{
                 // adding row in rows
                 // clearing the data
+                totalWidth = (!currentRow.isEmpty ? (tag.size + 40) : 0)
+                
                 rows.append(currentRow)
                 currentRow.removeAll()
                 currentRow.append(tag)
