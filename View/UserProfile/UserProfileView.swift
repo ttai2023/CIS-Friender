@@ -88,11 +88,11 @@ struct UserProfileView: View {
                         .cornerRadius(16)
                         .foregroundColor(.white)
             }
-        .sheet(isPresented: $isPickAvatarPresented)
-        {
-            PickAvatar(imageName: $imageName)
-        }
-        .padding(.horizontal)
+            .sheet(isPresented: $isPickAvatarPresented)
+            {
+                PickAvatar(imageName: $imageName)
+            }
+            .padding(.horizontal)
                 
             
             if !isEditing
@@ -164,21 +164,6 @@ struct UserProfileView: View {
                         Spacer()
                         TextField("bio", text: $bio)
                     }
-                    
-                    Button
-                    {
-                        isPickTagPresented  = true
-                    } label: {
-                        Text("Edit Tags")
-                                .font(.headline)
-                                .foregroundColor(.black)
-                    }
-                .sheet(isPresented: $isPickTagPresented)
-                {
-                    PickTags()
-                }
-                .padding(.horizontal)
-                    
                     
                      
                     HStack {

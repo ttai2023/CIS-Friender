@@ -49,9 +49,8 @@ struct PickTags: View {
                 Button {
                     
                     // Adding Tag...
-                    tags.append(Tag(text: text))
+                    tags.append(addTag(text: text, fontSize: 16))
                     text = ""
-                    print(tags)
                     
                 }label: {
                     Text("Add Tag")
