@@ -15,7 +15,7 @@ struct OtherUserProfileView: View {
             VStack(alignment: .center, spacing: 10)
             {
                 //user.imageName
-                Image("Girl 1")
+                Image(user.imageName)
                     .resizable() //so image can be resized
                     .aspectRatio(contentMode: .fill) //prevents original photo to be distorted
                     .frame(width: 150, height: 150)//frame of circle

@@ -50,6 +50,7 @@ func checkIfUserIsSignedIn()
         }
         
         handle = mAuth.addStateDidChangeListener { auth, user in
+            //run this code if firebase auto signs in
             self.mUser = user
             if let mUser = self.mUser
             {
