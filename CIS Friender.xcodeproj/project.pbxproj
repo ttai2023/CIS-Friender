@@ -11,13 +11,13 @@
 		41811F7827C89C2500BDBA91 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41811F7727C89C2500BDBA91 /* SearchView.swift */; };
 		41B9DB5427C5EBC6001DCC10 /* SwipingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9DB5327C5EBC6001DCC10 /* SwipingView.swift */; };
 		41C6ACCB27D5BD7E00931E91 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6ACCA27D5BD7E00931E91 /* UserListView.swift */; };
+		510EBA3827F335D500B00036 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510EBA3727F335D500B00036 /* ChatView.swift */; };
 		511A902727E62AEB002AFB12 /* Date+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511A902627E62AEB002AFB12 /* Date+Helpers.swift */; };
 		51424B9F27D8928F000CCFD1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51424B9E27D8928F000CCFD1 /* GoogleService-Info.plist */; };
 		5143B95427DD60C800ED5D8F /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143B95327DD60C800ED5D8F /* ForgotPasswordView.swift */; };
 		518CB1E327D055BA002E1BBD /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518CB1E227D055BA002E1BBD /* Utilities.swift */; };
 		518CB1E527D1B6DA002E1BBD /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518CB1E427D1B6D9002E1BBD /* UserManager.swift */; };
 		51A8AEB827E88A2E002EB0DD /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A8AEB727E88A2E002EB0DD /* ChatsViewModel.swift */; };
-		51A8AEBA27E895EE002EB0DD /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A8AEB927E895EE002EB0DD /* ChatView.swift */; };
 		51AF5D7E27DF08DA009A1741 /* ChattingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF5D7D27DF08DA009A1741 /* ChattingView.swift */; };
 		51AF5D8027DF1AE5009A1741 /* ChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF5D7F27DF1AE5009A1741 /* ChatRow.swift */; };
 		51AF5D8427DF22F1009A1741 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF5D8327DF22F1009A1741 /* ChatModel.swift */; };
@@ -72,13 +72,13 @@
 		41811F7727C89C2500BDBA91 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		41B9DB5327C5EBC6001DCC10 /* SwipingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingView.swift; sourceTree = "<group>"; };
 		41C6ACCA27D5BD7E00931E91 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
+		510EBA3727F335D500B00036 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		511A902627E62AEB002AFB12 /* Date+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helpers.swift"; sourceTree = "<group>"; };
 		51424B9E27D8928F000CCFD1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5143B95327DD60C800ED5D8F /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		518CB1E227D055BA002E1BBD /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		518CB1E427D1B6D9002E1BBD /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		51A8AEB727E88A2E002EB0DD /* ChatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
-		51A8AEB927E895EE002EB0DD /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		51AF5D7D27DF08DA009A1741 /* ChattingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingView.swift; sourceTree = "<group>"; };
 		51AF5D7F27DF1AE5009A1741 /* ChatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRow.swift; sourceTree = "<group>"; };
 		51AF5D8327DF22F1009A1741 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
@@ -188,12 +188,12 @@
 		51AF5D8127DF1AED009A1741 /* Chatting */ = {
 			isa = PBXGroup;
 			children = (
-				51A8AEB927E895EE002EB0DD /* ChatView.swift */,
 				51AF5D7D27DF08DA009A1741 /* ChattingView.swift */,
 				51AF5D7F27DF1AE5009A1741 /* ChatRow.swift */,
 				51AF5D8327DF22F1009A1741 /* ChatModel.swift */,
 				511A902627E62AEB002AFB12 /* Date+Helpers.swift */,
 				51A8AEB727E88A2E002EB0DD /* ChatsViewModel.swift */,
+				510EBA3727F335D500B00036 /* ChatView.swift */,
 			);
 			path = Chatting;
 			sourceTree = "<group>";
@@ -387,7 +387,6 @@
 				E231EABA27E72BCB00B9FFD6 /* pickTags.swift in Sources */,
 				E2BF8C6627DF87CE001B5152 /* imagePicker.swift in Sources */,
 				41547C9227E6421400A1C854 /* OtherUserProfileView.swift in Sources */,
-				51A8AEBA27E895EE002EB0DD /* ChatView.swift in Sources */,
 				41B9DB5427C5EBC6001DCC10 /* SwipingView.swift in Sources */,
 				51AF5D8427DF22F1009A1741 /* ChatModel.swift in Sources */,
 				41811F7827C89C2500BDBA91 /* SearchView.swift in Sources */,
@@ -403,6 +402,7 @@
 				51A8AEB827E88A2E002EB0DD /* ChatsViewModel.swift in Sources */,
 				B92CA7A627BF43F000338F6D /* LoginView.swift in Sources */,
 				B92CA7A727BF441F00338F6D /* MainView.swift in Sources */,
+				510EBA3827F335D500B00036 /* ChatView.swift in Sources */,
 				B921836227D8D79D006A44A8 /* Constants.swift in Sources */,
 				51AF5D7E27DF08DA009A1741 /* ChattingView.swift in Sources */,
 				B9AF029127E4629D0001DF93 /* SizePreferenceKey.swift in Sources */,
