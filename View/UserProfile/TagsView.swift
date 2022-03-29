@@ -34,7 +34,7 @@ struct TagsView: View {
                     
                     ForEach(getRows(), id: \.self){ rows in
                         
-                        HStack(spacing: 0){
+                        HStack(spacing: 6){
                             
                             ForEach(rows){row in
                                 
@@ -49,26 +49,17 @@ struct TagsView: View {
             }
             .frame(maxWidth: .infinity)
             .background(
+                
                 RoundedRectangle(cornerRadius: 8)
                     .strokeBorder(.white.opacity(0.5),lineWidth: 1)
             )
         }
-        .onChange(of: tags) { newValue in
+        //.onChange(of: tags) { newValue in
             
-            // getting newly inserted Values...
-            guard let last = tags.last else{
-                return
-            }
             
-            // geting text size...
-            let font = UIFont.systemFont(ofSize: fontSize)
-            
-            let attributes = [NSAttributedString.Key.font: font]
-            
-            let size = (last.text as NSString).size(withAttributes: attributes)
-            
-            tags[getIndex(tag: last)].size = size.width
-        }
+        //}
+        // Animation...
+        .animation(.easeInOut, value: tags)
     }
     
     @ViewBuilder
@@ -76,15 +67,26 @@ struct TagsView: View {
         
         Text(tag.text)
             .font(.system(size: fontSize))
+            .foregroundColor(Color("Color"))
             .padding(.horizontal, 14)
-            .padding(.vertical)
+            .padding(.vertical, 8)
             .background(
                 
                 Capsule()
                     .fill(.white)
             )
-            .foregroundColor(Color("Color"))
-    }
+            //.lineLimit(1)
+        
+            .contentShape(Capsule())
+            .contextMenu{
+                
+                Button("Delete"){
+                    tags.remove(at: getIndex(tag: tag))
+                    
+                }
+            }
+
+         }
     
     func getIndex(tag: Tag)->Int{
         
@@ -109,14 +111,16 @@ struct TagsView: View {
         tags.forEach { tag in
             
             // updating total wideth...
-            totalWidth += tag.size
+            totalWidth += (tag.size + 40)
             
             //checking if total width is greater than size
             if totalWidth > screenWidth{
                 // adding row in rows
                 // clearing the data
+                totalWidth = (!currentRow.isEmpty || rows.isEmpty ? (tag.size + 40) : 0)
+                
                 rows.append(currentRow)
-                currentRow.removeAll()
+                //currentRow.removeAll()
                 currentRow.append(tag)
                 
             }else{
@@ -139,4 +143,17 @@ struct TagsView_Previews: PreviewProvider {
     static var previews: some View {
         PickTags()
     }
+}
+
+// Global Function
+func addTag(text: String, fontSize: CGFloat)->Tag{
+
+    // geting text size...
+    let font = UIFont.systemFont(ofSize: fontSize)
+    
+    let attributes = [NSAttributedString.Key.font: font]
+    
+    let size = (text as NSString).size(withAttributes: attributes)
+   
+    return Tag(text: text, size: size.width)
 }
