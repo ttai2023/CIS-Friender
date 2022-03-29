@@ -45,8 +45,8 @@ struct Message: Identifiable{
 
 extension Chat{
     static let sampleChat = [
-        Chat(person:Person(name:"Joy",imgString: "girl1"),messages:[
-            Message("That's so lame",type: .Sent, date: "19/07/2022")
+        Chat  (person:Person(name:"Joy",imgString: "girl1"),messages:[
+            Message("That's so lame",type: .Sent, date:  Date(timeIntervalSinceNow: -84600 * 4))
         ],hasUnreadMessage: true)
     ]
         

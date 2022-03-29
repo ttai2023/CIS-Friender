@@ -31,6 +31,8 @@ struct ChatRow: View {
                         Text(chat.messages.last?.date.description ?? "")
                             .foregroundColor(Constants.lightBlue)
                     }
+                    
+                    Spacer()
                 
                         //TODO: Display user last message
                     Text(chat.messages.last?.text ?? "")

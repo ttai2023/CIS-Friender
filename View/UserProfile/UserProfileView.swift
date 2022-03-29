@@ -16,16 +16,17 @@ import FirebaseFirestoreCombineSwift
 
 struct UserProfileView: View {
     @EnvironmentObject private var userManager: UserManager
+    
     @State private var isPickAvatarPresented = false
-
+    @State private var isPickTagPresented = false
+    @State private var isEditing = false
    
-    @State public var curImageName: String = ""
     @State public var username: String = ""
     @State public var useremail: String = ""
     @State public var sign: String = ""
     @State public var mbti: String = ""
     @State public var bio: String = ""
-    @State private var isEditing = false
+    
     
     
     //for image picker
@@ -73,24 +74,26 @@ struct UserProfileView: View {
                         .foregroundColor(Constants.darkBlue)
                 }
             }
-                Button
-                {
-                    isEditing = true
-                    isPickAvatarPresented  = true
-                } label: {
-                    Text("Change profile photo")
-                            .font(.headline)
-                            .frame(maxWidth: 200)
-                            .frame(height: 25)
-                            .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.262745098, green: 0.0862745098, blue: 0.8588235294, alpha: 1)), Color(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1))]), startPoint: .top, endPoint: .bottom))
-                            .cornerRadius(16)
-                            .foregroundColor(.white)
-                }
+            
+            Button
+            {
+                isEditing = true
+                isPickAvatarPresented  = true
+            } label: {
+                Text("Change profile photo")
+                        .font(.headline)
+                        .frame(maxWidth: 200)
+                        .frame(height: 25)
+                        .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.262745098, green: 0.0862745098, blue: 0.8588235294, alpha: 1)), Color(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1))]), startPoint: .top, endPoint: .bottom))
+                        .cornerRadius(16)
+                        .foregroundColor(.white)
+            }
             .sheet(isPresented: $isPickAvatarPresented)
             {
                 PickAvatar(imageName: $imageName)
             }
             .padding(.horizontal)
+                
             
             if !isEditing
             {
@@ -162,6 +165,7 @@ struct UserProfileView: View {
                         TextField("bio", text: $bio)
                     }
                     
+                     
                     HStack {
                         Text("DELETE ACCCOUNT")
                             .bold()
@@ -169,13 +173,14 @@ struct UserProfileView: View {
                         Spacer()
                         TextField("bio", text: $bio)
                     }
-
-
                 }
             }
             
         }
         .navigationBarHidden(true)
+        .onChange(of: imageName!){newValue in
+            userManager.currentUser?.imageName = newValue
+        }
         .onChange(of: username) { newValue in
             userManager.currentUser?.username = newValue
         }
@@ -198,33 +203,13 @@ struct UserProfileView: View {
             self.mbti = userManager.currentUser?.MBTI ?? ""
             self.bio = userManager.currentUser?.bio ?? ""
         }
-        
-        updateUserProfile()
-        
-        
-        
-        
     }
 
     
-    func updateUserProfile(){
-        let db = Firestore.firestore()
-        let docRef = db.collection("User").document(userManager.mUserID)
-        docRef.updateData(["userName": username])
-        docRef.updateData(["mbti": mbti])
-        docRef.updateData(["imageName": mbti])
-        docRef.updateData(["zodiac": sign])
-        docRef.updateData(["bio": bio])
-        {error in
-            if let error = error{
-                print("Error updating user profile:\(error)")
-            }else{
-                print("Successfully updated!")
-            }
-        }
-        
+    func updateProfile(){
+            userManager.updateUserProfile()
     }
-    
+  
 }
 
 //TODO: DELETE ACCOUNT
