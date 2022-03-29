@@ -31,9 +31,9 @@ extension Date{
         let calendar = Calendar.current
         let date1 = calendar.startOfDay(for: self)
         let date2 = calendar.startOfDay(for: date)
-        if let daysBetween = Calender.dateComponents([.day], from: date1, to:date2).day{
-            return daysBetween
-        }
+//        if let daysBetween = Calender.dateComponents([.day], from: date1, to:date2).day{
+//            return daysBetween
+//        }
         return 0
     }
 
