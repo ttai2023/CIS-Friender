@@ -38,9 +38,8 @@ class ChatsViewModel : ObservableObject{
                 }else{
                     tmp.append(message)
                 }
-                else{
+                }else{
                     tmp.append(message)
-                }
             }
         }
         res.append(tmp)
