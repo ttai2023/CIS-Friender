@@ -38,7 +38,6 @@ struct UserProfileView: View {
     
     var mbtis = ["Unknown", "ESTJ", "ENTJ", "ESFJ", "ENFJ", "ISTJ", "ISFJ", "INTJ", "INFJ", "ESTP", "ESFP", "ENTP", "ENFP", "ISTP","ISFP", "INTP", "INFP"]
     
-    @State private var selectedColor = "Red"
     
     let lightGrey = Color(red: 0.827, green: 0.870, blue: 0.894, opacity: 0.5)
     
@@ -178,8 +177,8 @@ struct UserProfileView: View {
             
         }
         .navigationBarHidden(true)
-        .onChange(of: imageName!){newValue in
-            userManager.currentUser?.imageName = newValue
+        .onChange(of: imageName){newValue in
+            userManager.currentUser?.imageName = newValue ?? ""
         }
         .onChange(of: username) { newValue in
             userManager.currentUser?.username = newValue
