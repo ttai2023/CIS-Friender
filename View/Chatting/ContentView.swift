@@ -8,29 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
-    //array of messages
-    var messageArray = ["DUDE LISTEN TO MY NEW SONG", "It's called feel my rhythm!"]
+    @StateObject var messagesManager = MessagesManager()
     
-    var body: some View{
-        VStack{
-        VStack{
-            TitleRowView()
-            
-            ScrollView{
-                ForEach(messageArray, id :\.self){ text in
-                    MessageBubble(message: Message (id:
-                        "12345", text: text, received: true, timestamp: Date()))
-                        
+    var body: some View {
+        VStack {
+            VStack {
+                TitleRowView()
+                
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        ForEach(messagesManager.messages, id: \.id) { message in
+                            MessageBubble(message: message)
+                        }
                     }
-                    
+                    .padding(.top, 10)
+                    .background(.white)
+                    .cornerRadius(30, corners: [.topLeft, .topRight]) // Custom cornerRadius modifier added in Extensions file
+                    .onChange(of: messagesManager.lastMessageId) { id in
+                        // When the lastMessageId changes, scroll to the bottom of the conversation
+                        withAnimation {
+                            proxy.scrollTo(id, anchor: .bottom)
+                        }
+                    }
                 }
-                .padding(.top, 10)
-                .background(.white)
-                .cornerRadius(30, corners: [.topLeft, .topRight])
+            }
+            .background(Constants.lightBlue)
+            
+            MessageField()
+                .environmentObject(messagesManager)
         }
-    }
-        .background(Constants.blue)
-        MessageField()
     }
 }
 
@@ -39,3 +45,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
