@@ -126,6 +126,7 @@ struct CardView: View {
                             withAnimation {
                                 swipingData.listOfUsers.insert(card,at: swipingData.listOfUsers.endIndex)
                                 swipingData.listOfUsers.remove(at: 0)
+                                swipingData.swipedUsers.insert(card,at: swipingData.swipedUsers.endIndex)
                                 swipeDirection = .none
                             }
                             default: card.x = 0; card.y = 0
