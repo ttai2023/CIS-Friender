@@ -110,7 +110,7 @@ struct MainMessagesView: View {
     }
     }
     
-    
+
     private var messagesView: some View {
         ScrollView {
             ForEach(0..<10, id: \.self) { num in
@@ -143,7 +143,7 @@ struct MainMessagesView: View {
             }.padding(.bottom, 50)
         }
     }
-
+}
 
 struct MainMessageView_Previews: PreviewProvider {
     static var previews: some View {
