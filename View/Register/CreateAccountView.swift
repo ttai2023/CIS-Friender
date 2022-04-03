@@ -96,8 +96,7 @@ struct CreateAccountView: View
     }
     
     //TODO: NO duplicate sign up
-    //TODO: Send a user a verification email(=´ω`=)
-    
+
     func signUp(){
        
         //validate the fields
@@ -111,6 +110,7 @@ struct CreateAccountView: View
         else{
             //and create the user
             userManager.signUp(username: newUsername, email: newEmail, password: newPassword)
+            
         }
     }
     

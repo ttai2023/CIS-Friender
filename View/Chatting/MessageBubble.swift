@@ -21,7 +21,7 @@ struct MessageBubble: View {
                 Text(message.text)
                     .padding()
                     .background(message.received ?
-                                Color("Gray"): Color("Constants.lightBlue"))
+                                Color("Blue"): Color("Constants.lightBlue"))
                     .cornerRadius(30)
             }
             //if message is received, alignment will be leading
@@ -47,5 +47,8 @@ struct MessageBubble: View {
 struct MessageBubble_Previews: PreviewProvider {
     static var previews: some View {
         MessageBubble(message: Message(id:"12345", text: "Testing", received: true, timestamp: Date()))
+            .foregroundColor(Constants.lightBlue)
     }
 }
+
+//TODO: Make the message bubble blue

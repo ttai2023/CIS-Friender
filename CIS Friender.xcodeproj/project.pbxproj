@@ -22,6 +22,8 @@
 		5143B95427DD60C800ED5D8F /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143B95327DD60C800ED5D8F /* ForgotPasswordView.swift */; };
 		518CB1E327D055BA002E1BBD /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518CB1E227D055BA002E1BBD /* Utilities.swift */; };
 		518CB1E527D1B6DA002E1BBD /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518CB1E427D1B6D9002E1BBD /* UserManager.swift */; };
+		51B2018327F975300051510A /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B2018227F975300051510A /* FirebaseManager.swift */; };
+		51BB583727F8355B00F771AD /* MainMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BB583627F8355B00F771AD /* MainMessagesView.swift */; };
 		51F625A327CAFFFD002DCF0B /* CISUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F625A227CAFFFD002DCF0B /* CISUser.swift */; };
 		B921836227D8D79D006A44A8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B921836127D8D79D006A44A8 /* Constants.swift */; };
 		B92CA7A627BF43F000338F6D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927662627BE45CB0079195A /* LoginView.swift */; };
@@ -84,6 +86,8 @@
 		5143B95327DD60C800ED5D8F /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		518CB1E227D055BA002E1BBD /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		518CB1E427D1B6D9002E1BBD /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		51B2018227F975300051510A /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		51BB583627F8355B00F771AD /* MainMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMessagesView.swift; sourceTree = "<group>"; };
 		51F625A227CAFFFD002DCF0B /* CISUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CISUser.swift; sourceTree = "<group>"; };
 		B921836127D8D79D006A44A8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B927662627BE45CB0079195A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -182,7 +186,9 @@
 			children = (
 				518CB1E227D055BA002E1BBD /* Utilities.swift */,
 				518CB1E427D1B6D9002E1BBD /* UserManager.swift */,
+				512097E427F5CC9700D04E74 /* MessagesManager.swift */,
 				B921836127D8D79D006A44A8 /* Constants.swift */,
+				51B2018227F975300051510A /* FirebaseManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -191,12 +197,13 @@
 			isa = PBXGroup;
 			children = (
 				512097D427F5C2E900D04E74 /* TitleRowView.swift */,
+				51BB583627F8355B00F771AD /* MainMessagesView.swift */,
 				512097D627F5C30500D04E74 /* ContentView.swift */,
 				512097E027F5CA1400D04E74 /* MessageField.swift */,
 				512097DE27F5C94B00D04E74 /* Extension.swift */,
 				512097D827F5C5B000D04E74 /* Message.swift */,
 				512097DC27F5C5E000D04E74 /* MessageBubble.swift */,
-				512097E427F5CC9700D04E74 /* MessagesManager.swift */,
+				B927662727BE45CB0079195A /* Assets.xcassets */,
 			);
 			path = Chatting;
 			sourceTree = "<group>";
@@ -218,7 +225,6 @@
 				518CB1E127D055A2002E1BBD /* Helper */,
 				518CB1E027D05575002E1BBD /* Class */,
 				518CB1DF27D05493002E1BBD /* View */,
-				B927662727BE45CB0079195A /* Assets.xcassets */,
 				51424B9E27D8928F000CCFD1 /* GoogleService-Info.plist */,
 				B927662927BE45CB0079195A /* Preview Content */,
 				B927662C27BE45CB0079195A /* CIS Friender.xcodeproj */,
@@ -393,6 +399,7 @@
 				41B9DB5427C5EBC6001DCC10 /* SwipingView.swift in Sources */,
 				41811F7827C89C2500BDBA91 /* SearchView.swift in Sources */,
 				5143B95427DD60C800ED5D8F /* ForgotPasswordView.swift in Sources */,
+				51BB583727F8355B00F771AD /* MainMessagesView.swift in Sources */,
 				E2B353A127E9D3DD00AB801A /* TagsView.swift in Sources */,
 				512097D527F5C2E900D04E74 /* TitleRowView.swift in Sources */,
 				B92CA7AB27BF443600338F6D /* CreateAccountView.swift in Sources */,
@@ -400,6 +407,7 @@
 				512097E527F5CC9700D04E74 /* MessagesManager.swift in Sources */,
 				B92CA7AA27BF442800338F6D /* UserProfileView.swift in Sources */,
 				B92CA7A827BF442200338F6D /* CIS_FrienderApp.swift in Sources */,
+				51B2018327F975300051510A /* FirebaseManager.swift in Sources */,
 				512097D927F5C5B000D04E74 /* Message.swift in Sources */,
 				512097DF27F5C94B00D04E74 /* Extension.swift in Sources */,
 				B9AF029827E5E52C0001DF93 /* SwipingModel.swift in Sources */,
