@@ -5,7 +5,6 @@
 //  Created by Kiki on 2/4/2022.
 //
 
-
 import SwiftUI
 import Firebase
 import FirebaseAuth
@@ -14,15 +13,14 @@ class MainMessagesViewModel: ObservableObject {
 
     @Published var errorMessage = ""
     @Published var cisUser : CISUser?
+    @EnvironmentObject private var userManager: UserManager
+    @EnvironmentObject private var swipingData: SwipingModel
 
     init() {
         fetchCurrentUser()
     }
 
     private func fetchCurrentUser() {
-
-//get the current user's id
-        //But our current user does not have an ID/??
         
             guard let email = FirebaseManager.shared.auth.currentUser?.email else {
                 self.errorMessage = "Could not find firebase email"
@@ -41,16 +39,21 @@ class MainMessagesViewModel: ObservableObject {
                     return
 
                 }
-//                //not sure whether its string or not
+                
+//                for i in swipingData.swipedUsers
+//
+//
+//                swipingdata.swipedUsers
+//           not sure whether its string or not
 //                let id = data["id"] as? String ?? ""
 //                let email = data["email"] as? String ?? ""
+//                let username = data["username"] as? String ?? ""
 //                let profileImageUrl = data["profileImageUrl"] as? String ?? ""
 //
 //                //Get information
-//                self.cisUser = CISUser(id: id, email: email)
+//                self.cisUser = CISUser(id: id, email: email, username: username)
             }
         }
-
 }
 
 struct MainMessagesView: View {
@@ -66,9 +69,10 @@ struct MainMessagesView: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 //TODO: Get user's username and display here
-                Text("USERNAME")
+                Text("\(cisUser?.username ?? "")")
                     .font(.system(size: 24, weight: .bold))
 
+                
                 HStack {
                     Circle()
                         .foregroundColor(.green)
@@ -122,7 +126,6 @@ struct MainMessagesView: View {
                             .overlay(RoundedRectangle(cornerRadius: 44)
                                         .stroke(Color(.label), lineWidth: 1)
                             )
-
 
                         VStack(alignment: .leading) {
                             Text("Username")

@@ -32,7 +32,7 @@ struct MainView: View {
                 }
                 NavigationView {
                     
-                    ContentView()
+                    MainMessagesView()
                 }
                 .tabItem{
                     Image(systemName: "bubble.right.circle")
