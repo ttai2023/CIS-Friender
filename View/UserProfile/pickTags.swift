@@ -14,6 +14,7 @@ struct PickTags: View {
     
     //Tags...
     @State var tags: [Tag] = []
+    @State var showAlert: Bool = false
     
     var body: some View{
         
@@ -26,7 +27,7 @@ struct PickTags: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 // Custom Tag View
-                TagsView(maxLimit: 150, tags: $tags)
+                TagsView(maxLimit: 50, tags: $tags)
                 // default height...
                     .frame(height: 280)
                     .padding(.top,20)
@@ -48,9 +49,21 @@ struct PickTags: View {
                 //Add button
                 Button {
                     
-                    // Adding Tag...
-                    tags.append(addTag(text: text, fontSize: 16))
-                    text = ""
+                   addTag(tags: tags, text: text, fontSize: 16, maxLimit: 150)
+                    {
+                        alert, tag in
+                        
+                        if alert{
+                            
+                            // showing alert
+                            showAlert.toggle()
+                            
+                        }else{
+                            //adding tag
+                            tags.append(tag)
+                            text = ""
+                        }
+                    }
                     
                 }label: {
                     Text("Add Tag")
@@ -72,16 +85,11 @@ struct PickTags: View {
                 Color("background").ignoresSafeArea()
                 )
         }
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") {
-                        dismiss()
-                    }
-                }
-            }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Error"), message: Text("Tag Limit Exceeed, try to delete some tags!!"), dismissButton: .destructive(Text("OK")))
         }
     }
-
+}
 
 struct Home_Previews: PreviewProvider{
     static var previews: some View{
