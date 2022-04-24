@@ -69,8 +69,8 @@ struct MainMessagesView: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 //TODO: Get user's username and display here
-                Text("\(cisUser?.username ?? "")")
-                    .font(.system(size: 24, weight: .bold))
+//                Text("\(cisUser?.username ?? "")")
+//                    .font(.system(size: 24, weight: .bold))
 
                 
                 HStack {
