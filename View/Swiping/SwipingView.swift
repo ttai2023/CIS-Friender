@@ -17,7 +17,7 @@ import Foundation
 struct SwipingView: View {
     @State var swipeDirection: SwipeDirection = .none
     @EnvironmentObject private var userManager: UserManager
-    @EnvironmentObject private  var swipingData: SwipingModel
+    @EnvironmentObject private var swipingData: SwipingModel
     
     @State var size = CGSize.zero
 //    @State var index: Int
