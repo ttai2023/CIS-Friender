@@ -30,6 +30,7 @@ class UserManager: ObservableObject {
     @Published private var username: String = ""
     @Published var userMBTI: String = ""
     private var handle: Any?
+    
     //written with assistance from Julian
     private var userListener: AnyCancellable? //store listener, otherwise will delete
     

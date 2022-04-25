@@ -31,7 +31,8 @@ struct MainView: View {
                     Image(systemName: "magnifyingglass.circle.fill")
                 }
                 NavigationView {
-                    ChattingView()
+                    
+                    MainMessagesView()
                 }
                 .tabItem{
                     Image(systemName: "bubble.right.circle")

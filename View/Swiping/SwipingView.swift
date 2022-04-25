@@ -17,7 +17,7 @@ import Foundation
 struct SwipingView: View {
     @State var swipeDirection: SwipeDirection = .none
     @EnvironmentObject private var userManager: UserManager
-    @EnvironmentObject private  var swipingData: SwipingModel
+    @EnvironmentObject private var swipingData: SwipingModel
     
     @State var size = CGSize.zero
 //    @State var index: Int
@@ -38,7 +38,8 @@ struct SwipingView: View {
 //                let size = proxy.size
 //                let index = CGFloat(swipingData.getIndex(user: user))
                 ZStack {
-                    if let users = swipingData.listOfUsers { //if we let users become listOfUsers from swiping model
+                    if let users = swipingData.listOfUsers {
+                        //if we let users become listOfUsers from swiping model
                         if users.isEmpty { //if list is empty
                             Text("Looks like there are no more users to swipe through right now :( Come back later!")
                                 .font(.caption)
