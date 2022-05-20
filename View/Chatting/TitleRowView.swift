@@ -5,11 +5,13 @@
 //  Created by Kiki on 31/3/2022.
 //
 
+
+
 import SwiftUI
 
 struct TitleRowView: View {
     var imageUrl = URL(string:"https://i.pinimg.com/originals/d4/fd/2b/d4fd2bdfbc8a0c5db5795fe9d9693c21.jpg")
-    var name = "Joy"
+    var name = "Shirley"
     
     var body: some View {
         HStack(spacing:20){

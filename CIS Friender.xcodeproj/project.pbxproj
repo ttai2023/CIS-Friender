@@ -31,7 +31,6 @@
 		B92CA7A827BF442200338F6D /* CIS_FrienderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927662F27BE45CB0079195A /* CIS_FrienderApp.swift */; };
 		B92CA7AA27BF442800338F6D /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927662827BE45CB0079195A /* UserProfileView.swift */; };
 		B92CA7AB27BF443600338F6D /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927662B27BE45CB0079195A /* CreateAccountView.swift */; };
-		B92CA7AD27BF448900338F6D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92CA7AC27BF448900338F6D /* WelcomeView.swift */; };
 		B9AF029127E4629D0001DF93 /* SizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AF029027E4629D0001DF93 /* SizePreferenceKey.swift */; };
 		B9AF029827E5E52C0001DF93 /* SwipingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AF029727E5E52C0001DF93 /* SwipingModel.swift */; };
 		B9CBBB3827DCB0E800C1D550 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CBBB3727DCB0E800C1D550 /* CardView.swift */; };
@@ -98,7 +97,6 @@
 		B927662C27BE45CB0079195A /* CIS Friender.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "CIS Friender.xcodeproj"; sourceTree = "<group>"; };
 		B927662F27BE45CB0079195A /* CIS_FrienderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIS_FrienderApp.swift; sourceTree = "<group>"; };
 		B927663027BE45CB0079195A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		B92CA7AC27BF448900338F6D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		B9AF029027E4629D0001DF93 /* SizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizePreferenceKey.swift; sourceTree = "<group>"; };
 		B9AF029727E5E52C0001DF93 /* SwipingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingModel.swift; sourceTree = "<group>"; };
 		B9CBBB3727DCB0E800C1D550 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -212,7 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				B927662627BE45CB0079195A /* LoginView.swift */,
-				B92CA7AC27BF448900338F6D /* WelcomeView.swift */,
 				B927662B27BE45CB0079195A /* CreateAccountView.swift */,
 				5143B95327DD60C800ED5D8F /* ForgotPasswordView.swift */,
 			);
@@ -424,7 +421,6 @@
 				E2B353A327E9D44600AB801A /* Tag.swift in Sources */,
 				518CB1E327D055BA002E1BBD /* Utilities.swift in Sources */,
 				518CB1E527D1B6DA002E1BBD /* UserManager.swift in Sources */,
-				B92CA7AD27BF448900338F6D /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
