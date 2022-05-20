@@ -50,7 +50,7 @@ struct OtherUserProfileView: View {
                     Text(user.MBTI)
                 }
                 HStack {
-                    Text("MBTI")
+                    Text("Talent")
                         .bold()
                     Spacer()
                     Text(user.talent)
