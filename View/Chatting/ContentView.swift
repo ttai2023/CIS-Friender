@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var messagesManager = MessagesManager()
+    @EnvironmentObject private var userManager: UserManager
+    @EnvironmentObject var swipingData: SwipingModel
     
     var body: some View {
         VStack {

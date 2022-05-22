@@ -4,8 +4,6 @@
 //
 //  Created by Kiki on 2/4/2022.
 //
-
-//TODO: no user swiped -- display nothing
 //TODO: Fix the row view
 
 import SwiftUI
@@ -43,15 +41,18 @@ class MainMessagesViewModel: ObservableObject {
             }
                 
         }
+
 }
 
 struct MainMessagesView: View {
     @State var shouldNavigateToChatView = false
     @EnvironmentObject var swipingData: SwipingModel
     
+    //Define a callback of didSelectNewUser, this will allow communication back to MainMessagesView for which user was selected.
+
     private var customNavBar: some View {
         HStack(spacing: 0.1) {
-                VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: 1) {
                     Text("CHATS")
                         .font(.system(size: 40, weight: .bold))
                 }
@@ -61,42 +62,40 @@ struct MainMessagesView: View {
     
     var body: some View {
         NavigationView {
-
             VStack {
                 customNavBar
                 messagesView
                 NavigationLink("", isActive: $shouldNavigateToChatView) {
                                    ContentView()
                 }
-    }
+            }
     }
 }
     private var messagesView: some View {
 //        @EnvironmentObject var swipingData: SwipingModel
-        ScrollView{
-    ForEach(0..<10, id: \.self) { num in
+        List(swipingData.swipedUsers) {_ in
+            if swipingData.swipedUsers.isEmpty{
+                Text("You haven't matched with any users yet, please comeback later")
+                
+            }else{ForEach(0..<10, id: \.self) { num in
             ForEach(swipingData.swipedUsers){ CISUser in
-//            swipingData.swipedUsers.forEach { CISUser in
-//            for i in swipingData.swipedUsers{
                 VStack {
                     NavigationLink{
                         ContentView()
                     } label: {
                         HStack(spacing: 16) {
+                            //WELL IDK WHY THIS HAS HAPPENED BUT THE IMAGE SIZE IS TOO BIG AND IDK HOW TO DO IT
                             Image(CISUser.imageName)
-                                .font(.system(size: 32))
+                                .font(.system(size: 9))
                                 .padding(8)
-                                .overlay(RoundedRectangle(cornerRadius: 44)
+                                .overlay(RoundedRectangle(cornerRadius: 10)
                                             .stroke(Color(.label), lineWidth: 1)
                                 )
                             VStack(alignment: .leading) {
                                 Text(CISUser.username)
                                     .font(.system(size: 16, weight: .bold))
                             }
-
                         }
-    Text("22d")
-        .font(.system(size: 14, weight: .semibold))
                     }
                     Divider()
                         .padding(.vertical, 8)
@@ -104,14 +103,12 @@ struct MainMessagesView: View {
             }
         }
     }
-
+        }
 }
-    
-  
 }
 struct MainMessageView_Previews: PreviewProvider {
     static var previews: some View {
         MainMessagesView()
     }
-}
 
+}

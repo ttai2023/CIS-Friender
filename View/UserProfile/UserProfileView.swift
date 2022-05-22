@@ -15,6 +15,8 @@ import FirebaseFirestoreCombineSwift
 
 
 struct UserProfileView: View {
+    let user = Auth.auth().currentUser
+    
     @EnvironmentObject private var userManager: UserManager
     
     @State private var isPickAvatarPresented = false
@@ -26,8 +28,7 @@ struct UserProfileView: View {
     @State public var sign: String = ""
     @State public var mbti: String = ""
     @State public var bio: String = ""
-    
-    
+
     
     //for image picker
     @State private var imageName: String?
@@ -92,8 +93,7 @@ struct UserProfileView: View {
                 PickAvatar(imageName: $imageName)
             }
             .padding(.horizontal)
-                
-            
+
             if !isEditing
             {
                 List {
@@ -123,6 +123,18 @@ struct UserProfileView: View {
                     }
                     HStack {
                         Text("Bio")
+                            .bold()
+                        Spacer()
+                        Text(bio)
+                    }
+                      HStack {
+                          Text("Sign out")
+                            .bold()
+                          Spacer()
+                          Text(bio)
+                    }
+                    HStack {
+                        Text("Delete account")
                             .bold()
                         Spacer()
                         Text(bio)
@@ -157,24 +169,22 @@ struct UserProfileView: View {
                         TextField("bio", text: $bio)
                     }
                     
-                    HStack {
-                        Text("Sign out")
-                            .bold()
-                        Spacer()
-                        TextField("bio", text: $bio)
-                    }
-                    
-                     
-                    HStack {
-                        Text("DELETE ACCCOUNT")
-                            .bold()
-                        foregroundColor(.red)
-                        Spacer()
-                        TextField("bio", text: $bio)
-                    }
+//                    HStack {
+//                        Auth.auth().signOut()
+//                        Spacer()
+//                    }
+//                        HStack {
+//                            user?.delete { error in
+//                              if let error = error {
+//                                // An error happened.
+//                              } else {
+//                                // Account deleted.
+//                              }
+//                            }
+//                            Spacer()
+//                        }
                 }
             }
-            
         }
         .navigationBarHidden(true)
         .onChange(of: imageName){newValue in
@@ -204,7 +214,6 @@ struct UserProfileView: View {
         }
     }
 
-    
     func updateProfile(){
             userManager.updateUserProfile()
     }
