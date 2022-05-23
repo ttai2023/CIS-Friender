@@ -73,11 +73,14 @@ struct MainMessagesView: View {
 }
     private var messagesView: some View {
 //        @EnvironmentObject var swipingData: SwipingModel
+//        ScrollView{
         List(swipingData.swipedUsers) {_ in
             if swipingData.swipedUsers.isEmpty{
                 Text("You haven't matched with any users yet, please comeback later")
                 
-            }else{ForEach(0..<10, id: \.self) { num in
+            }else {
+            
+                ForEach(0..<10, id: \.self) { num in
             ForEach(swipingData.swipedUsers){ CISUser in
                 VStack {
                     NavigationLink{
@@ -86,6 +89,9 @@ struct MainMessagesView: View {
                         HStack(spacing: 16) {
                             //WELL IDK WHY THIS HAS HAPPENED BUT THE IMAGE SIZE IS TOO BIG AND IDK HOW TO DO IT
                             Image(CISUser.imageName)
+                                .resizable() //so image can be resized
+                            .aspectRatio(contentMode: .fill) //prevents original photo to be distorted
+                            .frame(width: 40, height: 40)//frame of circle
                                 .font(.system(size: 9))
                                 .padding(8)
                                 .overlay(RoundedRectangle(cornerRadius: 10)
@@ -103,6 +109,7 @@ struct MainMessagesView: View {
             }
         }
     }
+//        }
         }
 }
 }
