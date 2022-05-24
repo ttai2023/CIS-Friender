@@ -51,13 +51,8 @@ struct MainMessagesView: View {
     //Define a callback of didSelectNewUser, this will allow communication back to MainMessagesView for which user was selected.
 
     private var customNavBar: some View {
-        HStack(spacing: 0.1) {
-                VStack(alignment: .leading, spacing: 1) {
                     Text("CHATS")
                         .font(.system(size: 40, weight: .bold))
-                }
-                Spacer()
-                      }
                   }
     
     var body: some View {
@@ -79,8 +74,7 @@ struct MainMessagesView: View {
                 Text("You haven't matched with any users yet, please comeback later")
                 
             }else {
-            
-                ForEach(0..<10, id: \.self) { num in
+//                ForEach(0..<10, id: \.self) { num in
             ForEach(swipingData.swipedUsers){ CISUser in
                 VStack {
                     NavigationLink{

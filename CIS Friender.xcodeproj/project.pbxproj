@@ -201,7 +201,6 @@
 				512097DE27F5C94B00D04E74 /* Extension.swift */,
 				512097D827F5C5B000D04E74 /* Message.swift */,
 				512097DC27F5C5E000D04E74 /* MessageBubble.swift */,
-				B927662727BE45CB0079195A /* Assets.xcassets */,
 			);
 			path = Chatting;
 			sourceTree = "<group>";
@@ -223,6 +222,7 @@
 				518CB1E027D05575002E1BBD /* Class */,
 				518CB1DF27D05493002E1BBD /* View */,
 				51424B9E27D8928F000CCFD1 /* GoogleService-Info.plist */,
+				B927662727BE45CB0079195A /* Assets.xcassets */,
 				B927662927BE45CB0079195A /* Preview Content */,
 				B927662C27BE45CB0079195A /* CIS Friender.xcodeproj */,
 				B927662F27BE45CB0079195A /* CIS_FrienderApp.swift */,

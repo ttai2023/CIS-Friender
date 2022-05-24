@@ -168,21 +168,7 @@ struct UserProfileView: View {
                         Spacer()
                         TextField("bio", text: $bio)
                     }
-                    
-//                    HStack {
-//                        Auth.auth().signOut()
-//                        Spacer()
-//                    }
-//                        HStack {
-//                            user?.delete { error in
-//                              if let error = error {
-//                                // An error happened.
-//                              } else {
-//                                // Account deleted.
-//                              }
-//                            }
-//                            Spacer()
-//                        }
+    
                 }
             }
         }
@@ -212,16 +198,51 @@ struct UserProfileView: View {
             self.mbti = userManager.currentUser?.MBTI ?? ""
             self.bio = userManager.currentUser?.bio ?? ""
         }
+        
+//        // Button
+//        {
+//            isEditing = true
+//            isPickAvatarPresented  = true
+//        } label: {
+//            Text("Change profile photo")
+//                    .font(.headline)
+//                    .frame(maxWidth: 200)
+//                    .frame(height: 25)
+//                    .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.262745098, green: 0.0862745098, blue: 0.8588235294, alpha: 1)), Color(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1))]), startPoint: .top, endPoint: .bottom))
+//                    .cornerRadius(16)
+//                    .foregroundColor(.white)
+//        }
+        
+        VStack{
+            Button{
+                user?.delete { error in
+                if let error = error {
+                // An error happened.
+                    print("Failed to delete account")
+                } else {
+                    LoginView()
+                }
+            }
+            }label: {
+                Text("Delete account")
+            }
+                
+            Button{
+                userManager.signOut()
+            } label:{
+                Text("Sign out")
+            }
+        }
+
     }
 
-    func updateProfile(){
-            userManager.updateUserProfile()
     }
-  
-}
 
-//TODO: DELETE ACCOUNT
-//TODO: Sign out
+    //This is declared but nobody used it
+    
+//    func updateProfile(){
+//            userManager.updateUserProfile()
+//    }
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
@@ -229,3 +250,4 @@ struct UserProfileView_Previews: PreviewProvider {
             .environmentObject(UserManager())
     }
 }
+
